@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<svg width="100" height="125" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" data-name="Layer 2">
+ <title>Pause</title>
+ <g class="layer">
+  <title>Layer 1</title>
+  <path d="m50,11a39,39 0 1 0 39,39a39.05,39.05 0 0 0 -39,-39zm-6.43,54l0,0a3,3 0 0 1 -3,-3l-0.12,-24a3,3 0 0 1 3,-3l0,0a3,3 0 0 1 3,3l0.12,24a3,3 0 0 1 -3,3zm13,-0.06l0,0a3,3 0 0 1 -3,-3l-0.12,-24a3,3 0 0 1 3,-3a3,3 0 0 1 3,3l0.12,24a3,3 0 0 1 -3,3.06l0,-0.06z" fill="#31a38d" id="svg_1"/>
+  <text fill="#ffffff" font-family="&#x27;Helvetica Neue&#x27;, Helvetica, Arial-Unicode, Arial, Sans-serif" font-size="5px" font-weight="bold" id="svg_2" x="0" y="115">Created by Boyan</text>
+  <text fill="#ffffff" font-family="&#x27;Helvetica Neue&#x27;, Helvetica, Arial-Unicode, Arial, Sans-serif" font-size="5px" font-weight="bold" id="svg_3" x="0" y="120">from the Noun Project</text>
+ </g>
+</svg>

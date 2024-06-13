@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="vuesax/linear/trash">
+   <g id="trash">
+    <path d="m14,3.99c-2.22,-0.22 -4.45,-0.34 -6.68,-0.34c-1.32,0 -2.64,0.07 -3.96,0.2l-1.36,0.14" fill="none" id="Vector" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path d="m5.67,3.31l0.14,-0.87c0.11,-0.63 0.19,-1.11 1.32,-1.11l1.74,0c1.13,0 1.22,0.5 1.32,1.12l0.14,0.86" fill="none" id="Vector_2" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path d="m12.57,6.09l-0.44,6.72c-0.07,1.04 -0.13,1.86 -1.99,1.86l-4.28,0c-1.86,0 -1.92,-0.82 -1.99,-1.86l-0.44,-6.72" fill="none" id="Vector_3" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path d="m6.89,11l2.22,0" fill="none" id="Vector_4" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path d="m6.33,8.33l3.34,0" fill="none" id="Vector_5" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+   </g>
+  </g>
+ </g>
+</svg>

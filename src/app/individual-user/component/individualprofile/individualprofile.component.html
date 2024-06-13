@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Document</title>
+</head>
+
+
+<body [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : 'white' }">
+
+
+    <div class="mainbody" [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white'}">
+
+        <div>
+            <div class="accountsetting">
+                <h4>
+                    Account settings
+                </h4>
+            </div>
+
+
+            <div class="cardsdiv">
+                <div class="firstcard"
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : 'white' ,'box-shadow': isDarkTheme ? 'rgba(253, 1, 1, 0.7)' : 'rgba(0, 0, 0, 0.7)'}">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <div nz-row style="display: flex; text-align: center; justify-content: center; ">
+                            <div nz-col>
+
+
+                                <div class="avatar-container" style="margin-top: 15px;">
+                                    <!-- <div class="image-container" *ngIf="file; else placeholder"
+                                        [ngClass]="{'box-shadow-avatar': !!file}"
+                                        [ngStyle]="{backgroundImage: 'url(' + file + ')'} ">
+
+                                    </div> -->
+                                    <div class="image-container" *ngIf="userdata.profilePhoto; else placeholder">
+                                        <div class="avatar-placeholder">
+                                            <nz-spin [nzSpinning]="isSpinning">
+                                            </nz-spin>
+                                            <img [src]="file" style="object-fit: cover; width: 100px;
+                                            height: 100px;border-radius: 50%;">
+                                        </div>
+                                    </div>
+                                    <ng-template #placeholder>
+                                        <div class="avatar-placeholder" [style.background-color]="placeholderColor">
+                                            <strong>{{ (firstName?.valid ? firstName?.value.charAt(0).toUpperCase() :
+                                                'F') + (lastName?.valid ? lastName?.value.charAt(0).toUpperCase() : 'L')
+                                                }}</strong>
+                                        </div>
+                                    </ng-template>
+                                    <!-- <label for="avatar-input-file">
+                                        <div class="icon-wrapper">
+                                            <input type="file" id="avatar-input-file" accept="image/*"
+                                                (change)="onFileChange($event);" />
+                                            <span nz-icon nzType="camera" nzTheme="fill"></span>
+                                        </div>
+                                    </label> -->
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <h6
+                                style=" font-size: 24px;text-align: center; font-weight: 700;margin-bottom: 0px;padding: 20px 0px;">
+                                {{capitalizeFirstLetter(userdata.firstName)}}
+                                {{capitalizeFirstLetter(userdata.lastName)}}</h6>
+                            <!-- <h3 style=" font-size: 20px;text-align: center; font-weight: 500;margin-bottom: 0px;"
+                                *ngIf="userdata.role === 'Sea-farer'">
+                                Seafarer
+                            </h3>
+                            <h3 style=" font-size: 20px;text-align: center; font-weight: 700;margin-bottom: 0px;"
+                                style="text-align: center" *ngIf="userdata.role === 'Company-admin'">Admin</h3>
+                            <h3 style="text-align: center;margin-top: 25px;"> <i
+                                    style=" font-size: 20px;text-align: center; font-weight: 700;">{{userdata.companyName}}</i>
+                            </h3> -->
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Show User Profile -->
+
+                <nz-tabset class="secondcard"
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : 'white' ,'box-shadow': isDarkTheme ? 'rgba(253, 1, 1, 0.7)' : 'rgba(0, 0, 0, 0.7)'}">
+                    <nz-tab nzTitle="User profile">
+
+                        <div class="tab-pane fade active show">
+
+
+
+                            <div class="card-body">
+                                <form [formGroup]="adduserform">
+                                    <div class="inputs">
+                                        <div nz-col class="gutter-row" [nzSpan]="10">
+                                            <nz-form-item>
+                                                <nz-form-control nzErrorTip="Please enter first name!">
+                                                    <nz-form-label style="font-weight: 700; " nzFor="firstName">First
+                                                        Name</nz-form-label>
+                                                    <input class="names" nzSize="large" nz-input id="firstName"
+                                                        formControlName="firstName" placeholder="First Name" />
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </div>
+                                        <div nz-col class="gutter-row" [nzSpan]="10">
+                                            <nz-form-item>
+                                                <nz-form-control nzErrorTip="Please enter last name!">
+                                                    <nz-form-label style="font-weight: 700;" nzFor="lastName">Last
+                                                        Name</nz-form-label>
+                                                    <input class="names" nzSize="large" nz-input id="lastName"
+                                                        formControlName="lastName" placeholder="Last Name" />
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="inputs">
+
+
+                                        <div nz-col class="gutter-row" [nzSpan]="10">
+                                            <nz-form-item>
+                                                <nz-form-control nzErrorTip="Please enter Gender!">
+                                                    <nz-form-label style="font-weight: 700;"
+                                                        nzFor="gender">Gender</nz-form-label>
+                                                    <nz-select id="gender" nzShowSearch nzAllowClear
+                                                        formControlName="gender" nzPlaceHolder="Select a gender"
+                                                        nzSize="large">
+                                                        <nz-option nzValue="Male" nzLabel="Male">Male</nz-option>
+                                                        <nz-option nzValue="Female" nzLabel="Female">Female</nz-option>
+                                                        <nz-option nzLabel="Other" nzValue="Other"></nz-option>
+
+                                                    </nz-select>
+                                                </nz-form-control>
+
+                                            </nz-form-item>
+                                        </div>
+
+
+
+                                        <div nz-col class="gutter-row" [nzSpan]="10">
+                                            <nz-form-item>
+                                                <nz-form-control nzErrorTip="Please enter Date of Birth!">
+                                                    <nz-form-label style="font-weight: 700;" nzFor="userDob">Date of
+                                                        Birth
+                                                    </nz-form-label>
+                                                    <nz-date-picker style="width: 100%;" nzSize="large"
+                                                        formControlName="userDob"></nz-date-picker>
+
+                                                </nz-form-control>
+
+                                            </nz-form-item>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="inputs">
+                                        <div nz-col class="gutter-row" [nzSpan]="10">
+                                            <nz-form-item [class.disabled]="true">
+                                                <nz-form-control nzErrorTip="Please enter Phone Number!">
+                                                    <nz-form-label style="font-weight: 700;" nzFor="phoneNo">Phone
+                                                        No</nz-form-label>
+                                                    <input nzSize="large" nz-input id="phoneNo"
+                                                        formControlName="phoneNo" placeholder="Phone Number" />
+                                                </nz-form-control>
+
+                                            </nz-form-item>
+                                        </div>
+                                        <div nz-col class="gutter-row" [nzSpan]="10">
+                                            <nz-form-item>
+                                                <nz-form-control nzErrorTip="Please enter Nationality!">
+                                                    <nz-form-label style="font-weight: 700;"
+                                                        nzFor="nationality">Nationality</nz-form-label>
+                                                    <nz-select id="nationality" nzShowSearch nzAllowClear
+                                                        formControlName="nationality"
+                                                        nzPlaceHolder="Select a Nationality" nzSize="large">
+                                                        <nz-option *ngFor="let rank of nationalities"
+                                                            [nzValue]="rank.Nationality"
+                                                            [nzLabel]="rank.Nationality"></nz-option>
+
+                                                    </nz-select>
+                                                </nz-form-control>
+
+                                            </nz-form-item>
+                                        </div>
+                                    </div>
+
+                                    <div class="inputs">
+                                        <div nz-col class="gutter-row" [nzSpan]="10">
+                                            <nz-form-item [class.disabled]="true">
+                                                <nz-form-control nzErrorTip="Please enter Valid Email!">
+                                                    <nz-form-label style="font-weight: 700;"
+                                                        nzFor="email">Email</nz-form-label>
+                                                    <input class="input" nzSize="large" nz-input id="email"
+                                                        formControlName="email" placeholder="User Email" />
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </div>
+
+                                        <div nz-col class="gutter-row" [nzSpan]="10">
+                                            <!-- <nz-form-item [class.disabled]="true">
+                                                <nz-form-control nzErrorTip="Please enter Company Name!">
+                                                    <nz-form-label style="font-weight: 700;" nzFor="companyName">Company
+                                                        Name</nz-form-label>
+                                                    <input class="input" nzSize="large" nz-input id="companyName"
+                                                        formControlName="companyName" placeholder="Company Name" />
+                                                </nz-form-control>
+                                            </nz-form-item> -->
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="steps-action">
+                                        <button style="background-color: #3194a0; color: white"
+                                            [class.disabled]="savechangesloading" (click)="saveChanges()">Save <i
+                                                style="margin-left: 6px" class="fa fa-refresh fa-spin"
+                                                *ngIf="savechangesloading"></i>
+                                        </button>
+                                        <button style="color: black;" (click)="cancelChanges()">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </nz-tab>
+
+                    <!-- Account security  -->
+                    <nz-tab nzTitle="Account security">
+                        <div class="tab-pane fade active show">
+
+                            <div class="card-body pb-2">
+                                <form [formGroup]="changePasswordForm">
+                                    <div nz-row style="display: flex;justify-content: space-evenly;text-align: start; ">
+                                        <div class="passinputs">
+                                            <nz-form-item>
+                                                <nz-form-control nzErrorTip="Please input your Password!">
+                                                    <nz-form-label style="font-weight: 700;"
+                                                        nzFor="password">Password</nz-form-label>
+                                                    <nz-input-group [nzSuffix]="suffixTemplate1" nzSize="large"
+                                                        style="border-radius: 5px; height: 47px;">
+                                                        <input nzSize="large"
+                                                            [type]="passwordVisible1 ? 'text' : 'password'"
+                                                            id="password" nz-input formControlName="password"
+                                                            placeholder="Enter current password" />
+                                                    </nz-input-group>
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </div>
+
+
+                                    </div>
+
+
+
+
+                                    <div nz-row style="
+              display: flex;
+              justify-content: space-evenly;
+              text-align: start;
+            ">
+                                        <div class="passinputs">
+                                            <nz-form-item>
+
+                                                <nz-form-control nzErrorTip="Please input your Password!">
+                                                    <nz-form-label style="font-weight: 700" nzFor="password">New
+                                                        Password
+                                                    </nz-form-label>
+                                                    <nz-input-group [nzSuffix]="suffixTemplate2" nzSize="large"
+                                                        style="border-radius: 5px; height: 47px">
+                                                        <input nzSize="large" (ngModelChange)="updateConfirmValidator()"
+                                                            [type]="passwordVisible2 ? 'text' : 'password'"
+                                                            id="password" nz-input formControlName="newPassword"
+                                                            placeholder="New password" />
+                                                    </nz-input-group>
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </div>
+                                    </div>
+
+                                    <div nz-row style="
+              display: flex;
+              justify-content: space-evenly;
+              text-align: start;
+            ">
+                                        <div class="passinputs">
+                                            <nz-form-item>
+
+                                                <nz-form-control [nzErrorTip]="errorTpl">
+                                                    <nz-form-label style="font-weight: 700"
+                                                        nzFor="confirmpassword">Re-enter new password
+                                                    </nz-form-label>
+                                                    <nz-input-group [nzSuffix]="suffixTemplate3" nzSize="large"
+                                                        style="border-radius: 5px; height: 47px">
+                                                        <input nzSize="large"
+                                                            [type]="passwordVisible3 ? 'text' : 'password'"
+                                                            id="password" nz-input formControlName="confirmpassword"
+                                                            placeholder="Re-enter new password" />
+                                                        <ng-template #errorTpl let-control>
+                                                            <ng-container *ngIf="control.hasError('required')">Please
+                                                                confirm your password!</ng-container>
+                                                            <ng-container *ngIf="control.hasError('confirm')">
+                                                                The Confirm Password does not match!
+                                                            </ng-container>
+                                                        </ng-template>
+                                                    </nz-input-group>
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <ng-template #suffixTemplate1>
+                                        <span nz-icon [nzType]="passwordVisible1 ? 'eye-invisible' : 'eye'"
+                                            (click)="passwordVisible1 = !passwordVisible1"></span>
+                                    </ng-template>
+                                    <ng-template #suffixTemplate2>
+                                        <span nz-icon [nzType]="passwordVisible2 ? 'eye-invisible' : 'eye'"
+                                            (click)="passwordVisible2 = !passwordVisible2"></span>
+                                    </ng-template>
+                                    <ng-template #suffixTemplate3>
+                                        <span nz-icon [nzType]="passwordVisible3 ? 'eye-invisible' : 'eye'"
+                                            (click)="passwordVisible3 = !passwordVisible3"></span>
+                                    </ng-template>
+                                    <div style="display:flex  ; gap: 10px; margin-top: 20px; justify-content: center;">
+                                        <button style="display: flex;
+                                      justify-content: center;
+                                      align-items: center;
+                                      border-radius: 5px;
+                                      background: var(--Primary--Ocean-Green, #3194a0);
+                                      color: white;
+                                      border: none;
+                                      height: 45px;
+                                      font-size: 16px;
+                                      cursor: pointer;
+                                      width: 150px;
+                                    " (click)="changePassword()">Change Password</button>
+                                        <!-- <button style=
+                                    "display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border-radius: 5px;
+                                    background: var(--Primary--Ocean-Green, #c2c2c2);
+                                    color: rgb(0, 0, 0);
+                                    border: none;
+                                    height: 45px;
+                                    font-size: 16px;
+                                    cursor: pointer;
+                                    width: 100px;">Cancel</button> -->
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </nz-tab>
+
+                    <!--Payment methods  -->
+                    <nz-tab nzTitle="Profile Photo">
+
+                        <div style="width: 100%;display:flex ;justify-content: center;margin-top: 20px;">
+                            <h3 style="font-weight: 700;">Add a nice photo of yourself for your profile.</h3>
+                        </div>
+
+                        <div style="width: 100%;display:flex ;justify-content: center;">
+                            <div class="avatar-container" style="margin-top: 15px;">
+
+                                <div class="image-container" style="width: 200px;height: 200px;"
+                                    *ngIf="file; else placeholder2">
+                                    <div class="avatar-placeholder" style="width: 200px;height: 200px;">
+                                        <img [src]="file" style="object-fit: cover; width: 200px;
+                                    height: 200px;border-radius: 50%;">
+                                    </div>
+                                </div>
+                                <ng-template #placeholder2 style="width: 200px;height: 200px;">
+                                    <div class="avatar-placeholder" [style.background-color]="placeholderColor"
+                                        style="width: 200px;height: 200px;font-size: 50px;">
+                                        <strong>{{ (firstName?.valid ? firstName?.value.charAt(0).toUpperCase() :
+                                            'F') + (lastName?.valid ? lastName?.value.charAt(0).toUpperCase() : 'L')
+                                            }}</strong>
+                                    </div>
+                                </ng-template>
+                                <label for="avatar-input-file">
+                                    <div class="icon-wrapper"
+                                        [ngStyle]="{ 'border-color': isDarkTheme ? '#1E1F1E' : 'white','background-color': isDarkTheme ? '#3c3c3c' : '#a1a1a1'}">
+                                        <input type="file" id="avatar-input-file" accept="image/*"
+                                            (change)="onFileChange($event);" />
+                                        <span nz-icon nzType="camera" nzTheme="outline"></span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="steps-action" style="margin-top: 40px;">
+                            <button [class.disabled]="photonotchanged" style="background-color: #3194a0; color: white"
+                                (click)="uploadphoto()">Upload Photo <i style="margin-left: 6px"
+                                    class="fa fa-refresh fa-spin" *ngIf="uploadphotoloading"></i>
+                            </button>
+                        </div>
+
+                    </nz-tab>
+
+
+
+                </nz-tabset>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<et-scroll-top></et-scroll-top>

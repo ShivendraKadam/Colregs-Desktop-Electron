@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
+
+    <title>Document</title>
+</head>
+
+<body *ngIf="course" [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : 'white' }">
+
+
+
+    <div class="container">
+        <div class="coursethumb">
+
+            <div class="thumbpreview">
+
+                <div *ngIf="!courseCompleted">
+
+                    <!-- ? VIDEO PLAYER-->
+                    <div class="image-container" *ngIf="showVideo">
+
+                        <app-videoplayer *ngIf="!isToolbar" [disableSeeking]="true"
+                            (updateStatus)="updateStatus($event)" [videoData]="videoData" [videoUrl]="videoUrl"
+                            [videoId]="videoId"></app-videoplayer>
+
+                        <!-- <video *ngIf="!isToolbar" style="top : 0; left : 0; width : 100%; height: 100%; position: absolute;"
+              (pause)="countPlayerViewTime()" (play)="countPlayerViewTime()" id="videoPlayer" #videoPlayer></video> -->
+
+                        <vg-player *ngIf="isToolbar" [class.hovered]="isHovered" (mouseenter)="onMouseEnter()"
+                            (mouseleave)="onMouseLeave()" (onPlayerReady)="onPlayerReady($event)"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px;">
+                            <vg-overlay-play class="playpausebtn" *ngIf="!isradarvisible"></vg-overlay-play>
+                            <vg-buffering vgFor="singlevideo"></vg-buffering>
+
+                            <!-- Custom buttons for zoom in and zoom out -->
+                            <span *ngIf="!isScreenWidthBelow1200px">
+
+                                <div class="customvgbtns" [@fadeInOut]="isHovered ? 'in' : 'out'" *ngIf="isHovered"
+                                    style="position: absolute; bottom: 0.1px; z-index: 999;display: flex;justify-content: space-between;">
+
+                                    <button class="portbtn" (click)="showToolBarViewVideo(5)" title="Port side view"
+                                        *ngIf="isToolbarVideo">
+                                        <img src="assets/icons/iconsbuttons/SI_Cameras.png" alt=""></button>
+
+                                    <button title="ECDIS information"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(2)"><img
+                                            src="assets/icons/iconsbuttons/SI_ECDIS.png" alt=""></button>
+
+                                    <button title="Binocular view"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(8)"><img
+                                            src="assets/icons/iconsbuttons/SI_Binacular.png" alt=""></button>
+
+
+                                    <button title="Top view (From Monkey Island)"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(4)"><img
+                                            src="assets/icons/iconsbuttons/SI-09.png" alt=""></button>
+
+                                    <button title="Top view (From Monkey Island)"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="openHelpModal()"><img
+                                            src="assets/icons/iconsbuttons/Sim Icons-10.png" alt="Help"
+                                            title="Help" /></button>
+
+
+                                    <button title="Stern view"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(7)"><img
+                                            src="assets/icons/iconsbuttons/SI-08.png" alt=""></button>
+
+
+                                    <button title="Objectives"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showObjectiveModal()"><img
+                                            src="assets/icons/iconsbuttons/SI_Objectives.png" alt=""></button>
+
+                                    <button title="Radar information"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(3)"><img
+                                            src="assets/icons/iconsbuttons/SI_RADAR.png" alt=""></button>
+
+                                    <button class="starboardbtn" title="Startboard side view"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(6)"><img
+                                            src="assets/icons/iconsbuttons/SI-06.png" alt=""></button>
+
+
+                                    <button title="Bridge view"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isgoback" (click)="goback()"><img
+                                            src="assets/icons/iconsbuttons/SI-07.png" alt=""></button>
+                                </div>
+
+                                <div class="customvgbtns" [@fadeInOut]="isHovered ? 'in' : 'out'" *ngIf="isHovered"
+                                    style="position: absolute; top: 0.1px; z-index: 999;display: flex;justify-content: space-between; background-color: #00010327; height: 70px;">
+                                    <span
+                                        style="font-size: 18px; font-weight: 600; font-family: Calibri;">{{videoTitle}}
+                                    </span>
+                                </div>
+                            </span>
+
+
+                            <span *ngIf="isScreenWidthBelow1200px">
+                                <div class="customvgbtns"
+                                    style="position: absolute; bottom: 0.1px; z-index: 999;display: flex;justify-content: space-between;">
+                                    <button class="portbtn" (click)="showToolBarViewVideo(5)" title="Port side view"
+                                        *ngIf="isToolbarVideo">
+                                        <img src="assets/icons/iconsbuttons/SI_Cameras.png" alt=""></button>
+
+                                    <button title="ECDIS information"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(2)"><img
+                                            src="assets/icons/iconsbuttons/SI_ECDIS.png" alt=""></button>
+
+
+
+                                    <button title="Binocular view"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(8)"><img
+                                            src="assets/icons/iconsbuttons/SI_Binacular.png" alt=""></button>
+
+
+                                    <button title="Top view (From Monkey Island)"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(4)"><img
+                                            src="assets/icons/iconsbuttons/SI-09.png" alt=""></button>
+
+                                    <button title="Stern view"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(7)"><img
+                                            src="assets/icons/iconsbuttons/SI-08.png" alt=""></button>
+
+                                    <button title="Objectives"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showObjectiveModal()"><img
+                                            src="assets/icons/iconsbuttons/SI_Objectives.png" alt=""></button>
+
+                                    <button title="Radar information"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(3)"><img
+                                            src="assets/icons/iconsbuttons/SI_RADAR.png" alt=""></button>
+
+                                    <button class="starboardbtn" title="Startboard side view"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isToolbarVideo" (click)="showToolBarViewVideo(6)"><img
+                                            src="assets/icons/iconsbuttons/SI-06.png" alt=""></button>
+
+
+
+                                    <!-- <button title="Bridge view" style="font-family:monospace;display: flex;align-items: center;"
+                                 *ngIf="isZoomout" (click)="zoomOut()"><img src="assets/icons/iconsbuttons/SI-07.png"
+                                   alt=""></button> -->
+                                    <button title="Bridge view"
+                                        style="font-family:monospace;display: flex;align-items: center;"
+                                        *ngIf="isgoback" (click)="goback()"><img
+                                            src="assets/icons/iconsbuttons/SI-07.png" alt=""></button>
+
+
+                                </div>
+                            </span>
+
+
+                            <vg-controls style="bottom : 84px" [@fadeInOut]="isHovered ? 'in' : 'out'"
+                                (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()"
+                                class="videocontrolfullscreen">
+                                <vg-fullscreen>
+                                </vg-fullscreen>
+                            </vg-controls>
+                            <vg-controls style="bottom : 84px" class="vgcontrolsmain"
+                                [class.endFullScreen]="isradarvisible" [@fadeInOut]="isHovered ? 'in' : 'out'"
+                                *ngIf="isHovered">
+
+
+                                <vg-play-pause *ngIf="!isradarvisible"></vg-play-pause>
+                                <button *ngIf="!isradarvisible"
+                                    style="background-color: transparent; border: none; outline: none;"
+                                    (click)="rewindByTenSeconds()"><img src="assets/icons/replay-10.svg" alt=""
+                                        style="width: 25px; cursor: pointer;" /></button>
+                                <!-- <vg-playback-button></vg-playback-button> -->
+                                <vg-time-display *ngIf="!isradarvisible" vgProperty="current"
+                                    vgFormat="mm:ss"></vg-time-display>
+                                <vg-scrub-bar class="scrub-bar" *ngIf="!isradarvisible" style="pointer-events: none;">
+                                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                    <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                                </vg-scrub-bar>
+                                <vg-time-display *ngIf="!isradarvisible" vgProperty="left"
+                                    vgFormat="mm:ss"></vg-time-display>
+                                <!-- <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display> -->
+                                <!-- <vg-track-selector></vg-track-selector> -->
+                                <vg-mute *ngIf="!isradarvisible"></vg-mute>
+                                <vg-volume *ngIf="!isradarvisible" vgSlider></vg-volume>
+
+                            </vg-controls>
+
+
+                            <video (play)="countPlayerViewTime()" (pause)="countPlayerViewTime()"
+                                [vgMedia]="$any(videoPlayer)" #videoPlayer id="singlevideo" preload="auto" crossorigin>
+                                <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
+                            </video>
+
+
+
+                        </vg-player>
+
+                    </div>
+
+                    <!-- ? PDF Viewer-->
+
+                    <div class="image-container" *ngIf="showDocument"
+                        style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <pdf-viewer style="position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%; border-radius: 10px;" [src]="pdfSrc" [render-text]="false" *ngIf="isContentText" #pdfViewer
+                                (after-load-complete)="onPdfLoadComplete($event)"
+                                (page-rendered)="onPageRendered($event)">
+                            </pdf-viewer>
+                        </div>
+                        <div class="nextButton">
+                            <button (click)="playNextForDocument()"><span nz-icon nzType="right" nzTheme="outline"
+                                    style="color: #fff"></span></button>
+                        </div>
+                    </div>
+
+
+                    <!-- ? NOT VIDEO PLAYER-->
+
+                    <div class="image-container" *ngIf="showRewatchandAssessment">
+
+                        <div [class.overlayCourse]="courseThumbnail"></div>
+                        <img [src]="courseThumbnail" alt="" style="position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           object-fit: contain;
+           height: 100%;border-radius: 10px;">
+
+
+                        <div class="rewatch-video-container">
+                            <button nzTooltipTitle="Rewatch" (click)="rewatchVideo()" class="start-button3"
+                                style="background-color: transparent;">
+                                <img class="rewatchicon" src="assets/icons/replay.svg" alt="" />
+                            </button>
+                        </div>
+
+                        <div *ngIf="isAssessment" class="assesment-button-container">
+                            <button (click)="StartAssesment()" class="start-button4">
+                                Start Assesment
+                            </button>
+                        </div>
+
+                        <div *ngIf="isPlayNext && !isAssessment" class="nextButton">
+                            <button (click)="playNext()"><span nz-icon nzType="right" nzTheme="outline"
+                                    style="color: #fff"></span></button>
+
+                            <!-- <button (click)="playNext()" class="start-button4">
+              Next
+            </button> -->
+                        </div>
+
+                    </div>
+                </div>
+
+                <div *ngIf="courseCompleted">
+
+                    <div [class.overlayCourse]="courseThumbnail"></div>
+
+                    <img [src]="courseThumbnail" alt="" style="position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         object-fit: cover;
+         height: 100%;border-radius: 10px;">
+
+                    <div class="assesment-button-container">
+                        <button [class.disabled]="isCertificateDisabled" (click)="downloadCertificate()"
+                            class="start-button4">
+                            Download Certificate
+                        </button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div id="scrollableContainer" class="coursecontent"
+                [ngStyle]="{ 'border-color': isDarkTheme ? '#e0e0e0' : '#e0e0e0' }">
+                <div class="content" style="position: absolute;
+         top: 0;
+         left: 0;
+         right: 10;
+         width: 100%;
+         height: 100%;border-radius: 10px;">
+
+                    <h2 [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }">Course Content</h2>
+
+
+
+                    <div [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : 'white' }"
+                        [class.disabled-card]="item.isDisabled" class="course-whole-card"
+                        [id]="'course-card-' + item.order" style=" display: flex; align-items: center;"
+                        *ngFor="let item of mappedItems; let i = index">
+
+                        <div [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : 'white' }"
+                            *ngIf="item.type === 'Video';" class="course-card" (click)="handleVideoSelection(item, i)"
+                            [ngClass]="{'course-card-dark': !isDarkTheme}">
+
+                            <div class="card-img">
+
+                                <img *ngIf="isDarkTheme" [src]="getPlayIcon(item)"
+                                    [ngClass]="{'special-class': isSpecialCase(item)}">
+                                <img *ngIf="!isDarkTheme" [src]="getPlayIconLightTheme(item)"
+                                    [ngClass]="{'special-class': isSpecialCase(item)}">
+
+
+
+                            </div>
+                            <div class="card-decs">
+                                <div>
+
+                                    <div style="display: flex; justify-content: space-between; width: 100%;">
+                                        <div style="display: inline;">
+                                            <p nz-tooltip [nzTooltipTitle]="item.tempVideoTitle"
+                                                [ngClass]="currentOrder" [ngStyle]="{
+                            'color': currentOrder == item.order ? '#3194A0' : (isDarkTheme ? 'white' : '#333333')
+                          }" style="margin: 0; font-weight: 700; font-size: 17px;">{{
+                                                truncateText(item.tempVideoTitle,
+                                                60) }}</p>
+                                            <p style="margin: 0; font-size: 12px;">
+                                                <ng-container
+                                                    *ngIf="item.isQuestionnaire === 'Yes' && item.progressPercentage === 100">
+                                                    <span
+                                                        [style.color]="item.isAssessmentCompleted ? '#27AE60' : '#F2994A'">
+                                                        {{ item.isAssessmentCompleted ? 'Assessment Completed' :
+                                                        'Assessment Pending' }}
+                                                    </span>
+                                                    <span
+                                                        *ngIf="item.isAssessmentCompleted">(<span>{{item.bestAssessmentScore}}</span>/100)</span>
+                                                    <!-- <span *ngIf="item.isAssessmentCompleted" [ngClass]="{
+                                      'score-green': item.bestAssessmentScore > 75,
+                                      'score-yellow': item.bestAssessmentScore > 25 && item.bestAssessmentScore <= 75,
+                                      'score-red': item.bestAssessmentScore <= 25
+                                    }">(<span>{{item.bestAssessmentScore}}</span>/100)</span> -->
+
+                                                </ng-container>
+                                            </p>
+                                        </div>
+
+
+
+                                        <p style="margin: 0;">
+                                            {{formatTime(item.videoDuration)}}
+                                        </p>
+
+
+
+                                    </div>
+
+                                    <div style="display: flex; align-items: end;">
+                                        <div style="width: 80%;">
+                                            <nz-progress style="height:80%; margin-bottom: 10px;" nzSize="small"
+                                                [nzStrokeColor]="{ '0%': '#3194A0', '100%': '#3194A0' }"
+                                                [nzPercent]="item.progressPercentage"
+                                                [nzShowInfo]="false"></nz-progress>
+                                        </div>
+                                        <div style="width: 20%; text-align: end; font-size: 14px;">
+                                            {{item.progressPercentage}} %
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="border: 1px solid #e0e0e0;"
+                            [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white' }"
+                            *ngIf="item.type === 'Document'" class="course-card" (click)="readFile(item)">
+                            <div class="card-img">
+                                <img src="assets/icons/document-pdf-icon.svg" alt="" />
+                            </div>
+                            <div class="card-decs">
+                                <div>
+                                    <p nz-tooltip [nzTooltipTitle]="item.tempVideoTitle"
+                                        style="margin: 0; font-weight: 700; font-size: 17px;">{{
+                                        truncateText(item.documentTitle,
+                                        50) }}</p>
+                                    <p [ngStyle]="{
+              'color': currentOrder == item.order? '#2c8b77' :
+                       
+                       (isDarkTheme ? 'white' : '#333333')
+           }" style="margin: 0;">
+                                        {{formatTime(item.documentDuration)}}
+                                    </p>
+                                    <p style="margin: 0; font-size: 14px;">
+                                        <ng-container
+                                            *ngIf="item.isQuestionnaire === 'Yes' && item.progressPercentage === 100">
+                                            <span [style.color]="item.isAssessmentCompleted ? '#27AE60' : '#F2994A'">
+                                                {{ item.isAssessmentCompleted ? 'Assessment Completed' : 'Assessment
+                                                Pending' }}
+                                            </span>
+                                        </ng-container>
+                                    </p>
+                                    <div>
+                                        <div style="display: flex;justify-content: space-between;">
+                                            <div style="color: #828282;
+                                            font-size: 12px;
+                                            font-family: Calibri;
+                                            font-weight: 400;">Progress</div>
+                                            <div>{{item.progressPercentage}} %</div>
+                                        </div>
+
+                                        <nz-progress style="height:80%; margin-bottom: 10px;" nzSize="small"
+                                            [nzStrokeColor]="{ '0%': '#3194A0', '100%': '#3194A0' }"
+                                            [nzPercent]="item.progressPercentage" [nzShowInfo]="false"></nz-progress>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="coursethumb1">
+
+            <div class="thumbpreview1" style="border: none;">
+
+                <div class="courseheader" style="margin-bottom: 10px;">
+                    <div style="display: flex;justify-content: start;">
+                        <h2 style="margin-bottom: 0;">{{ course?.courseTitle }}</h2>
+                    </div>
+                    <div style="display: flex;justify-content: end;"> <button (click)="getTrailer()"
+                            class="start-button">Watch Trailer</button>
+                    </div>
+
+                </div>
+
+                <div class="ratingdiv">
+                    <div [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : 'white' }"
+                        style="width: 100%; height: 100%; padding: 10px;  border-radius: 5px; border: 1px #E0E0E0 solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 21px; display: inline-flex">
+                        <div class="ratingdivvalues">
+
+                            <div
+                                style="flex-grow: 1; flex-shrink : 1; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex;cursor: pointer;"
+                                    (click)="showModalMiddle()">
+                                    <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                        style="align-self: stretch;  font-family: Calibri; font-weight: 700; line-height: 22.40px; word-wrap: break-word">
+                                        Rating</div>
+                                    <div
+                                        style="padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background: linear-gradient(99deg, #DD973F 0%, #E7AE31 33%, #FADB14 100%); border-radius: 100px; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+                                        <div
+                                            style="justify-content: flex-start; align-items: center; gap: 4px; display: flex">
+                                            <div
+                                                style="width: 16px; height: 16px; justify-content: center; align-items: center; display: flex">
+                                                <span nz-icon nzType="star" style="color: white; font-size: 18px;"
+                                                    nzTheme="fill"></span>
+                                            </div>
+                                            <div
+                                                style="justify-content: flex-start; align-items: center; gap: 2px; display: flex">
+                                                <div
+                                                    style="color: white; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                    {{averageRating || 0}}</div>
+                                                <div
+                                                    style="color: white; font-family: Calibri; font-weight: 400; text-transform: capitalize; line-height: 21px; word-wrap: break-word">
+                                                    |</div>
+                                                <div
+                                                    style="color: white; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                    {{totalRatings
+                                                    }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                style="flex-grow: 1; flex-shrink : 1; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
+                                <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                    style="align-self: stretch;  font-family: Calibri; font-weight: 700; line-height: 25.20px; word-wrap: break-word">
+                                    Category</div>
+                                <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#4F4F4F' }"
+                                    style="align-self: stretch; font-family: Calibri; font-weight: 400; word-wrap: break-word">
+                                    <div>
+                                        {{ course.categories[0] }}
+                                        <a style="color: #2F80ED; font-family: Calibri; font-weight: 00;"
+                                            nzTrigger="click" nz-dropdown [nzDropdownMenu]="menusubcat"
+                                            *ngIf="course.categories.length > 1">
+                                            +{{course.categories.slice(1).length}} more
+                                            <span style="color: #2F80ED;" nz-icon nzType="down"></span>
+                                        </a>
+                                        <nz-dropdown-menu #menusubcat="nzDropdownMenu">
+                                            <ul nz-menu nzSelectable
+                                                *ngFor="let categories of course.categories.slice(1)">
+                                                <li nz-menu-item> {{ categories }}</li>
+                                            </ul>
+                                        </nz-dropdown-menu>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                style="flex-grow: 1; flex-shrink : 1; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                    style="  font-family: Calibri; font-weight: 700; line-height: 22.40px; word-wrap: break-word">
+                                    Sub Category</div>
+                                <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#4F4F4F' }"
+                                    style=" color: #4F4F4F; font-family: Calibri; font-weight: 400; word-wrap: break-word">
+                                    <div>
+                                        {{ course.subCategories[0] }}
+                                        <a style="color: #2F80ED; font-family: Calibri; font-weight: 00;"
+                                            nzTrigger="click" nz-dropdown [nzDropdownMenu]="menusubcat2"
+                                            *ngIf="course.subCategories.length > 1">
+                                            +{{course.subCategories.slice(1).length}} more
+                                            <span style="color: #2F80ED;" nz-icon nzType="down"></span>
+                                        </a>
+                                        <nz-dropdown-menu #menusubcat2="nzDropdownMenu">
+                                            <ul nz-menu nzSelectable
+                                                *ngFor="let subcasasategory of course.subCategories.slice(1)">
+                                                <li nz-menu-item> {{ subcasasategory }}</li>
+                                            </ul>
+                                        </nz-dropdown-menu>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                style="flex-grow: 1; flex-shrink : 1; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                    style=" font-family: Calibri; font-weight: 700; line-height: 25.20px; word-wrap: break-word">
+                                    Status</div>
+                                <div
+                                    style="justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                                    <div>
+                                        <span
+                                            style="color: #333333; font-family: Calibri; font-weight: 400; line-height: 24px; word-wrap: break-word">
+                                            <div *ngIf="courseUser[0].courseStatus === 'Completed' "
+                                                style="width: 100%; height: 100%; padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background: #219653; border-radius: 5px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                                                <div
+                                                    style="color: white; font-size: 16px; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                    {{courseUser[0].courseStatus}}</div>
+                                            </div>
+
+                                            <div *ngIf="courseUser[0].courseStatus === 'Not Started' "
+                                                style="width: 100%; height: 100%; padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background: #EB5757; border-radius: 5px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                                                <div
+                                                    style="color: white; font-size: 16px; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                    {{courseUser[0].courseStatus}}</div>
+                                            </div>
+
+                                            <div *ngIf="courseUser[0].courseStatus === 'In-Progress' "
+                                                style="width: 100%; height: 100%; padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background: #F2994A; border-radius: 5px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                                                <div
+                                                    style="color: white; font-size: 16px; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                    {{courseUser[0].courseStatus}}</div>
+                                            </div>
+
+                                            <div *ngIf="courseUser[0].courseStatus === 'Assessment Pending' "
+                                                style="width: 100%; height: 100%; padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background: #219653; border-radius: 5px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                                                <div
+                                                    style="color: white; font-size: 16px; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                    {{courseUser[0].courseStatus}}</div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                style="flex-grow: 1; flex-shrink : 1; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                <div
+                                    style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
+                                    <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                        style=" font-family: Calibri; font-weight: 700; line-height: 25.20px; word-wrap: break-word">
+                                        Bought On</div>
+                                    <div
+                                        style="justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                                        <div>
+                                            <span [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                                style=" font-family: Calibri; font-weight: 400; line-height: 24px; word-wrap: break-word">
+                                                <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                                    style=" font-family: Calibri; font-weight: 400; line-height: 24px; word-wrap: break-word">
+                                                    {{ courseUser[0].createdAt | date : "MMM dd, y" : "UTC" }}</div>
+
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="ratingdivvalues">
+                            <div
+                                style="flex-grow: 1; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                <!-- <div
+                   style="align-self: stretch; color: #333333; font-family: Calibri; font-weight: 700; line-height: 25.20px; word-wrap: break-word">
+                   Assessment</div>
+                 <div (click)="viewAssessments()"
+                   style="width: 121px; height: 24px; color: #2F80ED; font-family: Calibri; font-weight: 700; line-height: 24px; word-wrap: break-word">
+                   View</div> -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="coursedetailsreview" [ngClass]="{ 'dark-theme-coursedetailsreview': isDarkTheme }">
+                    <p style="font-size: 18px;" [class.collapsed]="!isFullDescriptionShown"
+                        [innerHTML]="course.courseDesc"></p>
+
+                    <div style="width : 100%; display: flex; justify-content: center;">
+                        <button class="showMore" (click)="toggleDescription()">
+                            {{ isFullDescriptionShown ? 'Show less' : 'Show more' }}
+                            <span *ngIf="isFullDescriptionShown" style="color: #3194a0; font-size: 10px;" nz-icon
+                                nzType="up"></span>
+                            <span *ngIf="!isFullDescriptionShown" style="color: #3194a0; font-size: 10px;" nz-icon
+                                nzType="down"></span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div>
+                    <nz-tabset>
+                        <nz-tab nzTitle="Course Overview">
+
+                            <div class="ratingdivmobile"
+                                [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : 'white' }">
+
+                                <div class="ratingdivmobilecontent">
+                                    <div
+                                        style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                        <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex;cursor: pointer;"
+                                            (click)="totalRatings > 0 ? showModalMiddle() : showalert()">
+                                            <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                                style="align-self: stretch; font-family: Calibri; font-weight: 700; line-height: 22.40px; word-wrap: break-word">
+                                                Rating</div>
+                                            <div
+                                                style="padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background: linear-gradient(99deg, #DD973F 0%, #E7AE31 33%, #FADB14 100%); border-radius: 100px; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+                                                <div
+                                                    style="justify-content: flex-start; align-items: center; gap: 4px; display: flex">
+                                                    <div
+                                                        style="width: 16px; height: 16px; justify-content: center; align-items: center; display: flex">
+                                                        <span nz-icon nzType="star"
+                                                            style="color: white; font-size: 18px;"
+                                                            nzTheme="fill"></span>
+                                                    </div>
+                                                    <div
+                                                        style="justify-content: flex-start; align-items: center; gap: 2px; display: flex">
+                                                        <div
+                                                            style="color: white; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                            {{averageRating}}</div>
+                                                        <div
+                                                            style="color: white; font-family: Calibri; font-weight: 400; text-transform: capitalize; line-height: 21px; word-wrap: break-word">
+                                                            |</div>
+                                                        <div
+                                                            style="color: white; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                            {{totalRatings
+                                                            }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                        <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                            style="align-self: stretch;font-family: Calibri; font-weight: 700; line-height: 25.20px; word-wrap: break-word">
+                                            Category</div>
+                                        <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#4F4F4F' }"
+                                            style="align-self: stretch;font-family: Calibri; font-weight: 400; word-wrap: break-word">
+                                            <div>
+                                                {{ course.categories[0] }}
+                                                <a style="color: #2F80ED; font-family: Calibri; font-weight: 00;"
+                                                    nzTrigger="click" nz-dropdown [nzDropdownMenu]="menusubcat"
+                                                    *ngIf="course.categories.length > 1">
+                                                    +{{course.categories.slice(1).length}} more
+                                                    <span style="color: #2F80ED;" nz-icon nzType="down"></span>
+                                                </a>
+                                                <nz-dropdown-menu #menusubcat="nzDropdownMenu">
+                                                    <ul nz-menu nzSelectable
+                                                        *ngFor="let categories of course.categories.slice(1)">
+                                                        <li nz-menu-item> {{ categories }}</li>
+                                                    </ul>
+                                                </nz-dropdown-menu>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ratingdivmobilecontent">
+                                    <div
+                                        style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                        <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                            style="align-self: stretch; color: #333333; font-family: Calibri; font-weight: 700; line-height: 22.40px; word-wrap: break-word">
+                                            Sub Category</div>
+                                        <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#4F4F4F' }"
+                                            style="align-self: stretch; color: #4F4F4F; font-family: Calibri; font-weight: 400; word-wrap: break-word">
+                                            <div>
+                                                {{ course.subCategories[0] }}
+                                                <a style="color: #2F80ED; font-family: Calibri; font-weight: 00;"
+                                                    nzTrigger="click" nz-dropdown [nzDropdownMenu]="menusubcat2"
+                                                    *ngIf="course.subCategories.length > 1">
+                                                    +{{course.subCategories.slice(1).length}} more
+                                                    <span style="color: #2F80ED;" nz-icon nzType="down"></span>
+                                                </a>
+                                                <nz-dropdown-menu #menusubcat2="nzDropdownMenu">
+                                                    <ul nz-menu nzSelectable
+                                                        *ngFor="let subcasasategory of course.subCategories.slice(1)">
+                                                        <li nz-menu-item> {{ subcasasategory }}</li>
+                                                    </ul>
+                                                </nz-dropdown-menu>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                        <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                            style=" font-family: Calibri; font-weight: 700; line-height: 25.20px; word-wrap: break-word">
+                                            Status</div>
+                                        <div
+                                            style="justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                                            <div>
+                                                <span [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                                    style=" font-family: Calibri; font-weight: 400; line-height: 24px; word-wrap: break-word">
+                                                    <div *ngIf="courseUser[0].courseStatus === 'Completed' "
+                                                        style="width: 100%; height: 100%; padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background: #219653; border-radius: 5px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                                                        <div
+                                                            style="color: white; font-size: 16px; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                            {{courseUser[0].courseStatus}}</div>
+                                                    </div>
+
+                                                    <div *ngIf="courseUser[0].courseStatus === 'Not Started' "
+                                                        style="width: 100%; height: 100%; padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background: #EB5757; border-radius: 5px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                                                        <div
+                                                            style="color: white; font-size: 16px; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                            {{courseUser[0].courseStatus}}</div>
+                                                    </div>
+
+                                                    <div *ngIf="courseUser[0].courseStatus === 'In-Progress' "
+                                                        style="width: 100%; height: 100%; padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background: #F2994A; border-radius: 5px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                                                        <div
+                                                            style="color: white; font-size: 16px; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                            {{courseUser[0].courseStatus}}</div>
+                                                    </div>
+
+                                                    <div *ngIf="courseUser[0].courseStatus === 'Assessment Pending' "
+                                                        style="width: 100%; height: 100%; padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background: #219653; border-radius: 5px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                                                        <div
+                                                            style="color: white; font-size: 16px; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                                                            {{courseUser[0].courseStatus}}</div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="ratingdivmobilecontent">
+                                    <div
+                                        style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                        <div
+                                            style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
+                                            <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                                style=" font-family: Calibri; font-weight: 700; line-height: 25.20px; word-wrap: break-word">
+                                                Bought On</div>
+                                            <div
+                                                style="justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                                                <div>
+                                                    <span [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                                        style=" font-family: Calibri; font-weight: 400; line-height: 24px; word-wrap: break-word">
+                                                        <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                                            style=" font-family: Calibri; font-weight: 400; line-height: 24px; word-wrap: break-word">
+                                                            {{ courseUser[0].createdAt | date : "MMM dd, y" : "UTC" }}
+                                                        </div>
+
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="ratingdivmobilecontent">
+
+                                    <div
+                                        style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                                        <!-- <div
+                    style="align-self: stretch; color: #333333; font-family: Calibri; font-weight: 700; line-height: 25.20px; word-wrap: break-word">
+                    Assessment</div>
+                  <div (click)="viewAssessments()"
+                    style="width: 121px; height: 24px; color: #2F80ED; font-family: Calibri; font-weight: 700; line-height: 24px; word-wrap: break-word">
+                    View</div> -->
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="detailsdiv">
+
+                                <div class="coursedetailsreview">
+                                    <h2 [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }">Course Details</h2>
+
+                                    <h3 [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }">
+                                        <span [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                            style=" font-weight: 700">Objective: </span>
+                                        <p style=" font-weight: 400" [innerHTML]="course.courseObjective"></p>
+                                    </h3>
+
+                                    <h3 [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }">
+                                        <span [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                            style=" font-weight: 700">Duration:
+                                        </span>
+                                        {{formatTimeInWords(course.courseDuration)}}
+                                    </h3>
+
+                                    <h3 [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }">
+                                        <span [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                            style=" font-weight: 700">Prerequisite: </span>
+                                    </h3>
+                                    <div style="font-size: 18px;"
+                                        [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                        [innerHTML]="course.coursePrerequisite"></div>
+                                </div>
+
+                                <div class="course-content" style="width : 100%">
+                                    <div class="maincontainer" style="width : 100%">
+                                        <div class="courseaccordians" style="width: 100%;">
+                                            <h2 [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }">Course
+                                                Content</h2>
+
+                                            <h3 [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                                style="display: flex;justify-content: space-between;border-bottom: 1px dotted #3194a0;padding-bottom: 5px;">
+                                                <div>• {{noOfVideos}} Video<span *ngIf="noOfVideos > 1">s</span> &nbsp;•
+                                                    {{noOfDocuments}}
+                                                    Document<span *ngIf="noOfDocuments > 1">s</span></div>
+                                                <div style="color: #3194a0;font-weight: 700;cursor: pointer;"
+                                                    (click)="toggleAllPanels()">
+                                                    <span *ngIf="allPanelsExpanded">Close All</span>
+                                                    <span *ngIf="!allPanelsExpanded">View All</span>
+                                                </div>
+                                            </h3>
+
+                                            <div>
+
+                                                <div class="accordian "
+                                                    *ngFor="let item of items?.slice(0, coursesToShowInitially)">
+                                                    <nz-collapse [nzAccordion]="true"
+                                                        style="margin-bottom: 15px; width: 100%;">
+                                                        <nz-collapse-panel [nzHeader]="header"
+                                                            [nzActive]="allPanelsExpanded">
+
+                                                            <div style="display: flex;gap: 10px;">
+
+                                                                <div>
+                                                                    <div style="height: 20px;width: 20px;"
+                                                                        *ngIf="item.type === 'Video'">
+                                                                        <img style="height: 20px;width: 20px;"
+                                                                            *ngIf="!isDarkTheme"
+                                                                            src="assets/icons/video-icon.svg" alt="">
+                                                                        <img style="height: 20px;width: 20px;"
+                                                                            *ngIf="isDarkTheme"
+                                                                            src="assets/icons/video-icondark.svg"
+                                                                            alt="">
+
+                                                                    </div>
+                                                                    <div style="height: 20px;width: 20px;"
+                                                                        *ngIf="item.type === 'Document'">
+                                                                        <img style="height: 20px;width: 20px;"
+                                                                            *ngIf="!isDarkTheme"
+                                                                            src="assets/icons/video-document-file-icon.svg"
+                                                                            alt="">
+                                                                        <img style="height: 20px;width: 20px;"
+                                                                            *ngIf="isDarkTheme"
+                                                                            src="assets/icons/video-document-file-icondark.svg"
+                                                                            alt="">
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 16px;margin-bottom: 0px;"
+                                                                        *ngIf="item.type === 'Video'"
+                                                                        [innerHTML]="item.videoDesc"></span>
+                                                                    <span style="font-size: 16px;margin-bottom: 0px;"
+                                                                        *ngIf="item.type === 'Document'"
+                                                                        [innerHTML]="item.documentDesc"></span>
+                                                                </div>
+                                                            </div>
+
+                                                        </nz-collapse-panel>
+                                                    </nz-collapse>
+
+                                                    <ng-template #header>
+                                                        <div
+                                                            style="display: flex;justify-content: space-between;width:100% ;">
+                                                            <div class="accordiantitle">
+                                                                <span *ngIf="item.type === 'Video'">{{
+                                                                    item.tempVideoTitle
+                                                                    }}</span>
+                                                                <span *ngIf="item.type === 'Document'">{{
+                                                                    item.documentTitle }}</span>
+                                                            </div>
+                                                            <div class="duration-container">
+                                                                <span
+                                                                    *ngIf="item.type === 'Video'">{{formatTime(item.videoDuration)}}</span>
+                                                                <span *ngIf="item.type === 'Document'">{{
+                                                                    formatTime(item.documentDuration)
+                                                                    }}</span>
+                                                            </div>
+                                                        </div>
+
+                                                    </ng-template>
+                                                </div>
+                                            </div>
+
+
+                                            <span style="text-align: center;display: flex;justify-content: center;">
+                                                <button
+                                                    [ngStyle]="{ 'background-color': isDarkTheme ? 'transparent' : 'white' }"
+                                                    class="showmoresccordian"
+                                                    *ngIf="!showAllCourses && items.length > coursesToShowInitially"
+                                                    (click)="loadMoreCourses()">Show {{coursesToShowIncrement - 4}}
+                                                    more</button>
+                                                <!-- "Show less" button (optional) -->
+
+                                            </span>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </nz-tab>
+                        <nz-tab nzTitle="Discussion Forum">
+                            <div>
+                                <form [formGroup]="commentForm">
+                                    <nz-input-group nzSize="large" [nzSuffix]="suffixButton">
+                                        <input placeholder="Start a discussion...." type="text"
+                                            formControlName="postValue" nz-input />
+                                    </nz-input-group>
+                                    <ng-template #suffixButton>
+                                        <button
+                                            style="background-color: #3194A0;border-radius: 5px;color: white;border: none;padding: 5px 10px;cursor: pointer;"
+                                            (click)="savePosts()">Post</button>
+                                    </ng-template>
+
+                                    <div class="chat-section">
+                                        <div class="chat-header">
+                                            <h2 [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }">All Discussion
+                                            </h2>
+
+                                        </div>
+
+
+                                        <div *ngIf="posts && posts.length === 0">
+                                            <h5 [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }"
+                                                style="font-weight: 700;font-size: 16px;"><i>No discussions available at
+                                                    the moment. Start a
+                                                    new discussion!</i> </h5>
+                                        </div>
+
+                                        <div class="chat-area">
+                                            <div class="chat-body" *ngFor="let post of posts">
+                                                <div class="chats"
+                                                    [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : '#F5F5F5' }">
+                                                    <div style="display: flex;">
+                                                        <h2 style="margin-bottom: 0px;"
+                                                            [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#151522' }">
+                                                            {{ post.userName }}</h2>
+                                                        <h2 style="margin-left: 3px;"
+                                                            [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#151522' }">
+                                                            ({{
+                                                            post.userRank }})</h2>
+                                                    </div>
+
+                                                    <h4>{{ post.postTime | date:'MMM dd, YYYY' : 'UTC' }} (UTC)</h4>
+                                                    <h3 [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }">{{
+                                                        post.postData }}</h3>
+                                                </div>
+                                                <div class="chat-props">
+
+                                                    <div (click)="postLikes(post)"
+                                                        style="display: flex;align-items: center;cursor: pointer;">
+                                                        <span nz-icon [nzType]="post.isLiked ? 'heart' : 'heart'"
+                                                            [nzTheme]="post.isLiked ? 'fill' : 'outline'"
+                                                            [class.sparkle]="post.isLiked"
+                                                            [style.color]="post.isLiked ? '#EB5757' : 'grey'"></span>
+                                                        <span style="margin-left: 8px;color: #3194A0;
+                   font-size: 16px;
+                   font-family: Calibri;
+                   font-weight: 700;">{{ post.filterPostLikes.length }} <span style="color: #4F4F4F;
+                   font-size: 16px;
+ font-family: Calibri;
+ font-weight: 400;">Likes</span></span>
+                                                    </div>
+
+
+
+                                                    <div (click)="showCommentSection(post)"
+                                                        style="display: flex;align-items: center;cursor: pointer;">
+
+                                                        <img src="assets/icons/messages-2.svg" alt="">
+
+                                                        <span style="margin-left: 8px;color: #3194A0;
+                   font-size: 16px;
+                   font-family: Calibri;
+                   font-weight: 700;">{{ post.comments.length }}<span style="color: #4F4F4F;
+                   font-size: 16px;font-family: Calibri;
+ font-weight: 400;"> Comments</span></span>
+
+
+                                                    </div>
+
+
+
+                                                    <div (click)="showCommentSection(post)"
+                                                        style="display: flex;align-items: center;cursor: pointer;">
+                                                        <span><img src="assets/icons/back-square.svg" alt=""></span>
+                                                        <span style="color: #4F4F4F;
+ font-size: 16px;
+ font-family: Calibri;
+ font-weight: 400;margin-left: 8px;">Reply</span>
+                                                    </div>
+
+
+                                                </div>
+                                                <div *ngIf="post.isExpanded === true">
+                                                    <div
+                                                        style="display:flex;justify-content:space-evenly;margin-bottom: 20px;width: 70%;gap: 20px;">
+
+                                                        <nz-input-group nzSize="large">
+                                                            <input placeholder="Add a Comment...." type="text"
+                                                                formControlName="commentValue" nz-input nz-input
+                                                                #commentInput />
+                                                        </nz-input-group>
+
+                                                        <button
+                                                            style="background-color: #3194A0;border-radius: 5px;color: white;border: none;padding: 2px 15px;cursor: pointer;"
+                                                            (click)="saveComments(post)">Post</button>
+
+
+
+
+                                                    </div>
+
+                                                    <div class="connetinglines">
+                                                        <div class="chat-body" *ngFor="let item of post.comments"
+                                                            style="border: none;">
+
+                                                            <div class="chats" style="margin-left: 35px;"
+                                                                [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : '#F5F5F5' }">
+
+
+
+                                                                <div style="display: flex;">
+                                                                    <h2 style="margin-bottom: 0px;"
+                                                                        [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }">
+                                                                        {{ item.userName }}</h2>
+                                                                    <h2 [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#151522' }"
+                                                                        style="margin-left: 3px;">({{ item.userRank }})
+                                                                    </h2>
+                                                                </div>
+                                                                <h4 style="margin-bottom: 0px;">{{ item.createdAt |
+                                                                    date:'MMM dd, y HH:mm' : 'UTC' }}
+                                                                    (UTC)</h4>
+
+
+
+                                                                <h3 [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }"
+                                                                    style="margin-top: 5px;"
+                                                                    [innerHTML]="item.commentData">
+                                                                </h3>
+
+                                                            </div>
+                                                            <div class="chat-props" style="margin-left: 35px;">
+                                                                <div (click)="commentLikes(item)"
+                                                                    style="display: flex;align-items: center;cursor: pointer;">
+                                                                    <span nz-icon nzType="heart" nzTheme="fill"
+                                                                        *ngIf="item.filterCommentLike.length > 0"
+                                                                        style="color: #EB5757  ;"></span>
+                                                                    <span nz-icon nzType="heart" nzTheme="outline"
+                                                                        *ngIf="item.filterCommentLike.length === 0"></span>
+                                                                    <span style="margin-left: 8px;color: #3194A0;
+                       font-size: 16px;
+                       font-family: Calibri;
+                       font-weight: 700;">{{ item.filterCommentLike.length }} <span style="color: #4F4F4F;
+                       font-size: 16px;
+     font-family: Calibri;
+     font-weight: 400;">Likes</span></span>
+                                                                </div>
+
+                                                                <div (click)="setCommentReplyInput(item.userName, commentInput)"
+                                                                    style="display: flex;align-items: center;cursor: pointer;">
+                                                                    <span><img src="assets/icons/back-square.svg"
+                                                                            alt=""></span>
+                                                                    <span style="color: #4F4F4F;
+     font-size: 16px;
+     font-family: Calibri;
+     font-weight: 400;margin-left: 8px;">Reply</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+
+
+
+                                                <div style="display:flex;" *ngIf="">
+                                                    <nz-textarea-count [nzMaxCharacterCount]="100">
+                                                        <textarea rows="1" nz-input
+                                                            formControlName="commentValue"></textarea>
+                                                    </nz-textarea-count>
+                                                    <button nz-button nzValue="large" nzType="primary"
+                                                        placeHolder="Start a Discussion"
+                                                        (click)="saveComments(post)">Post</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                        </nz-tab>
+                    </nz-tabset>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <nz-modal [(nzVisible)]="isVisibleMiddle" nzTitle="Rating & Review" [nzFooter]="modalFooter" nzCentered
+        [nzContent]='modalcontent' [nzWidth]="1000" (nzOnCancel)="handleCancel()">
+        <ng-template #modalcontent>
+
+
+            <div class="rating-container">
+
+                <div class="info">
+                    <div style="display: flex;align-items: center;">
+                        <h1 [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#333333' }" style="
+               font-size: 38px;
+               font-family: Calibri;
+               font-weight: 700;margin-bottom: 5px;">{{(averageRating.toFixed(1) || 0)}}</h1> <span nz-icon
+                            nzType="star" style="color:#FFC618; font-size: 38px;;margin-left: 10px;"
+                            nzTheme="fill"></span>
+                    </div>
+
+                    <div [ngStyle]="{ 'color': isDarkTheme ? '#dbdbdb' : '#4F4F4F' }" style="width: 100%"><span
+                            style=" font-size: 14px; font-family: Calibri; font-weight: 700; word-wrap: break-word">{{totalRatings
+                            || 0
+                            }} </span><span
+                            style=" font-size: 14px; font-family: Calibri; font-weight: 400; word-wrap: break-word">
+                            Ratings & </span><span
+                            style=" font-size: 14px; font-family: Calibri; font-weight: 700; word-wrap: break-word">{{totalReview}}</span><span
+                            style=" font-size: 14px; font-family: Calibri; font-weight: 400; word-wrap: break-word">
+                            Reviews</span></div>
+
+                    <div *ngIf="courseCompleted" class="ratingbtn" style="cursor: pointer;">
+                        <button (click)="gotoRatings()">Add rating</button>
+                    </div>
+                </div>
+                <div class="graph-container">
+
+                    <div style="display: flex;margin-bottom: 16px;">
+
+                        <div style="width: 10%;">1 <span nz-icon nzType="star" style="color:#FFC618;margin-left: 5px;"
+                                nzTheme="fill"></span></div>
+
+                        <div style="width: 90%;">
+
+                            <nz-progress [nzStrokeColor]="getStrokeColor(totalOneStar, totalStar)"
+                                [nzPercent]="((totalOneStar/totalStar)*100).toFixed(0)" [nzFormat]="formatOne"
+                                nzStatus="success"></nz-progress>
+
+                        </div>
+                    </div>
+                    <div style="display: flex;margin-bottom: 16px;">
+
+                        <div style="width: 10%;">2 <span nz-icon nzType="star" style="color:#FFC618;margin-left: 5px;"
+                                nzTheme="fill"></span></div>
+
+                        <div style="width: 90%;">
+
+                            <nz-progress [nzStrokeColor]="getStrokeColor(totalOneStar, totalStar)"
+                                [nzPercent]="((totalTwoStar/totalStar)*100).toFixed(0)" [nzFormat]="formatTwo"
+                                nzStatus="success"></nz-progress>
+
+                        </div>
+                    </div>
+                    <div style="display: flex;margin-bottom: 16px;">
+
+                        <div style="width: 10%;">3 <span nz-icon nzType="star" style="color:#FFC618;margin-left: 5px;"
+                                nzTheme="fill"></span></div>
+
+                        <div style="width: 90%;">
+
+                            <nz-progress [nzStrokeColor]="getStrokeColor(totalOneStar, totalStar)"
+                                [nzPercent]="((totalThreeStar/totalStar)*100).toFixed(0)" [nzFormat]="formatThree"
+                                nzStatus="success"></nz-progress>
+                        </div>
+                    </div>
+                    <div style="display: flex;margin-bottom: 16px;">
+
+                        <div style="width: 10%;">4 <span nz-icon nzType="star" style="color:#FFC618;margin-left: 5px;"
+                                nzTheme="fill"></span></div>
+
+                        <div style="width: 90%;">
+
+                            <nz-progress [nzStrokeColor]="getStrokeColor(totalOneStar, totalStar)"
+                                [nzPercent]="((totalFourStar/totalStar)*100).toFixed(0)" [nzFormat]="formatFour"
+                                nzStatus="success"></nz-progress>
+                        </div>
+                    </div>
+                    <div style="display: flex;margin-bottom: 16px;">
+
+                        <div style="width: 10%;">5 <span nz-icon nzType="star" style="color:#FFC618;margin-left: 5px;"
+                                nzTheme="fill"></span></div>
+
+                        <div style="width: 90%;">
+
+                            <nz-progress [nzStrokeColor]="getStrokeColor(totalOneStar, totalStar)"
+                                [nzPercent]="((totalFiveStar/totalStar)*100).toFixed(0)" [nzFormat]="formatFive"
+                                nzStatus="success"></nz-progress>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="content" style="height: 350px;overflow-y: auto;">
+
+
+                <div class="feedback-container" *ngFor="let feedback of feedbacks">
+
+                    <div *ngIf="feedback.review">
+                        <div
+                            style="width: 100%; height: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; display: inline-flex">
+                            <div
+                                style="justify-content: flex-start; align-items: center; gap: 15px; display: inline-flex">
+                                <div [ngStyle]="getFeedbackStyle(feedback.rating)">
+                                    <div style="width: 16px; height: 16px; margin-bottom: 5px;">
+                                        <span nz-icon nzType="star" style="color: white;" nzTheme="fill"></span>
+                                    </div>
+                                    <div
+                                        style="width: 21px; text-align: center; color: white; font-size: 14px; font-family: Calibri; font-weight: 700; line-height: 14px; word-wrap: break-word">
+                                        {{ feedback.rating }}
+                                    </div>
+                                </div>
+                                <div
+                                    style="color: #828282; font-size: 14px; font-family: Calibri; font-weight: 700; word-wrap: break-word">
+                                    {{feedback.createdAt | date}}</div>
+                            </div>
+                            <div
+                                style=" flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 20px; display: flex;text-align: justify;">
+                                <div [ngStyle]="{ 'color': isDarkTheme ? '#dbdbdb' : '#333333' }"><span
+                                        style=" font-size: 14px; font-family: Calibri; font-weight: 400; word-wrap: break-word">{{feedback.review}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="width: 100%; height: 100%; justify-content: flex-start; align-items: center; gap: 16px;margin-top: 5px; ">
+                            <div style="justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                                <div
+                                    style="color: #828282; font-size: 16px; font-family: Poppins; font-weight: 600; word-wrap: break-word">
+                                    {{feedback.userName}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- <div display="flex;justify-content:flex-start;background-color:red">
+           <div style="padding-left: 8px; padding-right: 8px; padding-top: 2px; padding-bottom: 2px; background:#3194A0; border-radius: 100px; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+             <div style="justify-content: flex-start; align-items: center; gap: 4px; display: flex">
+               <div style="width: 16px; height: 16px; justify-content: center; align-items: center; display: flex">
+               </div>
+               <div style="justify-content: flex-start; align-items: center; gap: 2px; display: flex">
+                 <div
+                   style="color: white; font-family: Calibri; font-weight: 700; text-transform: capitalize; line-height: 24px; word-wrap: break-word">
+                   {{feedback.rating}}</div>
+         
+               </div>
+             </div>
+           </div>
+         <span> {{feedback.createdAt | date}}</span>  
+         </div>
+         <span >
+           {{feedback.review}}
+         </span> <br>
+         <span>
+           {{feedback.userName}}
+         </span> -->
+                </div>
+
+            </div>
+
+
+        </ng-template>
+        <ng-template #modalFooter>
+            <nz-pagination [nzPageIndex]="currentPage" [nzTotal]="totalRatings" [nzPageSize]="itemsPerPage"
+                (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+
+        </ng-template>
+
+    </nz-modal>
+
+
+
+    <!-- add rating after 100 percent progress -->
+
+    <nz-modal [(nzVisible)]="isRatingVisible" (nzOnCancel)="ratingmodalclose()" nzTitle="Add Rating & Review" nzCentered
+        [nzFooter]="modalFooter2">
+        <ng-container *nzModalContent>
+            <nz-rate class="large" [(ngModel)]="ratingValue"></nz-rate>
+
+            <div style="margin: 15px 0px;">
+                <div style="margin-bottom: 10px;"><span
+                        style="color: #333333; font-size: 16px; font-family: Calibri; font-weight: 700; line-height: 22.40px; word-wrap: break-word">Write
+                        Feedback </span><span
+                        style="color: #BDBDBD; font-size: 16px; font-family: Calibri; font-style: italic; font-weight: 700; line-height: 22.40px; word-wrap: break-word">(Optional)</span>
+                </div>
+                <textarea nz-input
+                    placeholder="What's your personal experience while taking this course? What did you think of it?"
+                    [nzAutosize]="{ minRows: 5}" [(ngModel)]="feedValue">
+          </textarea>
+
+            </div>
+            <!-- <button nz-button nzType="primary" (click)="submitFeedback()">Submit</button> -->
+        </ng-container>
+        <ng-template #modalFooter2>
+
+            <div class="modalbuttons">
+                <button class="modalcancel" (click)="ratingmodalclose()" style="color : black">Cancel</button>
+                <button style="background-color: #3194A0;color: white;" (click)="submitFeedback()">Submit</button>
+            </div>
+        </ng-template>
+    </nz-modal>
+
+    <nz-modal [(nzVisible)]="isVideomodalVisible" [nzFooter]="null" nzCentered [nzWidth]="1000"
+        (nzOnCancel)="handleVideomodalCancel()" nzCancelText="null" nzClosable="false">
+        <div *nzModalContent>
+            <iframe #videoPlayer class="videoplayer"
+                src="https://www.youtube.com/embed/O2ofJ6EUdj0?autoplay=1&loop=1&controls=0&playlist=O2ofJ6EUdj0&rel=0&modestbranding=0"
+                frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen>
+            </iframe>
+            <!-- <app-videoplayer [videoUrl]="courseTrailerUrl" [disableSeeking]="false"></app-videoplayer> -->
+
+
+        </div>
+
+    </nz-modal>
+
+    <!-- -->
+
+    <div #pdfContent [innerHTML]="templateContent"></div>
+
+    <nz-modal class="custom-modal" [(nzVisible)]="isObjectiveVisible" nzOkText="Add" nzCancelText="Cancel"
+        nzCentered=true nzWidth=700px style="height: 100%;width: 100%;overflow-y: auto" nzCentered [nzFooter]="null"
+        (nzOnCancel)="closeobjectivemodal()">
+        <div *nzModalContent style="height: 100%;width: 100%;overflow-y: auto;">
+
+            <div class="result-container">
+                <div class="rule-container">
+
+                    <div [ngStyle]="{ 'background-color': isDarkTheme ? '#3baeb91b' : '#EAF4F5' }"
+                        style="padding: 25px;overflow-y: auto;border-radius: 5px;" class="container">
+                        <h3 [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }"
+                            style="font-weight: 700;font-size: 22px;">
+                            Objective</h3>
+                        <div [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }" class="rule-content"
+                            [innerHTML]="toolbarObjectives">
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </nz-modal>
+
+    <nz-modal class="custom-modal " [(nzVisible)]="isHelpModalVisible" nzOkText="Add" nzCancelText="Cancel"
+        [nzCentered]="true" nzWidth=100% style=" width: 100vw; " [nzFooter]="null" (nzOnCancel)="closeHelpmodal()">
+        <div *nzModalContent style="width: 100%; overflow-y: auto; height: 100%;">
+            <app-user-guidelines></app-user-guidelines>
+        </div>
+    </nz-modal>
+
+
+    <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
+
+</body>
+
+</html>

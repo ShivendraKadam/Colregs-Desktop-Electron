@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" stroke-width="3">
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="SVGRepo_iconCarrier">
+   <polyline fill="none" id="svg_1" points="9.57 15.41 12.17 24.05 20.81 21.44" stroke="#ffffff" stroke-linecap="round"/>
+   <path d="m26.93,41.41l0,-18.41a0.09,0.09 0 0 0 -0.16,-0.07s-2.58,3.69 -4.17,4.78" fill="none" id="svg_2" stroke="#ffffff" stroke-linecap="round"/>
+   <rect fill="none" height="18.89" id="svg_3" rx="5.7" stroke="#ffffff" width="11.41" x="32.19" y="22.52"/>
+   <path d="m12.14,23.94a21.91,21.91 0 1 1 -0.91,13.25" fill="none" id="svg_4" stroke="#ffffff" stroke-linecap="round"/>
+  </g>
+ </g>
+</svg>

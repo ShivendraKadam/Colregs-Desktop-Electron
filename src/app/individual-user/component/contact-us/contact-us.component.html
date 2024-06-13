@@ -1,0 +1,123 @@
+<h1 class="contact-heading" [ngStyle]="{ 'color': isDarkTheme ? '#e0e0e0' : '#333333' }">Contact Us</h1>
+<h3 class="contacttext">The quickest way to get in touch with us is by using the contact information below.</h3>
+<!-- maindiv -->
+<div class="contact-us-maindiv">
+
+    <!-- Contact form -->
+    <div class="contact-form-div">
+
+        <form nz-form #contactForm="ngForm" (ngSubmit)="submitEmail(contactForm)">
+            <!-- Name -->
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your name!">
+                    <input nz-input name="name" [(ngModel)]="contactFormValues.name" #name="ngModel" placeholder="Name"
+                        class="custom-input" required />
+                </nz-form-control>
+            </nz-form-item>
+            <!-- email -->
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please input a valid email!">
+                    <input nz-input name="email" [(ngModel)]="contactFormValues.email" #email="ngModel"
+                        pattern="[a-z0-9!#$%&'*+/=?^_{|}~-]+(?:\.[a-z0-9!#$%&**+/=?^_{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+                        placeholder="Email" class="custom-input" required />
+                </nz-form-control>
+            </nz-form-item>
+            <!-- phone -->
+            <nz-form-item>
+                <nz-form-control
+                    nzErrorTip="Please input a valid phone number (10 digits required and only integers are allowed)!">
+                    <input nz-input name="phone" [(ngModel)]="contactFormValues.phone" #phone="ngModel"
+                        placeholder="Phone" class="custom-input" required minlength="10" pattern="[0-9]*" />
+                </nz-form-control>
+            </nz-form-item>
+
+
+            <!-- Message -->
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your message(Minimum 20 characters are compulsory)!">
+                    <textarea name="message" [(ngModel)]="contactFormValues.message" #message="ngModel" cols="30"
+                        rows="10" minlength="20" nz-input placeholder="Input your message" class="custom-input"
+                        required></textarea>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-control>
+                    <button nz-button [disabled]="!contactForm.valid " class="custom-button"
+                        [ngStyle]="{'background-color': contactForm.valid ? '#3194A0' : 'grey'}">
+                        Submit
+
+                    </button>
+                </nz-form-control>
+            </nz-form-item>
+
+
+        </form>
+
+    </div>
+
+    <!-- Info -->
+    <div class="contact-info-div" style=" background-image: url('assets/images/wellnessdemo.jpg')">
+
+        <!-- Overlay div -->
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 0;">
+        </div>
+
+        <div class="contact-info-text-main">
+            <div style="display: flex; align-items: center; margin: 20px;">
+                <img style="margin-right: 11px;" src="assets/icons/sms.svg" alt="" />
+                <div style="display: flex; align-items: baseline;">
+                    <div class="support-text">
+                        General Support
+                    </div>
+                </div>
+            </div>
+            <div class="support-mail">info@elementree.co.in
+            </div>
+            <div style="display: flex; align-items: center; margin: 20px; margin-top: 40px;">
+                <img style="margin-right: 11px;" src="assets/icons/call.svg" alt="" />
+                <div>
+                    <div style="font-size: 14px; color: #555;"></div>
+                    <div class="phone-text">Let's Talk</div>
+                </div>
+            </div>
+            <div class="phone-number">1520165313</div>
+        </div>
+
+        <!-- Company Logo -->
+        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            <img src="assets/images/ELEMENTREE.png" alt="Company Logo" style="width: 100px; height: auto;">
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+
+
+<nz-modal [(nzVisible)]="isVisible" (nzOnCancel)="handleCancel()" nzCentered=true nzWidth=320px [nzFooter]="null">
+    <div *nzModalContent style="height: fit-content;text-align: center;">
+
+        <div>
+            <img src="assets/images/tickanimation.gif" class="logo" loop="1">
+
+        </div>
+        <div>
+            <span style="font-weight: 700; color: #3194A0; font-size: 16px; display: inline;">Thank you</span>
+            <p style="font-weight: 700; color: black; font-size: 16px; display: inline;"> for contacting us <br> we will
+                be in touch soon</p>
+        </div>
+
+
+
+    </div>
+
+
+</nz-modal>
+
+
+<et-scroll-top></et-scroll-top>

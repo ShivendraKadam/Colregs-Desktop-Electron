@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom PDF Template</title>
+    <style>
+        @font-face {
+            font-family: myFirstFont;
+            src: url(../assets/old_london/OldLondon.ttf);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+
+        .mainDiv {
+            background-image: url("https://firebasestorage.googleapis.com/v0/b/icheck-test.appspot.com/o/anniversary-diploma%20To%20use%202.png?alt=media&token=3f1423dc-1134-4a62-a9d8-bdf4fd31ba54");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 750px;
+            width: 1000px;
+        }
+
+        .textDiv {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            font-size: 18px;
+            text-align: center
+        }
+
+        .textDiv h3 {
+            font-size: 22px;
+        }
+
+        .textDiv h1 {
+            font-size: 38px;
+        }
+
+        .footerDiv {
+            position: relative;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            font-size: 20px;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body style>
+
+    <div class="mainDiv">
+        <div class="textDiv">
+            <h3> this certifies that</h3>
+            <h1 style="font-family: myFirstFont;">{{name}}</h1>
+            <p>has successfully completed <br>annual milestone with outstanding results and amazing activity </p>
+
+        </div>
+
+        <div class="footerDiv">
+            <h3> Awarded on the <br>
+                {{dateFormat date "YYYY-MM-DD"}}</h3>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white' ,'height':'100%'}">
+    <div class="container" style="padding-top: 40px">
+        <div #allAssignedCourses class="allassigncourse" style="display: flex; justify-content: space-between">
+            <h2 [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }">Assessment History</h2>
+        </div>
+
+
+
+        <div class="accordian " *ngFor="let data of assignCourses">
+            <nz-collapse [nzAccordion]="true" style="margin-bottom: 15px; width: 100%;">
+                <nz-collapse-panel [nzHeader]="header"
+                    (click)="openCourseLevels(data.courseVideos,data.courseDocuments)">
+
+
+                    <div *ngFor="let item of levelArray">
+                        <div [ngStyle]="{ 'border-color': isDarkTheme ? '#1E1F1E' : '#e0e0e0'}"
+                            *ngIf="!item.isAssessmentExists"
+                            style="display: flex;padding: 10px 0px 0px 0px;border-bottom: 1px solid ;justify-content: space-between;width: 100%;gap: 5px;">
+
+                            <div style="width:20%;text-align: start;">{{item.videoTitle ?
+                                item.videoTitle :
+                                item.documentTitle}}
+                            </div>
+                            <div style="width: 60%;text-align: start;display: flex;justify-content: start;margin-bottom: 0px;"
+                                [innerHTML]="truncateText(item.videoDesc, truncateLength)">
+
+                            </div>
+                            <div style="width: 20%;text-align: start;" (click)="getAssessments(item)"
+                                style="color: #31a38d;font-weight: 700;cursor: pointer;">
+                                View
+                                Assessment
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </nz-collapse-panel>
+            </nz-collapse>
+
+            <ng-template #header>
+
+                <div style="display: flex;justify-content: space-between;width:100% ">
+                    <div>{{data.courseName }}</div>
+                    <div style="font-weight: 700;"> <span style="color: #F2994A;"
+                            *ngIf="data.courseStatus === 'In-Progress'">{{data.courseStatus}}</span>
+                        <span style="color: #27AE60;"
+                            *ngIf="data.courseStatus === 'Completed'">{{data.courseStatus}}</span>
+                        <span style="color: #EB5757;"
+                            *ngIf="data.courseStatus === 'Not Started'">{{data.courseStatus}}</span>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

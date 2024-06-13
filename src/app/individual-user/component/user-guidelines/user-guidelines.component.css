@@ -1,0 +1,403 @@
+.main-body {
+    padding: 100px 0 ;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* .center-tabs {
+    margin: 0 100px;
+  }
+   */
+  .example-input .ant-input {
+    width: 200px;
+    margin: 0 8px 8px 0;
+  }
+  .score-card {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .test-dashboard {
+    display: flex;
+    justify-content: space-between;
+  }
+  [nz-button] {
+    margin-right: 8px;
+    margin-bottom: 12px;
+  }
+  .result-form {
+    width: 100%;
+    height: auto;
+    display: flex;
+    /* overflow: scroll; */
+  }
+  
+  .result-form > div {
+    border: 1px solid #e0e0e0;
+    width: 200vh;
+  }
+  
+  .Assessmentdiv {
+    margin: 20px 60px;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .assessmentheader h2 {
+    color: #333333;
+    font-size: 18px;
+    font-family: Calibri;
+    font-weight: 700;
+  }
+  .assessmentheader h3 {
+    color: #333333;
+    font-size: 16px;
+    font-family: Calibri;
+    font-weight: 400;
+  }
+  .result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .result {
+  min-height: 500px;
+  padding: 20px;}
+
+  /* nz-tabset {
+    width: 100vw;
+    height: 100vh;
+} */
+  
+  .rule-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    margin: 2% 20%;
+    padding: 0 2%;
+    align-items: center;
+    text-align: left;
+    background-color: #3194A01A;
+  }
+  
+  .rule-header {
+    width: 100%;
+  text-align: center;
+  padding: 2%;
+  }
+  .rule-header h1 {
+  
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  }
+  .rule-content h2 {
+  
+  font-size: 18px;
+  color: #05717D;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0px;
+  }
+  .rule-content h4 {
+  
+  font-size: 15px;
+  color: #05717D;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0px;
+  }
+  
+  .rule-content {
+    padding: 15px 10px;
+  }
+  
+  .rule-action {
+    display:flex;
+    justify-content: center;
+    
+    /* padding: 5%; */
+  }
+  .rule-action button{
+    width: 150px;
+    text-align: center;
+  }
+  .Assesment-container{
+    width:90%;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 20px;
+  
+  }
+  .question-heading h2 {
+    color: #333333;
+    font-size: 20px;
+    font-family: Calibri;
+    font-weight: 700;
+  }
+  
+  .informative-counter{
+    padding: 5%;
+  }
+  
+  .mcq {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+  }
+  .top2btns {
+    display: flex;
+    width: 100%;
+  }
+  .topbtns {
+    width: 50%;
+  }
+
+  .toolbar-icons img {
+    display: block;  /* Ensures the image doesn't have inline white spaces around it */
+    max-width: 10%; /* Ensures the image is responsive and doesn't overflow its container */
+    height: auto;    /* Keeps the aspect ratio of the image */
+    padding: 5px;    /* Adjust padding as needed */
+  }
+  
+  /* If you want equal spacing and to center them within the container div */
+  .toolbar-icons {
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 1px; /* Adjust the gap to control space between icons */
+  }
+  
+  .icon-descriptions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adjust the gap between each icon-description pair as needed */
+    margin-top: 50px;
+  }
+  
+  .icon-description-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start of the container (left) */
+  }
+  
+  .icon-title {
+    margin-bottom: 10px; /* Adjust the space between the title and the icon */
+    font-size: 1em; /* Adjust font size as needed */
+  }
+  
+  .icon-with-text {
+    display: flex;
+    align-items: center; /* Align the icon and text vertically */
+    gap: 25px; /* Adjust the space between the icon and the description text */
+    /* background-color: red; */
+  }
+  
+  .icon-image {
+    width: 64px; /* Adjust the width as needed */
+    height: auto;
+    /* Add any additional styles for your image here */
+  }
+  
+  .description-text {
+    margin: 0;
+    font-size: 0.9em; /* Adjust font size as needed */
+    /* Add any additional styles for your text here */
+  }
+  
+  .important-notice p {
+    color: red; 
+    
+    font-weight: bold; 
+    margin: 10px 0;
+    text-align: justify;
+  }
+  nz-tab .ant-tabs-tab-btn {
+    text-align: center !important;
+  }
+  
+   
+  .questionoptbtn {
+    width: 80%;
+    padding: 10px 0px;
+    border: 1px solid #e0e0e8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  }
+   
+  .questionoptbtn:hover {
+    border-color: #3194a0;
+    color: #3194a0; /* Change background color on hover */
+  }
+   
+  .questionoptbtn.selected {
+    background-color: #3194a0;
+    color: white; /* Set background color for selected option */
+  }
+   
+  .questionoptbtn1.selected {
+    background-color: white;
+    color: #3194a0; /* Set background color for selected option */
+  }
+  .optionvalue {
+    font-size: 16px;
+  }
+   
+  .questionoptbtn {
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+   
+  .questionoptbtn:hover .questionoptbtn1 {
+    background-color: #3194a0;
+    color: white; /* /* Change background color of questionoptbtn1 when hovering over questionoptbtn */
+  }
+   
+  .questionoptbtn1 {
+    background-color: #bdbdbd;
+    border-radius: 50%;
+   
+    padding: 4px 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .assesmentbtns button{
+    margin-top: 50px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+  }
+  
+  .modalbuttons button {
+    height: 50px;
+    padding: 13px 16px;
+    align-items: center;
+    width: 150px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .modalbuttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .count{
+    color: #333333;
+  font-size: 20px;
+  font-family: Calibri;
+  font-weight: 700;
+  }
+  .counttext{
+    color: #4F4F4F;
+  font-size: 16px;
+  font-family: Calibri;
+  font-weight: 400;
+  }
+  .large ::ng-deep .ant-rate-star {
+    font-size: 36px;
+    color:  linear-gradient(99deg, #DD973F 0%, #FADB14 100%);
+  }
+  .circle {
+  width: 70px;
+  height: 70px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 10px #0000001a;
+  }
+  
+  .pulse {
+    animation: pulse-animation 2s infinite;
+  }
+  
+  .assesmentcmpltque{
+    font-size: 20px;
+      color: #05717D;
+      font-style: normal;
+      font-weight: 700;
+  }
+  
+  
+  @keyframes pulse-animation {
+    0% {
+      box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 0 20px rgba(255, 2, 2, 0);
+    }
+  }
+  
+  .result-array{
+    padding: 15px;
+    border-radius: 10px;
+    margin: 24px 15px;
+  
+  }
+  @media screen and (min-width: 1600px) {
+    /* .scoringRuleContainer{
+      margin: 12% 20%;
+    } */
+  }
+  @media screen and (max-width: 550px) {
+    .rule-container {
+        width: 100%;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 5px;
+       
+      }
+    .toolbar-icons img {
+        display: block;  /* Ensures the image doesn't have inline white spaces around it */
+        max-width: 14%; /* Ensures the image is responsive and doesn't overflow its container */
+        height: auto;    /* Keeps the aspect ratio of the image */
+        padding: 5px;    /* Adjust padding as needed */
+      }
+      
+      /* If you want equal spacing and to center them within the container div */
+      .toolbar-icons {
+        justify-content: center;
+        gap: 1px; /* Adjust the gap to control space between icons */
+      }
+    .top2btns {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 15px;
+    }
+    .topbtns {
+      width: 100%;
+    }
+   .questionoptbtn:hover .questionoptbtn1 {
+      background-color: white;
+      color: #3194a0; /* /* Change background color of questionoptbtn1 when hovering over questionoptbtn */
+    }
+    .questionoptbtn {
+      min-width: 350px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 960px) {
+    .toolbar-icons {
+      flex-wrap: wrap; 
+      justify-content: center;
+    }
+
+    .toolbar-icons img {
+        max-width: 18%; 
+        
+      }
+  }

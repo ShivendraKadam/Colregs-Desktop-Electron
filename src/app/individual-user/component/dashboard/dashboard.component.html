@@ -1,0 +1,731 @@
+<!-- 1t div -->
+
+<div style="  border-bottom: 1px dotted;
+"
+  [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white' ,'border-color': isDarkTheme ? '#828282' : '#e0e0e0' }">
+  <div
+    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white' ,'border-color': isDarkTheme ? '#828282' : '#e0e0e0' }"
+    class="teachingseafarermain">
+    <div class="teachingseafarermain1">
+      <div>
+        <div [ngStyle]="{ 'color': isDarkTheme ? '#e0e0e0' : '#333333' }" class="teachingtext">Teaching Seafarers
+          Worldwide</div>
+      </div>
+
+      <div class="courssecategoriesdiv2">
+        <h5>
+          Master the essential Rules of the Road at Sea with our comprehensive and interactive 3D Training Program,
+          designed to enhance your maritime navigation skills and ensure safety on the waters.
+        </h5>
+      </div>
+
+      <div class="trusted">
+        <div class="trustedtext">
+          <div [ngStyle]="{ 'color': isDarkTheme ? '#e0e0e0' : '#333333' }" class="trustedtext2" style="
+           
+            font-size: 16px;
+            font-family: Calibri;
+            font-weight: 700;
+            line-height: 22.4px;
+            word-wrap: break-word;
+          ">
+            Trusted by <br />
+            leading companies
+          </div>
+        </div>
+
+
+        <div [ngStyle]="{ 'background-color': isDarkTheme ? 'black' : '#f1f5f9' }" class="container scrollingcompanies"
+          style="border-radius: 5px;">
+          <div class="marquee">
+            <div class="marquee-items">
+              <h4 style="display: flex;align-items: center;"> <img src="assets/icons/Companylogo/BergeBulk Logo.svg"
+                  style="width: 40px; height: 35px;margin-top: 10px;" alt="" /><span class="logonames"> Bergebulk</span>
+              </h4>
+              <h4 class="flexlng" style="display: flex;align-items: center;"><img
+                  src="assets/icons/Companylogo/FlexLNG_Logo.png" style="width: 32px; height: 32px;margin-top: 10px;"
+                  alt="" /><span class="logonames"> FLEXLNG </span>
+              </h4>
+              <h4 style="display: flex;align-items: center;"><img src="assets/icons/Companylogo/OSM.svg"
+                  style="width: 38px; height: 38px;margin-top: 10px;" alt="" /><span class="logonames"> Thome</span>
+              </h4>
+
+            </div>
+            <div class="marquee-items">
+              <h4 style="display: flex;align-items: center;"> <img src="assets/icons/Companylogo/BergeBulk Logo.svg"
+                  style="width: 40px; height: 35px;margin-top: 10px;" alt="" /><span class="logonames"> Bergebulk</span>
+              </h4>
+              <h4 style="display: flex;align-items: center;"><img src="assets/icons/Companylogo/FlexLNG_Logo.png"
+                  style="width: 32px; height: 32px;margin-top: 10px;" alt="" /><span class="logonames"> FLEXLNG </span>
+              </h4>
+              <h4 style="display: flex;align-items: center;"><img src="assets/icons/Companylogo/OSM.svg"
+                  style="width: 38px; height: 38px;margin-top: 10px;" alt="" /><span class="logonames"> Thome</span>
+              </h4>
+            </div>
+            <div class="marquee-items">
+              <h4 style="display: flex;align-items: center;"> <img src="assets/icons/Companylogo/BergeBulk Logo.svg"
+                  style="width: 40px; height: 35px;margin-top: 10px;" alt="" /><span class="logonames"> Bergebulk</span>
+              </h4>
+              <h4 style="display: flex;align-items: center;"><img src="assets/icons/Companylogo/FlexLNG_Logo.png"
+                  style="width: 32px; height: 32px;margin-top: 10px;" alt="" /><span class="logonames"> FLEXLNG </span>
+              </h4>
+            </div>
+          </div>
+
+        </div>
+        <!-- <div style="display: flex; align-items: center">
+          <img src="assets/icons/Companylogo/BergeBulk Logo.svg" style="width: 40px; height: 35px" alt="" /><span
+            class="logonames"> Bergebulk</span>
+        </div>
+        <div style="display: flex; align-items: center">
+          <img src="assets/icons/Companylogo/FlexLNG_Logo.png" style="width: 32px; height: 32px" alt="" /><span
+            class="logonames"> FLEX LNG </span>
+        </div>
+        <div style="display: flex; align-items: center">
+          <img src="assets/icons/Companylogo/OSM.svg" style="width: 38px; height: 38px" alt="" /><span
+            class="logonames"> Thome</span>
+        </div> -->
+      </div>
+    </div>
+    <div class="teachingseafarermain2">
+      <div class="teachingseafarermain2box" *ngIf="!resumeCourse">
+        <div [ngStyle]="{ 'border-color': isDarkTheme ? 'black' : '#cbd5e1' }" style="
+          background: transparent;
+          border-radius: 20px;
+          overflow: hidden;
+          border: 1px  solid;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          display: inline-flex;
+        ">
+          <div style="
+            align-self: stretch;
+            height: 41px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 28px;
+            display: inline-flex;
+          ">
+            <div style="
+              flex: 1 1 0;
+              height: 10px;
+              justify-content: flex-start;
+              align-items: flex-start;
+              gap: 5px;
+              display: flex;
+            ">
+              <div style="width: 10px; height: 10px; position: relative">
+                <div style="
+                  width: 8.33px;
+                  height: 8.33px;
+                  left: 0.83px;
+                  border-radius: 50%;
+                  top: 0.86px;
+                  position: absolute;
+                  background: #e11d48;
+                "></div>
+              </div>
+              <div style="width: 10px; height: 10px; position: relative">
+                <div style="
+                  width: 8.33px;
+                  height: 8.33px;
+                  left: 0.83px;
+                  top: 0.86px;
+                  border-radius: 50%;
+                  position: absolute;
+                  background: #fbbf24;
+                "></div>
+              </div>
+              <div style="width: 10px; height: 10px; position: relative">
+                <div style="
+                  width: 8.33px;
+                  height: 8.33px;
+                  left: 0.83px;
+                  top: 0.86px;
+                  border-radius: 50%;
+                  position: absolute;
+                  background: #22c55e;
+                "></div>
+              </div>
+            </div>
+
+            <div style="
+              flex: 1 1 0;
+              height: 24px;
+              justify-content: flex-end;
+              align-items: center;
+              gap: 5px;
+              display: flex;
+            ">
+              <div style="width: 24px; height: 24px; position: relative">
+                <span nz-icon nzType="left" nzTheme="outline" style="color: #475569"></span>
+              </div>
+              <div style="width: 24px; height: 24px; position: relative">
+                <span nz-icon nzType="right" style="color: #475569" nzTheme="outline"></span>
+              </div>
+            </div>
+          </div>
+          <div style="
+            background-image: url(https://via.placeholder.com/600x399);
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            display: inline-flex;
+          ">
+
+
+            <iframe #videoPlayer class="videoplayer" width="560" height="315"
+              src="https://www.youtube.com/embed/O2ofJ6EUdj0?autoplay=1&loop=1&controls=0&playlist=O2ofJ6EUdj0&rel=0&modestbranding=0"
+              frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen>
+            </iframe>
+
+            <!-- <img src="assets/images/demothumbnail.jpg" style="object-fit: fill;height:400px ;width: 600px;" alt=""> -->
+          </div>
+        </div>
+
+        <div style="width: 100%;text-align: center;">
+          <button (click)="goToCourseDetails()" *ngIf="!resumeCourse"
+            style="background-color: #3194A0;color: white;margin: 10px;font-size: 18px;border-radius: 10px;padding: 15px 30px;font-weight: 700;border: none;cursor: pointer;">Start
+            Course</button>
+        </div>
+      </div>
+
+      <div style="position: relative;border-radius: 10px;" *ngIf="resumeCourse" class="teachingseafarermain2box">
+        <div class="resume-overlay" style="border-radius: 10px;"></div>
+        <img class="videoplayer2" [src]="resumeCourse.courseThumb" style="border-radius: 10px;">
+
+        <div class="play-icon" (click)="goToCourseDetails()">
+          <img src="assets/icons/play.svg">
+          <!-- <h2 style="color: white;">Resume Course</h2> -->
+        </div>
+        <h1 class="course-title">{{resumeCourse.courseTitle}}</h1>
+        <div class="course-progress-container">
+          <div style="width: 100%;margin-left: 15px;">
+            <nz-progress class="course-progress" nzSize="small" [nzStrokeColor]="{ '0%': '#3194A0', '100%': '#3194A0' }"
+              [nzPercent]="resumeCourse.courseProgress" [nzShowInfo]="false"></nz-progress>
+          </div>
+          <div style="font-size: 14px; text-align: center;margin-right: 15px;color: white;">
+            {{resumeCourse?.courseProgress?.toFixed(0)}}%
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- 3rd div -->
+
+<div [ngStyle]="{ 'background-color': isDarkTheme ? '#1e1f1e' : '#f8f8f8' }" class="learningmain" #allAssignedCourses1>
+  <div class="learningmain1">
+    <img class="image1s" src="assets/images/Picture (1).png" />
+    <img class="image2s" src="assets/images/Picture (2).png" />
+    <img class="image3s" src="assets/images/Picture.png" />
+  </div>
+
+  <div class="learningmain2">
+    <div [ngStyle]="{ 'color': isDarkTheme ? '#e0e0e0' : '#333333' }" class="teachingtext">Enjoy your time
+      learning</div>
+    <div class="courssecategoriesdiv2">
+      <h5 style="text-align: justify;">
+        Navigate your career to new heights with our specialized maritime courses. Designed for professionals in the
+        maritime industry, our curriculum covers essential topics from navigation and safety regulations to advanced
+        maritime operations. Equip yourself with the skills needed to excel in this dynamic field and meet the
+        challenges of the modern maritime environment.
+
+      </h5>
+    </div>
+  </div>
+</div>
+
+<!-- 4 th DIv -->
+<div class="globalpresence">
+  <div class="globalpresence1">
+    <div>
+      <img src="assets/icons/global.svg" alt="" />
+    </div>
+    <div class="globaltext">195</div>
+    <div class="globaltext1">Global Presence</div>
+  </div>
+  <div class="globalpresence1">
+    <div>
+      <img src="assets/icons/school.svg" alt="" />
+    </div>
+    <div class="globaltext">1M</div>
+    <div class="globaltext1">Valued courses</div>
+  </div>
+  <div class="globalpresence1">
+    <div>
+      <img src="assets/icons/diamond.svg" alt="" />
+    </div>
+    <div class="globaltext">10M</div>
+    <div class="globaltext1">Happy users</div>
+  </div>
+</div>
+
+<!-- 5th div -->
+
+
+
+<!-- 6th Div -->
+
+<!-- <div class="courssecategoriesdiv" [ngStyle]="{ 'background-color': isDarkTheme ? '#1e1f1e' : '#f8f8f8' }">
+  <h1 [ngStyle]="{ 'color': isDarkTheme ? '#e0e0e0' : '#333333' }">How Learners are Achieving their Goals</h1>
+
+  <h5>
+    Explore Detailed Reviews and Insights from Fellow Learners Across Our Wide Range of Specialized Educational Courses
+  </h5>
+
+  <div #widgetsContent3 class="middle">
+    <div *ngFor="let feedback of allFeedbacks" class="categories-widget1"
+      [ngStyle]="{ 'background-color': isDarkTheme ? 'black' : 'white' }">
+      <div class="widget1">
+        <div class="widgettxt" nz-tooltip [nzTooltipTitle]="feedback.review">
+          {{
+          feedback.review.length > 205
+          ? (feedback.review | slice : 0 : 205) + "..."
+          : feedback.review
+          }}
+        </div>
+
+        <div style="
+            align-self: stretch;
+            padding-top: 10px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 8px;
+            display: inline-flex;
+          ">
+          <img *ngIf="feedback.profilePhoto; else placeholder" style="width: 48px; height: 48px; border-radius: 100px"
+            [src]="feedback.profilePhoto" />
+          <ng-template #placeholder>
+            <div [ngStyle]="{ 'background-color': isDarkTheme ? 'gray' : '#F2F2F2' }"
+              style="border-radius:  50%; background-color: #f2f2f2;height: 50px;display: flex;align-items: center;width: 50px;justify-content: center;font-size: 16px;">
+              <strong>{{feedback.firstName?.charAt(0)?.toUpperCase()}}{{feedback.lastName?.charAt(0)?.toUpperCase()}}</strong>
+            </div>
+          </ng-template>
+          <div style="
+              flex: 1 1 0;
+              flex-direction: column;
+              justify-content: flex-start;
+              align-items: flex-start;
+              display: inline-flex;
+            ">
+            <div class="hellen">{{feedback.userName}}</div>
+            <div class="staff">{{feedback.role || 'User' }}</div>
+          </div>
+        </div>
+        <div style="align-self: stretch; height: 0px; border: 1px #e0e0e0 solid"></div>
+        <div style="
+            align-self: stretch;
+            justify-content: flex-start;
+            align-items: center;
+            display: inline-flex;
+          ">
+          <div (click)="goToCourseDetails(feedback.courseId, feedback.courseTitle, feedback.courseSubscribed )" style="
+              justify-content: flex-start;
+              align-items: center;
+              gap: 8px;
+              display: flex;
+              cursor: pointer;
+            ">
+            <div style="
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+              ">
+              <div style="width: 40px; height: 40px; position: relative">
+                <div class="circle">
+                  <img src="assets/icons/play-circle 1.svg" />
+                </div>
+                <div style="
+                    width: 40px;
+                    height: 40px;
+                    left: 0px;
+                    top: 0px;
+                    position: absolute;
+                    opacity: 0;
+                  "></div>
+              </div>
+            </div>
+            <div class="coursenametxt">{{feedback.courseTitle}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="assigncoursebutton" style="display: flex; justify-content: center; gap: 24px; margin-top: 10px">
+    <div>
+      <button (click)="scrollLeft3()" style="background: transparent; border: none">
+        <div class="navigationbtn" [ngClass]="{ 'disabled-button': scrollButtonDisabled3.left3 }">
+          <div style="width: 24px; height: 24px; position: relative">
+            <span nz-icon nzType="left" nzTheme="outline" class="scrollsvg"></span>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <div>
+      <button (click)="scrollRight3()" style="background: transparent; border: none">
+        <div class="navigationbtn" [ngClass]="{ 'disabled-button': scrollButtonDisabled3.right3 }">
+          <div style="width: 24px; height: 24px; position: relative">
+            <span nz-icon nzType="right" nzTheme="outline" class="scrollsvg"></span>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div> -->
+
+<!-- 7th Div -->
+
+<div class="join">
+  <div class="joinimg1">
+    <img style="
+        width: 64px;
+        height: 64px;
+        left: 253px;
+        top: 189.53px;
+        position: absolute;
+        border-radius: 100px;
+      " src="assets/images/joinworldassets/kk.png" />
+    <img style="
+        width: 64px;
+        height: 64px;
+        left: 403px;
+        top: 3.53px;
+        position: absolute;
+        border-radius: 100px;
+        border: 1px white solid;
+      " src="assets/images/joinworldassets/hh (6).png" />
+    <img style="
+        width: 48px;
+        height: 48px;
+        left: 44px;
+        top: 588px;
+        position: absolute;
+        border-radius: 100px;
+        border: 1px white solid;
+      " src="assets/images/joinworldassets/hh (3).png" />
+    <img style="
+        width: 96px;
+        height: 96px;
+        left: 0px;
+        top: 292px;
+        position: absolute;
+        border-radius: 100px;
+        border: 1px white solid;
+      " src="assets/images/joinworldassets/hh (4).png   " />
+    <img style="
+        width: 128px;
+        height: 128px;
+        left: 204px;
+        top: 349px;
+        position: absolute;
+        border-radius: 300px;
+        border: 1px white solid;
+      " src="assets/images/joinworldassets/User Thumb11 (1).png" />
+    <img style="
+        width: 48px;
+        height: 48px;
+        left: 70px;
+        top: 122px;
+        position: absolute;
+        border-radius: 100px;
+        border: 1px white solid;
+      " src="assets/images/joinworldassets/hh (1).png" />
+    <img style="
+        width: 48px;
+        height: 48px;
+        left: 372px;
+        top: 290.53px;
+        position: absolute;
+        border-radius: 100px;
+      " src="assets/images/joinworldassets/hh (2).png" />
+    <img style="
+        width: 32px;
+        height: 32px;
+        left: 401px;
+        top: 567.53px;
+        position: absolute;
+        border-radius: 100px;
+      " src="assets/images/joinworldassets/hh (5).png" />
+    <div class="bold">
+      <img src="assets/images/joinworldassets/bold.svg" />
+    </div>
+    <div style="
+        width: 96px;
+        height: 96px;
+        left: 154px;
+        top: 57.53px;
+        position: absolute;
+      ">
+      <div style="
+          width: 96px;
+          height: 96px;
+          left: 0px;
+          top: 0px;
+          position: absolute;
+          border-radius: 9999px;
+        "></div>
+      <div style="
+          width: 48px;
+          height: 48px;
+          left: 24px;
+          top: 24px;
+          position: absolute;
+        ">
+        <img class="codepen" src="assets/images/joinworldassets/codepen.svg" />
+      </div>
+    </div>
+    <div style="
+        width: 64px;
+        height: 64px;
+        left: 93px;
+        top: 207.53px;
+        position: absolute;
+      ">
+      <div style="
+          width: 57.69px;
+          height: 59.36px;
+          left: 6.31px;
+          top: 4.64px;
+          position: absolute;
+          border-radius: 9999px;
+        "></div>
+      <div style="
+          width: 57.69px;
+          height: 59.36px;
+          left: 0px;
+          top: 0px;
+          position: absolute;
+        ">
+        <img class="cash" src="assets/images/joinworldassets/cash.svg" />
+      </div>
+    </div>
+    <div style="
+        width: 32px;
+        height: 32px;
+        left: 182px;
+        top: 525.53px;
+        position: absolute;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        display: inline-flex;
+      ">
+      <img class="cart" src="assets/images/joinworldassets/cart.svg" />
+    </div>
+    <div style="
+        width: 48px;
+        height: 48px;
+        left: 419px;
+        top: 372.53px;
+        position: absolute;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        display: inline-flex;
+      ">
+      <img class="card-wallet" src="assets/images/joinworldassets/card-wallet.svg" />
+    </div>
+  </div>
+
+  <div class="jointext">
+    <div class="jointext1">
+      <div class="jointext2">Join a world of learning</div>
+    </div>
+
+    <div class="jointext3">
+      Discover new opportunities and enhance your skills with our tailored courses. Dive into a world where learning
+      meets practicality.
+
+    </div>
+    <!-- <div class="jointext4">
+      <div (click)="signup()" class="jointext5">Sign Up</div>
+    </div> -->
+  </div>
+  <div class="joinimg2">
+    <img style="
+        width: 78px;
+        height: 78px;
+        left: 189px;
+        top: 216px;
+        position: absolute;
+        border-radius: 100px;
+        border: 1px white solid;
+      " src="assets/images/joinworldassets/User Thumb (4).png" />
+    <img style="
+        width: 48px;
+        height: 48px;
+        left: 0px;
+        top: 522.53px;
+        position: absolute;
+        border-radius: 100px;
+        border: 1px white solid;
+      " src="assets/images/joinworldassets/User Thumb (6).png" />
+    <img style="
+        width: 96px;
+        height: 96px;
+        left: 314px;
+        top: 0px;
+        position: absolute;
+        border-radius: 100px;
+        border: 1px white solid;
+      " src="assets/images/joinworldassets/User Thumb (3).png" />
+    <img style="
+        width: 128px;
+        height: 128px;
+        left: 314px;
+        top: 338px;
+        position: absolute;
+        border-radius: 300px;
+        border: 1px white solid;
+      " src="assets/images/joinworldassets/User Thumb (2).png" />
+    <img style="
+        width: 56px;
+        height: 56px;
+        left: 10px;
+        top: 43.53px;
+        position: absolute;
+        border-radius: 100px;
+        border: 1px white solid;
+      " src="assets/images/joinworldassets/User Thumb (1).png" />
+    <img style="
+        width: 32px;
+        height: 32px;
+        left: 330px;
+        top: 566.53px;
+        position: absolute;
+        border-radius: 100px;
+      " src="assets/images/joinworldassets/User Thumb (5).png" />
+    <div style="
+        width: 48px;
+        height: 48px;
+        left: 327px;
+        top: 171.53px;
+        position: absolute;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        display: inline-flex;
+      ">
+      <img class="bell-notification" src="assets/images/joinworldassets/bell-notification.svg" />
+    </div>
+    <div style="
+        width: 96px;
+        height: 96px;
+        left: 154px;
+        top: 57.53px;
+        position: absolute;
+      ">
+      <div style="
+          width: 96px;
+          height: 96px;
+          left: 0px;
+          top: 0px;
+          position: absolute;
+          border-radius: 9999px;
+        "></div>
+      <div style="
+          width: 48px;
+          height: 48px;
+          left: 24px;
+          top: 24px;
+          position: absolute;
+        ">
+        <img class="cloud-sync" src="assets/images/joinworldassets/cloud-sync.svg" />
+      </div>
+    </div>
+    <div style="
+        width: 64px;
+        height: 64px;
+        left: 73px;
+        top: 207.53px;
+        position: absolute;
+      ">
+      <div style="
+          width: 57.69px;
+          height: 59.36px;
+          left: 6.31px;
+          top: 4.64px;
+          position: absolute;
+          border-radius: 9999px;
+        "></div>
+      <div style="
+          width: 57.69px;
+          height: 59.36px;
+          left: 0px;
+          top: 0px;
+          position: absolute;
+        ">
+        <img class="password-cursor" src="assets/images/joinworldassets/password-cursor.svg" />
+      </div>
+    </div>
+    <div style="
+        width: 32px;
+        height: 32px;
+        left: 182px;
+        top: 525.53px;
+        position: absolute;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        display: inline-flex;
+      ">
+      <img class="cart" src="assets/images/joinworldassets/cart.svg" />
+    </div>
+    <div style="
+        width: 48px;
+        height: 48px;
+        left: 219px;
+        top: 372.53px;
+        position: absolute;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        display: inline-flex;
+      ">
+      <img class="card-wallet" src="assets/images/joinworldassets/card-wallet.svg" />
+    </div>
+  </div>
+</div>
+
+<div #allAssignedCourses class="courssecategoriesdiv"
+  [ngStyle]="{ 'background-color': isDarkTheme ? '#1e1f1e' : '#f8f8f8' }">
+  <h1 [ngStyle]="{ 'color': isDarkTheme ? '#e0e0e0' : '#333333' }">FAQ’S</h1>
+
+  <h5>
+    Explore frequently asked questions to find quick answers about our courses, and how to make the most of your
+    learning experience.
+
+  </h5>
+
+  <div class="custom-container">
+    <div *ngFor="let panel of panels; let i = index" class="custom-panel-wrapper">
+      <nz-collapse style="margin: 24px 0px" [nzExpandIconPosition]="'right'" [nzAccordion]="true">
+        <nz-collapse-panel [nzExpandedIcon]="expandedicon" [nzHeader]="getPanelHeader(panel)" [nzActive]="panel.active"
+          class="custom-panel" (click)="togglePanel(panel)">
+          <p class="content">
+            {{ panel.content }}
+          </p>
+          <ng-template #expandedicon let-active>
+            <span nz-icon nzType="right" style="color: #3194a0" class="ant-collapse-arrow"
+              [nzRotate]="panel.active ? -90 : 90"></span>
+          </ng-template>
+        </nz-collapse-panel>
+      </nz-collapse>
+    </div>
+  </div>
+</div>

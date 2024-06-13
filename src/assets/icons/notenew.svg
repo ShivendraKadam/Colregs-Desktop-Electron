@@ -1,0 +1,10 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="vuesax/linear/note">
+<g id="note">
+<path id="Vector" d="M13.3307 5.50016V12.0002C13.3307 14.0002 12.1374 14.6668 10.6641 14.6668H5.33073C3.8574 14.6668 2.66406 14.0002 2.66406 12.0002V5.50016C2.66406 3.3335 3.8574 2.8335 5.33073 2.8335C5.33073 3.24683 5.49738 3.62016 5.77071 3.89349C6.04404 4.16683 6.4174 4.3335 6.83073 4.3335H9.16406C9.99073 4.3335 10.6641 3.66016 10.6641 2.8335C12.1374 2.8335 13.3307 3.3335 13.3307 5.50016Z" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M10.6693 2.8335C10.6693 3.66016 9.99594 4.3335 9.16927 4.3335H6.83594C6.4226 4.3335 6.04925 4.16683 5.77592 3.89349C5.50259 3.62016 5.33594 3.24683 5.33594 2.8335C5.33594 2.00683 6.00927 1.3335 6.83594 1.3335H9.16927C9.5826 1.3335 9.95596 1.50017 10.2293 1.7735C10.5026 2.04683 10.6693 2.42016 10.6693 2.8335Z" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M5.33594 8.6665H8.0026" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M5.33594 11.3335H10.6693" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>

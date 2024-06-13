@@ -1,0 +1,52 @@
+.main-body {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  padding: 10px 50px 20px 50px;
+}
+.allassigncourse h2 {
+  color: #333333;
+  font-size: 24px;
+  font-family: Calibri;
+  font-weight: 700;
+}
+.allassigncourse p {
+  color: #3194a0;
+  font-size: 18px;
+  font-family: Calibri;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.attemptcard {
+  margin: 0px 25px;
+}
+
+.assesmentcmpltque {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 550px) {
+  .assesmentcmpltque {
+    font-size: 16px;
+  }
+  .attemptcard {
+    margin: 0px;
+  }
+  .container {
+    min-height: 600px;
+  }
+}
+
+@media screen and (min-width: 1550px) {
+  .container {
+    min-height: 600px;
+    padding: 10px 120px;
+  }
+}
+@media screen and (min-width: 750px) {
+  .container {
+    min-height: 600px;
+  }
+}

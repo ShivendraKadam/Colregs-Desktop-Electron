@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="vuesax/linear/video-play">
+   <g id="video-play">
+    <path d="m22,15l0,-6c0,-5 -2,-7 -7,-7l-6,0c-5,0 -7,2 -7,7l0,6c0,5 2,7 7,7l6,0c5,0 7,-2 7,-7z" fill="none" id="Vector" stroke="#9e9c9c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path d="m2.52,7.11l18.96,0" fill="none" id="Vector_2" stroke="#9e9c9c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path d="m8.52,2.11l0,4.86" fill="none" id="Vector_3" stroke="#9e9c9c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path d="m15.48,2.11l0,4.41" fill="none" id="Vector_4" stroke="#9e9c9c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path d="m9.75,14.45l0,-1.2c0,-1.54 1.09,-2.17 2.42,-1.4l1.04,0.6l1.04,0.6c1.33,0.77 1.33,2.03 0,2.8l-1.04,0.6l-1.04,0.6c-1.33,0.77 -2.42,0.14 -2.42,-1.4l0,-1.2l0,0z" fill="none" id="Vector_5" stroke="#9e9c9c" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+   </g>
+  </g>
+ </g>
+</svg>

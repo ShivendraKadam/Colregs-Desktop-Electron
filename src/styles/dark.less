@@ -1,0 +1,374 @@
+@import '../../node_modules/ng-zorro-antd/ng-zorro-antd';
+@import "./themes/dark";
+@primary-color: #3194a0;
+
+
+/* You can add global styles to this file, and also import other style files */
+.ant-menu-submenu-expand-icon,
+.ant-menu-submenu-arrow {
+  color: white !important;
+}
+
+.ant-picker-input>input:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 550px) {
+  vg-overlay-play .vg-overlay-play .overlay-play-container.vg-icon-play_arrow {
+    font-size: 40px !important;
+  }
+}
+.ant-select-show-search.ant-select:not(.ant-select-customize-input) .ant-select-selector input {
+  cursor: pointer;
+}
+
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab, .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab {
+  border-radius: 50%!important;
+}
+
+html,
+body {
+  font-family: Calibri;
+}
+
+.ant-drawer-title {
+  font-size: 22px !important;
+  font-weight: 600 !important;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-radius: 5px;
+}
+
+.ant-progress-status-normal .ant-progress-inner:not(.ant-progress-circle-gradient) .ant-progress-circle-path {
+  stroke: #f2994a;
+}
+
+.ant-progress-circle.ant-progress-status-normal .ant-progress-text {
+  color: #f2994a;
+}
+
+.ant-input {
+  border-radius: 5px;
+}
+
+.ant-collapse-header {
+  font-weight: 700 !important;
+  background-color: black !important;
+}
+
+.ant-input-affix-wrapper {
+  border-radius: 5px !important;
+}
+
+.ant-collapse {
+  border-radius: 10px !important;
+  background-color: black !important;
+
+}
+
+.ant-collapse>.ant-collapse-item:last-child,
+.ant-collapse>.ant-collapse-item:last-child>.ant-collapse-header {
+  border-radius: 10px !important;
+  background-color: black !important;
+
+}
+
+/* modal OVERRIDING */
+
+.ant-modal-content {
+  /* background-color: red; */
+  border-radius: 10px;
+}
+
+.ant-modal-body {
+  /* background-color: green; */
+  border-radius: 10px;
+
+}
+
+.ant-drawer-body {
+  padding: 10px 24px !important;
+
+}
+
+.ant-modal-confirm-body>.anticon {
+  text-align: center !important;
+  font-size: 70px !important;
+}
+
+.ant-modal-confirm-body>.anticon {
+  float: none;
+}
+
+.ant-modal-confirm-success .ant-modal-confirm-body>.anticon {
+  color: #3194a0;
+}
+
+.ant-modal-confirm-body .ant-modal-confirm-title {
+  color: white;
+  font-size: 24px;
+  font-family: Calibri;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.ant-modal-confirm-body .ant-modal-confirm-content {
+  font-size: 18px;
+  font-family: Calibri;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.ant-modal-confirm-body>.anticon+.ant-modal-confirm-title+.ant-modal-confirm-content {
+  margin-left: 0px;
+}
+
+.ant-modal-centered .ant-modal {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ant-modal-header {
+  padding: 20px 24px;
+  border-radius: 10px 10px 0 0;
+  background-color: rgb(21, 21, 21);
+  color: white;
+}
+
+.ant-form-item-explain-error {
+  color: #f50410;
+}
+
+.ant-modal-title {
+  display: flex;
+  color: white;
+  font-size: 20px;
+  font-family: Calibri;
+  font-weight: 700;
+}
+
+.ant-modal-confirm .ant-modal-confirm-btns {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  float: none;
+}
+
+.ant-modal-confirm-warning .ant-modal-confirm-body>.anticon,
+.ant-modal-confirm-confirm .ant-modal-confirm-body>.anticon {
+  color: #ff4d4f;
+}
+
+.editbutton {
+  border-radius: 10px;
+  border: 2px #828282 solid;
+  background-color: transparent;
+  cursor: pointer;
+  color: gray;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+}
+
+.Viewbutton {
+  background: var(--Primary-Blue, #2b84b2);
+  color: #3194a0;
+  /* background-color: #cffaff; */
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px #45939c2b solid;
+  height: 32px;
+  width: 32px;
+  margin-left: 10px;
+}
+
+.Correctbutton {
+  background: var(--Primary-Blue, #77c250);
+  color: #3194a0;
+  /* background-color: #cffaff; */
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px #45939c2b solid;
+  height: 32px;
+  width: 32px;
+  margin-left: 10px;
+}
+
+/* .Viewbutton:hover {
+  background: #3194a0;
+  color: white;
+} */
+
+.deletebutton {
+  background: #eb5757;
+  /* color: #eb5757; */
+  /* background-color: #cffaff; */
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px rgba(160, 49, 49, 0.1) solid;
+  height: 32px;
+  width: 32px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+/* .deletebutton:hover {
+  background: #eb5757;
+  color: white;
+} */
+
+.ant-btn {
+  color: white;
+  padding: 20px 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.ant-tabs-card.ant-tabs-top>.ant-tabs-nav .ant-tabs-tab+.ant-tabs-tab,
+.ant-tabs-card.ant-tabs-bottom>.ant-tabs-nav .ant-tabs-tab+.ant-tabs-tab,
+.ant-tabs-card.ant-tabs-top>div>.ant-tabs-nav .ant-tabs-tab+.ant-tabs-tab,
+.ant-tabs-card.ant-tabs-bottom>div>.ant-tabs-nav .ant-tabs-tab+.ant-tabs-tab {
+  margin-left: 20px;
+}
+
+/* .ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active, .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab-active {
+  border-color: #3194A0;
+} */
+
+.ant-tabs-card.ant-tabs-top>.ant-tabs-nav .ant-tabs-tab,
+.ant-tabs-card.ant-tabs-top>div>.ant-tabs-nav .ant-tabs-tab {
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 100px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #7fc1c737;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #727272be;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c4c4c4;
+  cursor: pointer;
+}
+
+.ant-table-thead>tr>th,
+.ant-table-tbody>tr>td,
+.ant-table tfoot>tr>th,
+.ant-table tfoot>tr>td {
+  padding: 8px 16px;
+}
+
+/* For Button Disabled */
+.disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.ant-progress-status-success .ant-progress-inner:not(.ant-progress-circle-gradient) .ant-progress-circle-path {
+  stroke: #3194a0;
+}
+
+.ant-progress-circle.ant-progress-status-success .ant-progress-text {
+  color: #3194a0;
+}
+.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar,
+.ck.ck-editor__top .ck-sticky-panel .ck-toolbar.ck-rounded-corners {
+
+  border-color: #434343  !important;
+}
+
+
+.ck-rounded-corners .ck.ck-editor__main > .ck-editor__editable,
+.ck.ck-editor__main > .ck-editor__editable.ck-rounded-corners {
+
+  border-color: #434343  !important;
+}
+
+.ck.ck-editor__main>.ck-editor__editable {
+  background: #1e1e1e !important;
+  border-radius: 5px;
+  
+}
+
+.ck.ck-toolbar {
+  background: #1e1e1e !important;
+  border-radius: 5px;
+
+}
+
+.ck-rounded-corners .ck.ck-button,
+.ck-rounded-corners a.ck.ck-button,
+.ck.ck-button.ck-rounded-corners,
+a.ck.ck-button.ck-rounded-corners {
+  color: gray;
+}
+
+.ant-menu-light .ant-menu-item:hover,
+.ant-menu-light .ant-menu-item-active,
+.ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-light .ant-menu-submenu-active,
+.ant-menu-light .ant-menu-submenu-title:hover {
+  color: white !important;
+}
+
+input[type="radio"][disabled]:checked {
+  position: relative;
+  height: 12px;
+  width: 12px;
+  box-sizing: border-box;
+  margin: 0;
+
+  &:after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #132e31de !important;
+    border: 2px solid rgb(255, 255, 255) !important;
+  }
+}
+
+input[type="checkbox"][disabled][checked] {
+  filter: invert(100%) hue-rotate(18deg) brightness(5);
+}
+input[type="checkbox"][disabled] {
+  filter: invert(100%) hue-rotate(18deg) brightness(5);
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: rgba(34, 86, 93, 0.488);
+  border-radius: 5px;
+  color: white;
+}
+
+
+.ant-menu-submenu-selected {
+  color: white;
+  background-color: rgba(48, 117, 125, 0.1);
+  border-radius: 5px;
+}
+
+.introjs-tooltip {
+  background-color: #2E2E2E !important;
+}
+
+.introjs-helperLayer {
+  box-shadow: rgba(33, 33, 33, 0.884) 0px 0px 1px 2px, rgba(33, 33, 33, 0.692) 0px 0px 0px 5000px;
+  opacity: 100 !important;
+  border: 1px solid white !important;
+}

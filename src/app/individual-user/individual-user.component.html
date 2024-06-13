@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+</head>
+
+<body>
+  <nz-header
+    [ngStyle]="{ 'background-color': isDarkTheme ? '#1e1f1e' : 'white','border-color': isDarkTheme ? '#333333' : '#f0f0f0' }"
+    class="defaultheader" style="border-bottom: 1px solid ; height: fit-content">
+    <div
+      [ngStyle]="{ 'background-color': isDarkTheme ? '#1e1f1e' : 'white','border-color': isDarkTheme ? '#333333' : '#f0f0f0' }"
+      style="
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid;
+          height: 72px;
+         
+        ">
+      <div style="margin-left: 60px;display: flex;align-items: center;">
+        <img (click)="gotoHome()" src="assets/images/Logo with Name to right - Full Colour.png" alt=""
+          style="height: 40px; width: 200px;cursor: pointer;" />
+
+      </div>
+
+
+      <div style="
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          ">
+
+        <div style="margin-right: 15px;">
+          <input type="checkbox" class="checkbox" id="checkbox" [(ngModel)]="isDarkTheme"
+            (ngModelChange)="toggleTheme()">
+          <label
+            [ngStyle]="{ 'background-color': isDarkTheme ? '#202B2B' : '#EAF4F5','border-color': isDarkTheme ? 'gray' : '#e0e0e8' }"
+            for="checkbox" class="checkbox-label">
+
+            <i style="color: rgb(196, 196, 196);" class="fas fa-moon" class="fas fa-moon"></i>
+            <i style="color: #3194A0;" class="fas fa-sun" class="fas fa-sun"></i>
+            <span [ngStyle]="{ 'background': isDarkTheme ? 'rgb(196, 196, 196)' : '#3194A0' }" class="ball"></span>
+          </label>
+        </div>
+        <div style="display: flex; justify-content: space-between;margin-top: 5px;">
+
+
+
+          <div style="display: flex; align-items: center">
+            <!-- <div style="margin-right: 12px;margin-top: 5px;">
+     
+      </div> -->
+
+            <div style="margin-left: 20px;display: flex;">
+
+
+              <div style="margin-right: 12px; margin-top: 5px">
+                <span style="border-radius: 50%; background-color: #f2f2f2;">
+                  <div class="avatar-placeholder" *ngIf="userdata?.profilePhoto; else placeholder">
+                    <img [src]="file" style="object-fit: cover; width: 55px;margin-bottom: 5px;
+                  height: 55px;border-radius: 50%;">
+                  </div>
+                  <ng-template #placeholder>
+                    <div [ngStyle]="{ 'background-color': isDarkTheme ? 'black' : '#F2F2F2' }"
+                      style="border-radius:  50%; background-color: #f2f2f2;height: 50px;display: flex;align-items: center;width: 50px;justify-content: center;font-size: 16px;">
+                      <strong>{{firstname?.charAt(0).toUpperCase()}}{{lastname?.charAt(0).toUpperCase()}}</strong>
+                    </div>
+                  </ng-template>
+
+                </span>
+              </div>
+              <!-- <span [ngStyle]="{ 'background-color': isDarkTheme ? 'black' : '#f2f2f2'}" style="
+                    border-radius: 50%;
+                   
+                    padding: 8px;
+                    font-size: 15px;
+                    color: gray;
+                  " nz-icon nzType="user" nzTheme="outline"></span> -->
+              <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" style="font-size: 18px">
+                {{ firstname }}
+                <span nz-icon nzType="down"></span>
+              </a>
+              <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu style="display: flex; flex-direction: column">
+                  <li nz-menu-item routerLink="user/myprofile">
+                    <span nz-icon nzType="user" nzTheme="outline"></span>
+                    <!-- <img src="assets/icons/category.svg" alt=""  > -->
+                    <span style="padding-left: 10px;">Profile</span>
+                  </li>
+                  <li nz-menu-item routerLink="user/user-history">
+                    <span nz-icon nzType="user" nzTheme="outline"></span>
+                    <!-- <img src="assets/icons/category.svg" alt=""  > -->
+                    <span style="padding-left: 10px;">Assessment History</span>
+                  </li>
+                  <!-- <li nz-menu-item style="padding-left: 10px;" (click)="toggleTheme()">
+                    <span *ngIf="isDarkTheme"><img style="width: 22px;" src="assets/icons/sun.svg" alt=""> Light
+                      Theme</span>
+
+                    <span *ngIf="!isDarkTheme"><img style="width: 22px;" src="assets/icons/moon.svg" alt="">Dark
+                      Theme</span>
+                  </li> -->
+                  <li nz-menu-item (click)="logout()">
+                    <span nz-icon nzType="logout" nzTheme="outline"></span>
+                    <!-- <img src="assets/icons/category.svg" alt=""  > -->
+                    <span style="padding-left: 10px">Logout</span>
+                  </li>
+                </ul>
+              </nz-dropdown-menu>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </nz-header>
+
+  <nz-header style="
+        height: fit-content;
+        border-bottom: 1px solid #e8e8e8;
+        background-color: #0f172a;
+      ">
+    <div style="display: flex; flex-direction: column; text-align: center">
+      <div class="mobileviewheader">
+        <div style="display: flex; align-items: center">
+          <!-- <span nz-icon nzType="menu" style="color: white" nzTheme="outline" (click)="toggleSidebar()"></span> -->
+          <div class="logo-container" (click)="gotoHome()">
+            <img src="assets/images/ELEMENTREE.png" alt="" class="logo" />
+          </div>
+        </div>
+
+        <div style="margin-top: 8px;display: flex;gap: 5px;align-items: center;">
+
+          <div>
+            <input type="checkbox" class="checkbox" id="checkbox" [(ngModel)]="isDarkTheme"
+              (ngModelChange)="toggleTheme()">
+            <label
+              [ngStyle]="{ 'background-color': isDarkTheme ? '#202B2B' : '#EAF4F5','border-color': isDarkTheme ? 'gray' : '#e0e0e8' }"
+              for="checkbox" class="checkbox-label">
+
+              <i style="color: rgb(196, 196, 196);" class="fas fa-moon" class="fas fa-moon"></i>
+              <i style="color: #3194A0;" class="fas fa-sun" class="fas fa-sun"></i>
+              <span [ngStyle]="{ 'background': isDarkTheme ? 'rgb(196, 196, 196)' : '#3194A0' }" class="ball"></span>
+            </label>
+          </div>
+          <div style="margin-left: 5px;display: flex;">
+
+
+            <div style="margin-right: 12px; margin-top: 5px">
+              <span style="border-radius: 50%; background-color: #f2f2f2;">
+                <div class="avatar-placeholder" *ngIf="userdata?.profilePhoto; else placeholder">
+                  <img [src]="file" style="object-fit: cover; width: 44px;margin-bottom: 5px;
+                height: 44px;border-radius: 50%;">
+                </div>
+                <ng-template #placeholder>
+                  <div [ngStyle]="{ 'background-color': isDarkTheme ? 'black' : '#F2F2F2' }"
+                    style="border-radius:  50%; background-color: #f2f2f2;height: 50px;display: flex;align-items: center;width: 50px;justify-content: center;font-size: 16px;">
+                    <strong>{{firstname?.charAt(0).toUpperCase()}}{{lastname?.charAt(0).toUpperCase()}}</strong>
+                  </div>
+                </ng-template>
+
+              </span>
+            </div>
+            <!-- <span [ngStyle]="{ 'background-color': isDarkTheme ? 'black' : '#f2f2f2'}" style="
+                  border-radius: 50%;
+                 
+                  padding: 8px;
+                  font-size: 15px;
+                  color: gray;
+                " nz-icon nzType="user" nzTheme="outline"></span> -->
+            <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" style="font-size: 18px">
+              {{ firstname }}
+              <span nz-icon nzType="down"></span>
+            </a>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu style="display: flex; flex-direction: column">
+                <li nz-menu-item routerLink="user/myprofile">
+                  <span nz-icon nzType="user" nzTheme="outline"></span>
+                  <!-- <img src="assets/icons/category.svg" alt=""  > -->
+                  <span style="padding-left: 10px;">Profile</span>
+                </li>
+                <!-- <li nz-menu-item style="padding-left: 10px;" (click)="toggleTheme()">
+                  <span *ngIf="isDarkTheme"><img style="width: 22px;" src="assets/icons/sun.svg" alt=""> Light
+                    Theme</span>
+
+                  <span *ngIf="!isDarkTheme"><img style="width: 22px;" src="assets/icons/moon.svg" alt="">Dark
+                    Theme</span>
+                </li> -->
+                <li nz-menu-item (click)="logout()">
+                  <span nz-icon nzType="logout" nzTheme="outline"></span>
+                  <!-- <img src="assets/icons/category.svg" alt=""  > -->
+                  <span style="padding-left: 10px">Logout</span>
+                </li>
+              </ul>
+            </nz-dropdown-menu>
+          </div>
+          <!-- <span style="font-size: 25px;" nz-icon nzType="search" nzTheme="outline"  (click)="toggleSearchBar()"></span> -->
+        </div>
+      </div>
+
+      <!-- <div *ngIf="isSearchBarVisible" class="search-bar"  style="height: 40px;">
+    <nz-input-group style="border-radius: 5px;height: 30px" [nzPrefix]="prefixIconSearch">
+      <input style="width:50px;border-radius: 5px;" type="text" nz-input placeholder="Search anything..." />
+    </nz-input-group>
+  </div> -->
+    </div>
+  </nz-header>
+
+
+
+  <nz-drawer [nzClosable]="false" [nzVisible]="searchdropdown" [nzPlacement]="'top'" (nzOnClose)="closesearchdropdown()"
+    [nzHeight]="54" [nzOffsetY]="70">
+    <ng-container *nzDrawerContent>
+      <div style="width: 100%;">
+        <nz-select [nzSuffixIcon]="prefixIconSearch" nzShowSearch [nzAutoClearSearchValue]="true"
+          (ngModelChange)="selectedComponent($event)" style="border-radius: 5px;width: 100%;" [ngModel]="searchText"
+          (input)="onSearch($event)" nzPlaceHolder="Search in ET-Learn...">
+          <nz-option [nzLabel]="item" [nzValue]="item" *ngFor="let item of searchResults">
+          </nz-option>
+        </nz-select>
+        <ng-template #prefixIconSearch>
+          <img *ngIf="!isDarkTheme" src="assets/icons/search.svg" alt="">
+          <img *ngIf="isDarkTheme" src="assets/icons/searchdark.svg" alt="">
+        </ng-template>
+      </div>
+    </ng-container>
+  </nz-drawer>
+
+  <nz-content style="display: flex">
+    <nz-drawer [nzTitle]="title" class="drawerClass" [nzWidth]="'70%'" [nzClosable]="false" [nzVisible]="visible"
+      nzPlacement="left" (nzOnClose)="close()">
+      <ng-template #title style="padding: 0px;">
+        <div style="margin-right: 10px;display: flex;align-items: center;">
+          <span *ngIf="isLoggedIn" style="border-radius: 50%; background-color: #f2f2f2;margin-right: 15px;">
+            <div class="avatar-placeholder" *ngIf="userdata?.profilePhoto; else placeholder">
+              <img [src]="file" style="object-fit: cover; width: 55px;
+            height: 55px;border-radius: 50%;">
+            </div>
+            <ng-template #placeholder>
+              <div [ngStyle]="{ 'background-color': isDarkTheme ? 'black' : '#F2F2F2' }"
+                style="border-radius:  50%; background-color: #f2f2f2;height: 50px;display: flex;align-items: center;width: 50px;justify-content: center;font-size: 16px;">
+                <strong>{{firstname?.charAt(0).toUpperCase()}}{{lastname?.charAt(0).toUpperCase()}}</strong>
+              </div>
+            </ng-template>
+
+          </span>
+          <span *ngIf="!isLoggedIn">Elementree</span>
+          <span *ngIf="isLoggedIn">{{Username}}</span>
+        </div>
+
+      </ng-template>
+
+      <ng-container *nzDrawerContent>
+        <div style="display: flex; flex-direction: column; height: 100%">
+          <div style="height: fit-content">
+
+
+            <ul nzMode="inline" nz-menu style="
+                  display: flex;
+                  flex-direction: column;
+                  font-weight: 700;
+                  font-size: 18px;
+                  border-bottom: 1px solid #3194a0;
+                  padding-bottom: 20px;background-color: transparent;
+                ">
+              <li nz-menu-item (click)="gotoHome()">Home</li>
+              <li nz-menu-item routerLink="user/mycourses" *ngIf="isLoggedIn === 'true'">My Courses</li>
+              <li nz-submenu nzTitle="Course Categories">
+                <div *ngFor="let item of categories">
+                  <div style="display: flex;justify-content: space-between;" nz-menu-item
+                    (click)="goToCategoryCourses(item.categoryName)">
+                    <div>
+                      {{ truncateText(item.categoryName,20) }}
+                    </div>
+                    <div style="width: 10%;"><span
+                        style="font-weight: 700;color: white;padding: 2px 7px;background-color: #3195a092;border-radius: 50%;">{{item.courseCount}}</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li nz-menu-item (click)="scrollTo1()">About Us</li>
+              <!-- <li nz-menu-item>Plans</li> -->
+              <li nz-menu-item (click)="scrollTo()">FAQ
+              </li>
+              <li routerLink="user/contactus" nz-menu-item>Contact Us</li>
+            </ul>
+
+
+          </div>
+
+          <div style="
+                
+               
+                margin-top: 25px;
+              ">
+
+
+            <div>
+
+              <ul nz-menu nzMode="inline" style="
+                  display: flex;
+                  flex-direction: column;
+                  font-weight: 700;
+                  font-size: 18px;
+                  
+                  padding-bottom: 20px;background-color: transparent;
+                ">
+                <li nzTheme="fill" nz-submenu nzTitle="Settings">
+                  <ul>
+                    <!-- <li (click)="toggleTheme()" nz-menu-item><span *ngIf="isDarkTheme">Light Theme</span><span *ngIf="!isDarkTheme">Dark
+                        Theme</span></li> -->
+                    <li *ngIf="isLoggedIn" nz-menu-item (click)="close()" routerLink="user/myprofile">Profile</li>
+                    <li *ngIf="isLoggedIn" nz-menu-item (click)="logout()">Logout</li>
+
+                  </ul>
+                </li>
+              </ul>
+              <!-- <div style="display: flex">
+                <img style="margin-right: 10px;" src="assets/icons/sms.svg" alt="" />
+
+                <h5 style="font-size: 16px; font-weight: bold">
+                  info@elementree.co.in
+                </h5>
+              </div>
+
+              <div style="display: flex">
+                <img style="margin-right: 10px;" src="assets/icons/call.svg" alt="" />
+                <h5 style="font-size: 16px; font-weight: bold">
+                  467345347657
+                </h5>
+              </div> -->
+            </div>
+          </div>
+          <div *ngIf="!isLoggedIn" style="
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+          margin-top: 50px;
+         justify-content: end;
+          align-items: center;
+        ">
+            <button style="
+            background-color: #3194a0;
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-family: Calibri;
+            font-weight: 700;
+            width: 70%;
+            margin-top: 25px;
+          " nz-button nzType="default" (click)="goToLogin()">
+              Login
+            </button>
+            <button style="
+            background-color: #3194a0;
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-family: Calibri;
+            font-weight: 700;
+            width: 70%;
+          " nz-button nzType="default" (click)="goToSignup()">
+              Signup
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </nz-drawer>
+
+    <div [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : 'white' }" style="width: 100%;height: 100%">
+      <router-outlet [ngStyle]="{ 'background-color': isDarkTheme ? '#1E1F1E' : 'white' }"> </router-outlet>
+    </div>
+  </nz-content>
+
+  <nz-footer [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : '#0f172a' }">
+    <div class="footerimage">
+      <div style="text-align: center">
+        <img src="assets/images/Logo with Name and Slogan - White Fill.png" alt="" class="etfooterimg" />
+      </div>
+
+      <div class="socialmedia" style="text-align: center;">
+        <ul style="display: flex;padding: 0px;text-align: center;justify-content: center;">
+          <li>
+            <a href="https://www.facebook.com/elementree.global"> <i class="fab fa-facebook-f icon"></i> </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/TreeElement"><i class="fab fa-twitter icon"></i></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/element-tree"><i class="fab fa-linkedin-in icon"></i></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/elementree.global/"><i class="fab fa-instagram icon"></i></a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/channel/UCI1fQZIlwJ2-VE6pH5pKRzA"><i class="fab fa-youtube icon"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align: center">
+      <div style="
+            color: #828282;
+            font-size: 14px;
+            font-family: Poppins;
+            font-weight: 400;
+            line-height: 21px;
+            word-wrap: break-word;
+          ">
+        Copyright © 2024 || All Rights Reserved || <span (click)="goToPrivacypolicy()"
+          style="text-decoration: underline; cursor: pointer;">Privacy
+          Policy</span>
+      </div>
+    </div>
+  </nz-footer>
+
+  <nz-modal [(nzVisible)]="isVisibleMiddle" nzCentered nzWidth="600px" [nzFooter]="null" (nzOnCancel)="handleCancel()">
+    <ng-container *nzModalContent>
+      <div *ngIf="showLoginModal" class="loginDiv">
+        <form nz-form [formGroup]="LoginForm" [nzLayout]="'vertical'">
+          <div style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: center;
+              ">
+            <div class="gutter-row">
+              <span>
+                <img src="assets/images/ET-logo.png" alt="" />
+              </span>
+              <h1 [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#111111'}" class="Welcome">Welcome to ET-Learn</h1>
+              <!-- <h3 class="lorem">Lorem ipsum dolor sit</h3> -->
+            </div>
+          </div>
+          <div nz-row style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: start;
+              ">
+            <div nz-col class="gutter-row" [nzSpan]="12">
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700" nzRequired nzFor="email" nzRequired>Email</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid E-mail!">
+                  <input style="border-radius: 5px; height: 47px" nzSize="large" nz-input formControlName="email"
+                    id="email" placeholder="Email" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: start;
+              ">
+            <div nz-col class="gutter-row" [nzSpan]="12">
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700" nzRequired nzFor="password">Password
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Please input your Password!">
+                  <nz-input-group [nzSuffix]="suffixTemplate" nzSize="large" style="border-radius: 5px; height: 47px">
+                    <input nzSize="large" [type]="passwordVisible ? 'text' : 'password'" id="password" nz-input
+                      formControlName="password" placeholder="Password" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: start;
+              ">
+            <div class="gutter-row" style="display: flex; justify-content: space-between">
+              <div>
+                <!-- <label formControlName="remember" nz-radio>Remember me</label> -->
+              </div>
+              <div>
+                <a class="login-form-forgot" (click)="goToForgotPassword()">Forgot password?</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-evenly">
+            <div class="gutter-row" style="display: flex; justify-content: center">
+              <button nz-button class="login-form-button" [nzType]="'primary'" (click)="login()">
+                Log in
+              </button>
+            </div>
+          </div>
+
+          <div style="width: 100%; text-align: center; margin-bottom: 10px">
+            <span [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#111111'}" style="
+                 
+                  font-size: 18px;
+                  font-family: Calibri;
+                  font-weight: 400;
+                  line-height: 25.2px;
+                  letter-spacing: 0.18px;
+                  word-wrap: break-word;
+                ">Don’t have an account ? </span><span (click)="goToSignup()" style="
+                  color: #3194a0;
+                  font-size: 18px;
+                  font-family: Calibri;
+                  font-weight: 700;
+                  line-height: 25.2px;
+                  letter-spacing: 0.18px;
+                  word-wrap: break-word;
+                  cursor: pointer;
+                ">Sign Up</span>
+          </div>
+
+          <div style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: start;
+              " *ngIf="resStatus === 'false'">
+            <div class="gutter-row">
+              <nz-alert nzType="error" nzMessage="{{ resMessage }}" nzShowIcon></nz-alert>
+            </div>
+          </div>
+          <div nz-col class="gutter-row" [nzSpan]="12"
+            style="display: flex; justify-content: center; text-align: center"></div>
+        </form>
+        <ng-template #suffixTemplate>
+          <span nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+            (click)="passwordVisible = !passwordVisible"></span>
+        </ng-template>
+      </div>
+
+      <div *ngIf="!showLoginModal" class="login-div">
+        <div class="login-header">
+
+          <h1>Forgot Password ?</h1>
+          <p>Please enter your email. You will receive a link to reset your password.</p>
+        </div>
+
+
+
+        <div>
+
+          <form nz-form [formGroup]="validateForm" [nzLayout]="'vertical'">
+
+
+            <div nz-row style="display: flex;justify-content: space-evenly;text-align: start;">
+
+              <div nz-col class="passinputs">
+                <nz-form-item>
+                  <nz-form-label style="font-weight: 700;" nzRequired nzFor="email" nzRequired>Email</nz-form-label>
+                  <nz-form-control nzErrorTip="The input is not valid E-mail!">
+                    <input style="border-radius: 5px;
+                          " nzSize="large" nz-input formControlName="email" id="email" placeholder="Email" />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+
+            </div>
+
+
+
+
+            <div nz-row style="display: flex;justify-content: space-evenly;text-align: start;">
+              <div class="passinputs">
+                <button nz-button class="login-form-button login-form-margin" [disabled]="!isEmailValid()"
+                  [nzType]="'primary'" (click)="forgotpassword()">Submit</button>
+
+              </div>
+            </div>
+          </form>
+
+
+
+
+        </div>
+
+        <div (click)="goTologinFromForgotPassword()"
+          style="display: flex;align-items: center;justify-content: center;cursor: pointer;color: #3194a0;margin-top: 30px;">
+          <span nz-icon nzType="arrow-left"></span>&nbsp;
+          Back to Login
+        </div>
+
+      </div>
+
+    </ng-container>
+
+    <ng-container *nzModalFooter></ng-container>
+  </nz-modal>
+
+  <nz-modal [(nzVisible)]="isVisibleSignup" nzCentered nzWidth="700px" [nzFooter]="null" (nzOnCancel)="handleCancel()">
+    <ng-container *nzModalContent>
+      <div class="loginDiv1">
+        <form nz-form [formGroup]="validateForm" [nzLayout]="'vertical'">
+          <div style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: left;
+              ">
+            <div class="gutter-row">
+              <!-- <h1>Welcome to ET-Learn</h1> -->
+              <h1 [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#111111'}" class="CreateAcc">Create Your Account</h1>
+              <span [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#111111'}" class="fillform">Please fill out the form
+                completely</span>
+            </div>
+          </div>
+          <div nz-row style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: start;
+                gap: 10px;
+              ">
+            <div nz-col class="gutter-row" [nzSpan]="6">
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700; margin-top: 20px" nzRequired nzFor="name" nzRequired>First
+                  Name</nz-form-label>
+                <nz-form-control nzErrorTip="Please enter your first name">
+                  <input nzSize="large" nz-input formControlName="firstname" id="name" placeholder="First Name" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col class="gutter-row" [nzSpan]="6">
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700; margin-top: 20px" nzRequired nzFor="name" nzRequired>Last
+                  Name</nz-form-label>
+                <nz-form-control nzErrorTip="Please enter your last name">
+                  <input nzSize="large" nz-input formControlName="lastname" id="name" placeholder="Last Name" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div nz-row style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: start;
+                gap: 10px;
+              ">
+
+            <div nz-col class="gutter-row" [nzSpan]="6">
+
+
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700;" nzFor="Nationality" nzRequired>Nationality</nz-form-label>
+                <nz-form-control nzErrorTip="Please enter your Nationality!">
+                  <nz-select id="nationality" nzShowSearch nzAllowClear formControlName="nationality"
+                    nzPlaceHolder="Select a Nationality" nzSize="large">
+                    <nz-option *ngFor="let rank of nationalities" [nzValue]="rank.Nationality"
+                      [nzLabel]="rank.Nationality"></nz-option>
+
+                  </nz-select>
+                </nz-form-control>
+
+              </nz-form-item>
+            </div>
+
+            <div nz-col class="gutter-row" [nzSpan]="6">
+
+
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700;" nzFor="gender" nzRequired>Gender</nz-form-label>
+                <nz-form-control nzErrorTip="Please enter your gender!">
+                  <nz-select id="gender" nzShowSearch nzAllowClear formControlName="gender"
+                    nzPlaceHolder="Select a gender" nzSize="large">
+                    <nz-option nzValue="Male" nzLabel="Male">Male</nz-option>
+                    <nz-option nzValue="Female" nzLabel="Female">Female</nz-option>
+
+                  </nz-select>
+                </nz-form-control>
+
+              </nz-form-item>
+            </div>
+
+
+          </div>
+
+          <div nz-row style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: start;
+                gap: 10px;
+              ">
+            <div nz-col class="gutter-row" [nzSpan]="6">
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700" nzRequired nzFor="phone" nzRequired>Phone Number</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid Phone Number">
+                  <input nzSize="large" nz-input formControlName="phone" id="phone" placeholder="+91" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col class="gutter-row" [nzSpan]="6">
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700;" nzRequired nzFor="email" nzRequired>Date of
+                  Birth</nz-form-label>
+
+                <nz-form-control nzErrorTip="Please enter Date of Birth!">
+                  <nz-date-picker style="border-radius: 5px;width: 100%;" nzSize="large"
+                    formControlName="userDob"></nz-date-picker>
+
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div nz-row style="
+          display: flex;
+          justify-content: space-evenly;
+          text-align: start;
+        ">
+            <div nz-col class="gutter-row" [nzSpan]="6">
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700;" nzRequired nzFor="email" nzRequired>Email3</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid E-mail!">
+                  <input autocapitalize="off" autocorrect="off" autocomplete="off" style="border-radius: 5px;"
+                    nzSize="large" nz-input formControlName="email" id="email" placeholder="Email" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: start;
+              ">
+            <div nz-col class="gutter-row" [nzSpan]="12">
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700" nzRequired nzFor="password">Password
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Please input your Password!">
+                  <nz-input-group [nzSuffix]="suffixTemplate" nzSize="large">
+                    <input nzSize="large" (ngModelChange)="updateConfirmValidator()"
+                      [type]="passwordVisible ? 'text' : 'password'" id="password" nz-input formControlName="password"
+                      placeholder="Password" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div nz-row style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: start;
+              ">
+            <div nz-col class="gutter-row" [nzSpan]="12">
+              <nz-form-item>
+                <nz-form-label style="font-weight: 700" nzRequired nzFor="confirmpassword">Confirm Password
+                </nz-form-label>
+                <nz-form-control [nzErrorTip]="errorTpl">
+                  <nz-input-group [nzSuffix]="suffixTemplate" nzSize="large">
+                    <input nzSize="large" [type]="passwordVisible ? 'text' : 'password'" id="password" nz-input
+                      formControlName="confirmpassword" placeholder="Password" />
+                    <ng-template #errorTpl let-control>
+                      <ng-container *ngIf="control.hasError('required')">Please confirm your password!</ng-container>
+                      <ng-container *ngIf="control.hasError('confirm')">
+                        The Confirm Password does not match!
+                      </ng-container>
+                    </ng-template>
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <!-- <div nz-row style="display: flex;justify-content: space-evenly;text-align: start;">
+              <div nz-col class="gutter-row" [nzSpan]="12" style="display: flex;justify-content: space-between;">
+                <div>
+                  <label formControlName="remember" nz-radio>Remember me</label>
+       
+                </div>
+                <div>
+                  <a class="login-form-forgot" (click)="goToForgotPassword()">Forgot password?</a>
+                </div>
+              </div>
+            </div> -->
+
+          <div nz-row style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: center;
+              ">
+            <div nz-col class="gutter-row" [nzSpan]="12" style="display: flex; justify-content: center">
+              <button nz-button class="login-form-button1" [nzType]="'primary'" (click)="submitsignup()"
+                [disabled]="!validateForm.valid">
+                Submit
+              </button>
+            </div>
+          </div>
+
+          <div (click)="goToLogin2()" style="width: 100%; text-align: center">
+            <span [ngStyle]="{ 'color': isDarkTheme ? 'white' : '#111111'}" style="
+                
+                  font-size: 18px;
+                  font-family: Calibri;
+                  font-weight: 400;
+                  line-height: 25.2px;
+                  letter-spacing: 0.18px;
+                  word-wrap: break-word;
+                ">Already have an account ? </span><span style="
+                  color: #3194a0;
+                  font-size: 18px;
+                  font-family: Calibri;
+                  font-weight: 700;
+                  line-height: 25.2px;
+                  letter-spacing: 0.18px;
+                  word-wrap: break-word;
+                ">Login</span>
+          </div>
+
+          <div nz-row style="
+                display: flex;
+                justify-content: space-evenly;
+                text-align: start;
+              " *ngIf="resStatus === 'false'">
+            <div nz-col class="gutter-row" [nzSpan]="12">
+              <nz-alert nzType="error" nzMessage="{{ resMessage }}" nzShowIcon></nz-alert>
+            </div>
+          </div>
+          <div nz-col class="gutter-row" [nzSpan]="12"
+            style="display: flex; justify-content: center; text-align: center"></div>
+        </form>
+        <ng-template #suffixTemplate>
+          <span nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+            (click)="passwordVisible = !passwordVisible"></span>
+        </ng-template>
+      </div>
+    </ng-container>
+
+    <ng-container *nzModalFooter></ng-container>
+  </nz-modal>
+</body>
+
+</html>

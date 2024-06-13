@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1">
+ <title/>
+ <desc/>
+
+ <g class="layer">
+  <title>Layer 1</title>
+  <g fill="none" fill-rule="evenodd" id="Page-1">
+   <g fill="#000000" id="Core" transform="translate(-257.000000, -257.000000)">
+    <g id="fullscreen-exit" transform="translate(257.000000, 257.000000)">
+     <path d="m0,11l3,0l0,3l2,0l0,-5l-5,0l0,2l0,0zm3,-8l-3,0l0,2l5,0l0,-5l-2,0l0,3l0,0zm6,11l2,0l0,-3l3,0l0,-2l-5,0l0,5l0,0zm2,-11l0,-3l-2,0l0,5l5,0l0,-2l-3,0l0,0z" fill="#ffffff" id="Shape"/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

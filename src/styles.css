@@ -1,0 +1,301 @@
+/* You can add global styles to this file, and also import other style files */
+.ant-menu-submenu-expand-icon,
+.ant-menu-submenu-arrow {
+  color: #3194a0 !important;
+}
+html,
+body {
+  font-family: Calibri;
+}
+
+.ant-drawer-title {
+  font-size: 22px !important;
+  font-weight: 600 !important;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-radius: 5px;
+}
+.ant-input {
+  border-radius: 5px;
+}
+
+
+/* modal OVERRIDING */
+
+.ant-modal-content {
+  /* background-color: red; */
+  border-radius: 10px;
+}
+.ant-modal-body {
+  /* background-color: green; */
+  border-radius: 10px;
+}
+
+.ant-modal-confirm-body > .anticon {
+  text-align: center !important;
+  font-size: 70px !important;
+}
+
+.ant-modal-confirm-body > .anticon {
+  float: none;
+}
+
+.ant-modal-confirm-success .ant-modal-confirm-body > .anticon {
+  color: #3194a0;
+}
+
+.ant-modal-confirm-body .ant-modal-confirm-title {
+  color: #333333;
+  font-size: 24px;
+  font-family: Calibri;
+  font-weight: 700;
+  margin-top: 20px;
+}
+.ant-modal-confirm-body .ant-modal-confirm-content {
+  font-size: 18px;
+  font-family: Calibri;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.ant-modal-confirm-body
+  > .anticon
+  + .ant-modal-confirm-title
+  + .ant-modal-confirm-content {
+  margin-left: 0px;
+}
+
+.ant-modal-centered .ant-modal {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ant-modal-header {
+  padding: 20px 24px;
+  border-radius: 10px 10px 0 0;
+  background-color: rgba(245, 245, 245, 0.707);
+}
+
+.ant-modal-title {
+  display: flex;
+  color: #333333;
+  font-size: 20px;
+  font-family: Calibri;
+  font-weight: 700;
+}
+
+.ant-modal-confirm .ant-modal-confirm-btns {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  float: none;
+}
+
+.ant-modal-confirm-warning .ant-modal-confirm-body > .anticon,
+.ant-modal-confirm-confirm .ant-modal-confirm-body > .anticon {
+  color: #ff4d4f;
+}
+
+.editbutton {
+  border-radius: 10px;
+  border: 2px  solid;
+  background-color: transparent;
+  cursor: pointer;
+  color: gray;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+}
+.logbutton {
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+background-color: #dbaf008e;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+  margin-left: 5px;
+
+}
+
+.Viewbutton {
+  background: var(--Primary-Blue, #2b84b2);
+  color: #3194a0;
+  /* background-color: #cffaff; */
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px #45939c2b solid;
+  height: 32px;
+  width: 32px;
+  margin-left: 5px;
+}
+
+.Correctbutton {
+  background: var(--Primary-Blue, #27ae60);
+  color: #3194a0;
+  /* background-color: #cffaff; */
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px #45939c2b solid;
+  height: 32px;
+  width: 32px;
+  margin-left: 10px;
+}
+
+/* .Viewbutton:hover {
+  background: #3194a0;
+  color: white;
+} */
+
+.deletebutton {
+  background: #eb5757;
+  /* color: #eb5757; */
+  /* background-color: #cffaff; */
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px rgba(160, 49, 49, 0.1) solid;
+  height: 32px;
+  width: 32px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+/* .deletebutton:hover {
+  background: #eb5757;
+  color: white;
+} */
+
+.ant-btn {
+  padding: 20px 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab,
+.ant-tabs-card.ant-tabs-bottom > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab,
+.ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab,
+.ant-tabs-card.ant-tabs-bottom
+  > div
+  > .ant-tabs-nav
+  .ant-tabs-tab
+  + .ant-tabs-tab {
+  margin-left: 20px;
+}
+
+/* .ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active, .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab-active {
+  border-color: #3194A0;
+} */
+
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab,
+.ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab {
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 100px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #7fc1c737;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d8d7d7be;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c4c4c4;
+}
+
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td,
+.ant-table tfoot > tr > th,
+.ant-table tfoot > tr > td {
+  padding: 8px 16px;
+}
+
+/* For Button Disabled */
+.disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.ant-progress-status-success
+  .ant-progress-inner:not(.ant-progress-circle-gradient)
+  .ant-progress-circle-path {
+  stroke: #3194a0;
+}
+
+.ant-progress-circle.ant-progress-status-success .ant-progress-text {
+  color: #3194a0;
+}
+
+.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar, .ck.ck-editor__top .ck-sticky-panel .ck-toolbar.ck-rounded-corners {
+  border-radius: var(--ck-border-radius);
+  border-top-left-radius: 5px!important;
+  border-top-right-radius: 5px!important;
+}
+.NgxEditor__Wrapper[_ngcontent-mos-c134] {
+  margin-top: 5px;
+  border: none!important;
+}
+ 
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+  border-radius: var(--ck-border-radius);
+  border-bottom-left-radius: 5px!important;
+  border-bottom-right-radius: 5px!important;
+}
+
+/* ANT DESIGN FULLSCREEN SPINNER */
+.spinner-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.spinner-container nz-spin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity for the overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's on top of other content */
+}
+
+
+.plyr--full-ui input[type=range] {
+  color: #3194a0;
+}
+
+.plyr__control--overlaid {
+  background: rgba(160, 49, 49, 0.1, .5);
+}
+
+.plyr--video .plyr__control.plyr__tab-focus,
+.plyr--video .plyr__control:hover,
+.plyr--video .plyr__control--overlaid,
+.plyr--video .plyr__control[aria-expanded=true] {
+  background: #3194a0;
+}
+
+.plyr__control.plyr__tab-focus {
+  box-shadow: 0 0 0 5px rgba(160, 49, 49, 0.1, .5);
+}
+
+.plyr__menu__container .plyr__control[role=menuitemradio][aria-checked=true]::before {
+  background: #3194a0;
+}
+
+

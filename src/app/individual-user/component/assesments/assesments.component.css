@@ -1,0 +1,538 @@
+.main-body {
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+}
+.example-input .ant-input {
+  width: 200px;
+  margin: 0 8px 8px 0;
+}
+.score-card {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.test-dashboard {
+  display: flex;
+  justify-content: space-between;
+}
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+.result-form {
+  width: 100%;
+  height: auto;
+  display: flex;
+  /* overflow: scroll; */
+}
+
+.result-form > div {
+  border: 1px solid #e0e0e0;
+  width: 200vh;
+}
+
+.Assessmentdiv {
+  margin: 20px 60px;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.assessmentheader h2 {
+  color: #333333;
+  font-size: 18px;
+  font-family: Calibri;
+  font-weight: 700;
+}
+.assessmentheader h3 {
+  color: #333333;
+  font-size: 16px;
+  font-family: Calibri;
+  font-weight: 400;
+}
+.result-container {
+  display: flex;
+  overflow-x: auto;
+  justify-content: center;
+  align-items: start;
+}
+.result {
+  min-height: 500px;
+  padding: 20px;
+}
+
+.rule-container {
+  width: 80%;
+  border-radius: 10px;
+  margin: 5% 20%;
+  padding: 0 5%;
+  align-items: center;
+  text-align: left;
+  background-color: #3194a01a;
+}
+
+.rule-header {
+  width: 100%;
+  text-align: center;
+  padding: 2%;
+}
+.rule-header h1 {
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+}
+.rule-content h2 {
+  font-size: 20px;
+  color: #05717d;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0px;
+}
+
+.rule-content {
+  padding: 15px 10px;
+}
+
+.rule-action {
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+}
+.rule-action button {
+  width: 150px;
+  text-align: center;
+}
+.Assesment-container {
+  width: 90%;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+}
+.question-heading h2 {
+  color: #333333;
+  font-size: 20px;
+  font-family: Calibri;
+  font-weight: 700;
+}
+
+.informative-counter {
+  padding: 5%;
+}
+
+.mcq {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+.top2btns {
+  display: flex;
+  width: 100%;
+}
+.topbtns {
+  width: 50%;
+}
+
+.questionoptbtn {
+  width: 85%;
+  padding: 10px 10px;
+  border: 1px solid #e0e0e8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.questionoptbtn:hover {
+  border-color: #3194a0;
+  color: #3194a0; /* Change background color on hover */
+}
+
+.questionoptbtn.selected {
+  background-color: #3194a0;
+  color: white; /* Set background color for selected option */
+}
+
+.questionoptbtn1.selected {
+  background-color: white;
+  color: #3194a0; /* Set background color for selected option */
+}
+.optionvalue {
+  font-size: 16px;
+}
+
+.questionoptbtn {
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.questionoptbtn:hover .questionoptbtn1 {
+  background-color: #3194a0;
+  color: white; /* /* Change background color of questionoptbtn1 when hovering over questionoptbtn */
+}
+
+.questionoptbtn1 {
+  background-color: #bdbdbd;
+  border-radius: 50%;
+
+  padding: 4px 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.assesmentbtns button {
+  margin-top: 50px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.modalbuttons button {
+  height: 50px;
+  padding: 13px 16px;
+  align-items: center;
+  width: 150px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modalbuttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.count {
+  color: #333333;
+  font-size: 20px;
+  font-family: Calibri;
+  font-weight: 700;
+}
+
+.counttext {
+  color: #4f4f4f;
+  font-size: 16px;
+  font-family: Calibri;
+  font-weight: 400;
+}
+.large ::ng-deep .ant-rate-star {
+  font-size: 36px;
+  color: linear-gradient(99deg, #dd973f 0%, #fadb14 100%);
+}
+.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 0px #0000001a;
+}
+
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+.assesmentcmpltque {
+  font-size: 20px;
+  color: #05717d;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(255, 0, 0, 0);
+  }
+}
+
+.result-array {
+  padding: 15px;
+  border-radius: 10px;
+  margin: 24px 15px;
+}
+
+@media screen and (max-width: 550px) {
+  .main-body {
+    padding: 40px 0;
+  }
+  .result-form {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .result-form > div {
+    border: 1px solid #e0e0e0;
+    width: 100%;
+  }
+  .questionoptbtn:hover .questionoptbtn1 {
+    background-color: white;
+    color: #3194a0; /* /* Change background color of questionoptbtn1 when hovering over questionoptbtn */
+  }
+  .rule-container {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    align-items: center;
+    text-align: left;
+    background-color: #3194a01a;
+  }
+
+  .top2btns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
+  .topbtns {
+    width: 100%;
+  }
+
+  .Assesment-container {
+    width: 100%;
+    margin: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .questionoptbtn {
+    min-width: 350px;
+    width: 100%;
+  }
+  .main-body {
+    margin: 5px;
+  }
+
+  .result {
+    padding: 5px;
+  }
+  .result-array {
+    padding: 5px;
+    border-radius: 10px;
+    margin: 5px;
+  }
+
+  .attemptcountandcorrectans {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .resultoptiondisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media screen and (max-height: 550px) and (orientation: landscape) {
+  .main-body {
+    padding: 30px 0;
+  }
+  .main-body {
+    margin: 0px;
+  }
+  .Assesment-container {
+    width: 100%;
+    margin: 0px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 25px;
+  }
+
+  .assesmentbtns button {
+    bottom: 0;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  .informative-counter {
+    padding: 2%;
+  }
+  .custom-progress {
+    display: none;
+  }
+
+  .total {
+    font-size: 16px;
+  }
+
+  .total-questions {
+    gap: 1px;
+  }
+
+  .mandatory {
+    font-size: 14px;
+  }
+
+  .mandatory-star {
+    font-size: 13px;
+  }
+
+  .Question-indicator {
+    margin: 10px 0px;
+  }
+  .questions-indicator-text {
+    font-size: 16px;
+  }
+
+  .top2btns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .topbtns {
+    width: 100%;
+  }
+  .mcq {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .question-currentindex {
+    color: #3194a0;
+    font-size: 16px;
+    font-family: Calibri;
+    font-weight: 700;
+    line-height: 28px;
+    word-wrap: break-word;
+    margin-left: 5px;
+  }
+
+  .question-totalindex {
+    color: #828282;
+    font-size: 12px;
+    font-family: Calibri;
+    font-weight: 400;
+    line-height: 22.4px;
+    word-wrap: break-word;
+  }
+
+  .question-heading h2 {
+    color: #333333;
+    font-size: 18px;
+    font-family: Calibri;
+    font-weight: 700;
+  }
+
+  .questionoptbtn {
+    /* min-width: 400px; */
+    width: 100%;
+    width: fit-content;
+    padding: 10px 0px;
+    border: 1px solid #e0e0e8;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  }
+
+  .questionoptbtn1 {
+    background-color: #bdbdbd;
+    border-radius: 50%;
+
+    padding: 2px 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  .count {
+    color: #333333;
+
+    font-size: 20px;
+    font-family: Calibri;
+    font-weight: 700;
+  }
+  .counttext {
+    color: #4f4f4f;
+    font-size: 16px;
+    font-family: Calibri;
+    font-weight: 400;
+  }
+  .large ::ng-deep .ant-rate-star {
+    font-size: 36px;
+    color: linear-gradient(99deg, #dd973f 0%, #fadb14 100%);
+  }
+  .circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 7px 7px #0000001a;
+  }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 550px) {
+  .questionoptbtn:hover .questionoptbtn1 {
+    background-color: white;
+    color: #3194a0; /* /* Change background color of questionoptbtn1 when hovering over questionoptbtn */
+  }
+
+  .resultoptiondisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .attemptcountandcorrectans {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .resultoptiondisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .top2btns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
+  .topbtns {
+    width: 100%;
+  }
+
+  .questionoptbtn {
+    /* min-width: 450px; */
+    width: 100%;
+  }
+
+  .rule-container {
+    width: 80%;
+    border-radius: 10px;
+    margin: 2% 10%;
+    padding: 0 5%;
+    align-items: center;
+    text-align: left;
+    background-color: #3194a01a;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .questionoptbtn:hover .questionoptbtn1 {
+    background-color: white;
+    color: #3194a0; /* /* Change background color of questionoptbtn1 when hovering over questionoptbtn */
+  }
+}

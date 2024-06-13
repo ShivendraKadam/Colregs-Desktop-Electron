@@ -1,0 +1,16 @@
+<div (click)="videoclick()" id="videoContainer" #videoContainer class="amsterdam-acid-blue shaka2"
+    [class.shaka2]="disableSeeking">
+    <div class="shaka-videoTitle" *ngIf="videoTitle">
+        <span style="font-size: 18px; font-weight: 600; font-family: Calibri;margin-left: 10px;">{{videoTitle}}</span>
+    </div>
+
+    <video (pause)="countPlayerViewTime()" (play)="countPlayerViewTime()" #videoPlayer id="videoPlayer" width="100%"
+        height="100%">
+    </video>
+
+    <div (click)="rewind()" class="shaka-rewind-button"><img src="assets/icons/replay-10.svg" alt=""></div>
+    <div (click)="togglePlayPause()" class="shaka-playpause-button">
+        <img *ngIf="this.playPauseText === 'Play'" src="assets/icons/play.svg" alt="">
+        <img *ngIf="this.playPauseText === 'Pause'" src="assets/icons/pause.svg" alt="">
+    </div>
+</div>

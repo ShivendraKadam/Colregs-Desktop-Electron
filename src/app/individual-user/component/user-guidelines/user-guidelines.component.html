@@ -1,0 +1,448 @@
+<div class="center-tabs">
+
+    <nz-tabset nzSize="large" [nzTabBarGutter]="55" nzCentered style="display: flex;justify-content: space-evenly;">
+        <nz-tab nzTitle="User-Guidelines">
+            <div class="rule-action">
+                <button *ngIf="isUserGuidelinesPage" (click)="goToCourseDetails()"
+                    style="display: flex;justify-content: center; margin-top: 10px;" nz-button nzType="primary">Start
+                    Course</button>
+            </div>
+            <div class="result-container">
+                <div class="rule-container">
+                    <div class="rule-header">
+                        <h1>Welcome to 3D COLREGS</h1>
+                    </div>
+                    <div class="rule-content">
+                        <div style="gap: 15px;display: flex;flex-direction: column;">
+
+
+                            <h3 style="text-align: justify;">This course is designed to give you a real world experience
+                                on
+                                understanding and implementing <span style="color: #3194a0; font-weight: bold;">
+                                    COLREGS. </span></h3>
+                            <h3 style="text-align: justify;">Let's get started with a brief introduction and guide.</h3>
+                            <h3 style="text-align: justify;">This course consists of levels depicting various scenarios
+                                which allow
+                                users to interpret <span style="color: #3194a0; font-weight: bold;"> COLREGS. </span>
+                            </h3>
+                            <h3 style="text-align: justify;">In order to assist the users to have complete situational
+                                awareness,
+                                there
+                                are various tools available for each level, which the user can interact with. </h3>
+
+                            <!-- <h3>This course is designed to give you a real world experience on understanding and implementing COLREGS.</h3> -->
+                            <div style="margin-bottom: 20px;text-align: justify;">
+                                <h2>Before you begin:
+                                </h2>
+                                <h3>The Main video consists of a normal view from inside the navigation bridge of own
+                                    vessel. </h3>
+                                <h3>Own vessel in all scenarios is a Power Driven vessel with length >50m. </h3>
+                                <h3>The duration of Main video is 1 minute.</h3>
+                                <h4 style="text-align: justify;">You must completely watch this main video before you
+                                    are able to
+                                    proceed
+                                    to the next stage, which is Assessment. </h4>
+
+                            </div>
+
+                            <div class style="margin-bottom: 20px;">
+                                <h2>Toolbar:
+                                </h2>
+                                <h3>There are additional videos available on the bottom toolbar as follows: </h3>
+                                <div class="toolbar-icons"
+                                    style="display: flex; align-items: center; justify-content: space-around;">
+                                    <img src="assets/icons/iconsbuttons/SI_Cameras.png" alt="Port side view"
+                                        title="Port side view" />
+                                    <img src="assets/icons/iconsbuttons/SI_ECDIS.png" alt="ECDIS Information"
+                                        title="ECDIS Information" />
+                                    <img src="assets/icons/iconsbuttons/SI_Binacular.png" alt="Binocular view"
+                                        title="Binocular view" />
+                                    <img src="assets/icons/iconsbuttons/SI-09.png" alt="Monkey Island view"
+                                        title="Monkey Island view" />
+                                    <img src="assets/icons/iconsbuttons/Sim Icons-10.png" alt="Help" title="Help" />
+                                    <img src="assets/icons/iconsbuttons/SI-08.png" alt="Stern View"
+                                        title="Stern View" />
+                                    <img src="assets/icons/iconsbuttons/SI_Objectives.png" alt="Objectives"
+                                        title="Objectives" />
+                                    <img src="assets/icons/iconsbuttons/SI_RADAR.png" alt="Radar Image"
+                                        title="Radar Image" />
+                                    <img src="assets/icons/iconsbuttons/SI-06.png" alt="Starboard side view"
+                                        title="Starboard side view" />
+                                    <img src="assets/icons/iconsbuttons/SI-07.png" alt="Bridge view"
+                                        title="Bridge view" />
+                                </div>
+                            </div>
+
+                            <div class="icon-description-container">
+
+                                <div class="icon-description-pair" style="margin-bottom: 15px;">
+                                    <h2 class="icon-title">Port side view:</h2>
+                                    <div class="icon-with-text">
+                                        <img src="assets/icons/iconsbuttons/SI_Cameras.png" alt="Port side view"
+                                            class="icon-image" />
+                                        <p class="description-text" style="font-size: 15px;text-align: justify;">This
+                                            camera gives you a
+                                            view
+                                            from the Port side Bridge wing. This allows you to check for any traffic or
+                                            relevant information
+                                            on
+                                            vessel’s Port side, if available.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-description-pair" style="margin-bottom: 15px;">
+                                    <h2 class="icon-title">ECDIS Information: </h2>
+                                    <div class="icon-with-text">
+                                        <img src="assets/icons/iconsbuttons/SI_ECDIS.png" alt="Port side view"
+                                            class="icon-image" />
+                                        <p class="description-text" style="font-size: 15px;text-align: justify;">ECDIS
+                                            information gives an
+                                            image displaying the current situation on an ECDIS Chart. Here you will find
+                                            information related
+                                            to
+                                            vessels navigation and ENC’s giving you information
+                                            such as sea room available, hazards, route information etc. This image is a
+                                            static image and users
+                                            cannot interact with this image.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-description-pair" style="margin-bottom: 15px;">
+                                    <h2 class="icon-title">Binocular view: </h2>
+                                    <div class="icon-with-text">
+                                        <img src="assets/icons/iconsbuttons/SI_Binacular.png" alt="Port side view"
+                                            class="icon-image" />
+                                        <p class="description-text" style="font-size: 15px;text-align: justify;">This
+                                            video clip will show a
+                                            close-up of the target, as you would see on a vessel.Using this view, you
+                                            will be able to clearly
+                                            see the Day shape/Lights etc of the Target vessel.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-description-pair" style="margin-bottom: 15px;">
+                                    <h2 class="icon-title">Bridge Top View (Monkey Island view):</h2>
+                                    <div class="icon-with-text">
+                                        <img src="assets/icons/iconsbuttons/SI-09.png" alt="Port side view"
+                                            class="icon-image" />
+                                        <p class="description-text" style="font-size: 15px;text-align: justify;">This
+                                            view shows you the
+                                            target as when viewed from Monkey Island. This view allows users to have a
+                                            less restricted view of
+                                            the Target than possible from the Main Bridge view. </p>
+                                    </div>
+                                </div>
+                                <div class="icon-description-pair" style="margin-bottom: 15px;">
+                                    <h2 class="icon-title">Help: </h2>
+                                    <div class="icon-with-text">
+                                        <img src="assets/icons/iconsbuttons/Sim Icons-10.png" alt="Port side view"
+                                            class="icon-image" />
+                                        <h3 class="description-text" style="font-size: 15px;text-align: justify;">User
+                                            Guidelines.</h3>
+                                    </div>
+                                </div>
+                                <div class="icon-description-pair" style="margin-bottom: 15px;">
+                                    <h2 class="icon-title">Stern View: </h2>
+                                    <div class="icon-with-text">
+                                        <img src="assets/icons/iconsbuttons/SI-08.png" alt="Port side view"
+                                            class="icon-image" />
+                                        <p class="description-text" style="font-size: 15px;text-align: justify;">This
+                                            view shows you the
+                                            view
+                                            from the top of the funnel looking towards the stern, while allowing you to
+                                            get better situational
+                                            awareness of the scenario. </p>
+                                    </div>
+                                </div>
+                                <div class="icon-description-pair" style="margin-bottom: 15px;">
+                                    <h2 class="icon-title">Objectives: </h2>
+                                    <div class="icon-with-text">
+                                        <img src="assets/icons/iconsbuttons/SI_Objectives.png" alt="Port side view"
+                                            class="icon-image" />
+                                        <p class="description-text" style="font-size: 15px;text-align: justify;">Here
+                                            you can view the
+                                            Objectives for this particular level of the Course.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-description-pair" style="margin-bottom: 15px;">
+                                    <h2 class="icon-title">Radar Image:</h2>
+                                    <div class="icon-with-text">
+                                        <img src="assets/icons/iconsbuttons/SI_RADAR.png" alt="Port side view"
+                                            class="icon-image" />
+                                        <p class="description-text" style="font-size: 15px;text-align: justify;">Using
+                                            this image, you can
+                                            view the Radar information available for the Target. The user must study
+                                            this image carefully to
+                                            apprise himself/herself of the situation and make a mental note of important
+                                            information such as
+                                            CPA/TCPA, Range and Bearing, BCR/BCRT etc. This information will form part
+                                            of the Assessment.
+                                            Similar to ECDIS, this is a static image, and users cannot interact with
+                                            this image. </p>
+                                    </div>
+                                </div>
+                                <div class="icon-description-pair" style="margin-bottom: 15px;">
+                                    <h2 class="icon-title">Starboard side view: </h2>
+                                    <div class="icon-with-text">
+                                        <img src="assets/icons/iconsbuttons/SI-06.png" alt="Port side view"
+                                            class="icon-image" />
+                                        <p class="description-text" style="font-size: 15px;text-align: justify;">This
+                                            camera gives you a
+                                            view
+                                            from the Starboard side Bridge wing. This allows you to check for any
+                                            traffic or relevant
+                                            information on vessel’s Starboard side, if available.</p>
+                                    </div>
+                                </div>
+                                <div class="icon-description-pair" style="margin-bottom: 15px;">
+                                    <h2 class="icon-title">Bridge view: </h2>
+                                    <div class="icon-with-text">
+                                        <img src="assets/icons/iconsbuttons/SI-07.png" alt="Port side view"
+                                            class="icon-image" />
+                                        <h3 class="description-text" style="font-size: 15px;text-align: justify;">When
+                                            you click on any of
+                                            the
+                                            above icons, you must click on the Bridge Icon to return to the Main video.
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="icon-description-pair">
+                      <img src="path-to-your-icon/icon1.png" alt="Port side view" class="icon-image"/>
+                      <div class="description">
+                          <h2>ECDIS Information:</h2>
+                          <p>This camera gives you a view from the Port side Bridge wing. This allows you to check for any traffic or relevant information on vessel’s Port side, if available.</p>
+                      </div>
+                  </div>
+                  <div class="icon-description-pair">
+                      <img src="path-to-your-icon/icon1.png" alt="Port side view" class="icon-image"/>
+                      <div class="description">
+                          <h2>Binocular view:</h2>
+                          <p>This camera gives you a view from the Port side Bridge wing. This allows you to check for any traffic or relevant information on vessel’s Port side, if available.</p>
+                      </div>
+                  </div>
+                  <div class="icon-description-pair">
+                      <img src="path-to-your-icon/icon1.png" alt="Port side view" class="icon-image"/>
+                      <div class="description">
+                          <h2>Monkey Island view:</h2>
+                          <p>This camera gives you a view from the Port side Bridge wing. This allows you to check for any traffic or relevant information on vessel’s Port side, if available.</p>
+                      </div>
+                  </div>
+                  <div class="icon-description-pair">
+                      <img src="path-to-your-icon/icon1.png" alt="Port side view" class="icon-image"/>
+                      <div class="description">
+                          <h2>Stern View:</h2>
+                          <p>This camera gives you a view from the Port side Bridge wing. This allows you to check for any traffic or relevant information on vessel’s Port side, if available.</p>
+                      </div>
+                  </div>
+                  <div class="icon-description-pair">
+                      <img src="path-to-your-icon/icon1.png" alt="Port side view" class="icon-image"/>
+                      <div class="description">
+                          <h2>Objectives:</h2>
+                          <p>This camera gives you a view from the Port side Bridge wing. This allows you to check for any traffic or relevant information on vessel’s Port side, if available.</p>
+                      </div>
+                  </div>
+                  <div class="icon-description-pair">
+                      <img src="path-to-your-icon/icon1.png" alt="Port side view" class="icon-image"/>
+                      <div class="description">
+                          <h2>Radar Image:</h2>
+                          <p>This camera gives you a view from the Port side Bridge wing. This allows you to check for any traffic or relevant information on vessel’s Port side, if available.</p>
+                      </div>
+                  </div>
+                  <div class="icon-description-pair">
+                      <img src="path-to-your-icon/icon1.png" alt="Port side view" class="icon-image"/>
+                      <div class="description">
+                          <h2>Starboard side view:</h2>
+                          <p>This camera gives you a view from the Port side Bridge wing. This allows you to check for any traffic or relevant information on vessel’s Port side, if available.</p>
+                      </div>
+                  </div> -->
+
+
+                            </div>
+                            <div class="important-notice">
+                                <p>Important: When a user clicks on any of the other Icons, the Main Video is paused and
+                                    will only
+                                    resume
+                                    when the user clicks on the Bridge view Icon again. This allows users to watch the
+                                    scenario completely
+                                    without losing any information.</p>
+                            </div>
+
+                            <div>
+                                <h2>Notes:
+                                </h2>
+                                <ul class="list-bullets" style="font-size: 15px;text-align: justify;">
+                                    <li>Users are unable to fast forward any videos.</li>
+                                    <li>Users do not have to watch any of the other informational videos/images
+                                        completely.
+                                    <li>Viewers MUST complete the Bridge video in its entirety to proceed to the next
+                                        Stage.
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </nz-tab>
+
+        <nz-tab nzTitle="Assessment">
+            <div class="rule-action">
+                <button *ngIf="isUserGuidelinesPage" (click)="goToCourseDetails()"
+                    style="display: flex;justify-content: center; margin-top: 10px;" nz-button nzType="primary">Start
+                    Course</button>
+            </div>
+            <div class="result-container">
+                <div class="rule-container">
+                    <div class="rule-content">
+                        <div class="rule-header">
+                            <h1>Welcome to 3D COLREGS</h1>
+                        </div>
+                        <div>
+                            <h2>Assessment:
+                            </h2>
+                            <h3 style="text-align: justify;">After you complete watching the Main Level video, you will
+                                be asked to
+                                complete an assessment for the level before you can proceed to the next level. </h3>
+                            <h3 style="text-align: justify;">Assessment consists of MCQ (Multiple Choice Questions), MCA
+                                (Multiple
+                                Correct Answers) and True/False.</h3>
+                            <!-- <h3>The duration of Main video is 1 minute.</h3> -->
+
+                            <ul class="list-bullets" style="font-size: 15px;text-align: justify;">
+                                <li><span style="font-weight: bold;">MCQ (Multiple Choice Questions):</span> This type
+                                    of questions
+                                    consists of 4 options with only ONE correct answer. </li>
+                                <li><span style="font-weight: bold;">MCA (Multiple Correct Answers):</span> This type of
+                                    questions
+                                    consists of 4 options with more than one correct answer. Candidates must select all
+                                    the correct
+                                    answers
+                                    to pass. </li>
+                                <li><span style="font-weight: bold;">True/False:</span> Self-explanatory. Users must
+                                    answer if the
+                                    statement in the question is True or False. </li>
+                            </ul>
+                            <h3>Each Question is allotted a time of 1 minute, failing which it will be considered as a
+                                failed attempt
+                            </h3>
+                            <h3>You MUST answer each question correctly before you can proceed to the next question.
+                            </h3>
+                        </div>
+                        <div>
+                            <h2>Example of Assessment:
+                            </h2>
+                            <ul class="list-bullets" style="font-size: 15px;text-align: justify;">
+                                <li>Level 01 has a total of 10 questions for Assessment.</li>
+                                <li>Candidate completed first 6 questions successfully on 1st attempt.</li>
+                                <li>On the 7th question he answered incorrectly on first attempt. Candidate is still
+                                    allowed one more
+                                    attempt at the same question.</li>
+                                <li>If the second attempt is also incorrect, then the candidate will be redirected to
+                                    the Level video
+                                    again. </li>
+                                <li>Once he watches the Level video he will be allowed to ‘Resume’ the assessment from
+                                    the same 7th
+                                    Question and that attempt will be considered as the 3rd attempt. </li>
+                                <li>If the candidate answers incorrectly even on the 3rd attempt, he is still allowed to
+                                    attempt the
+                                    same
+                                    question for the 4th time. </li>
+                                <li>However, if the candidate answers incorrectly even on the 4th attempt, he will be
+                                    redirected to the
+                                    Main Level video again. </li>
+                                <li> After the video, the Assessment is reset and the candidate has to start the
+                                    assessment all over
+                                    again, with a different set of 10 questions.</li>
+                                <li>No points are awarded for any subsequent attempts, even the Assessment is reset
+                                    after the 4th
+                                    incorrect attempt. </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nz-tab>
+
+        <nz-tab nzTitle="Scoring">
+            <div class="rule-action">
+                <button *ngIf="isUserGuidelinesPage" (click)="goToCourseDetails()"
+                    style="display: flex;justify-content: center; margin-top: 10px;" nz-button nzType="primary">Start
+                    Course</button>
+            </div>
+            <div class="result-container">
+                <div class="rule-container  scoringRuleContainer">
+                    <div class="rule-content">
+                        <div class="rule-header">
+                            <h1>Welcome to 3D COLREGS</h1>
+                        </div>
+                        <div>
+                            <h2>Scoring:
+                            </h2>
+                            <ul class="list-bullets" style="font-size: 15px;text-align: justify;">
+                                <li>Each Level is allotted a score of 100 points divided equally by the number of
+                                    questions for that
+                                    level. </li>
+                                <li>If a candidate answers correctly on his first attempt, he will score the maximum
+                                    points available
+                                    for
+                                    that question. </li>
+                                <li>If a candidate scores correctly on second attempt, then he will score only 50% of
+                                    the points
+                                    available
+                                    for that question. </li>
+                                <li> If a candidate answers incorrectly on 2nd attempt, he will be redirected to watch
+                                    the Level video
+                                    again. Upon completing the video, he will be redirected to ‘resume’ the Assessment
+                                    from where he had
+                                    left off. </li>
+                                <li> However, he will receive no points on answering questions correctly on 3rd or
+                                    subsequent attempts.
+                                </li>
+                                <!-- <li></li>
+          <li></li>
+          <li></li> -->
+                            </ul>
+                        </div>
+                        <div>
+                            <h2>Example of scoring:
+                            </h2>
+                            <ul class="list-bullets" style="font-size: 15px;text-align: justify;">
+                                <li>Level 01 has a total of 10 questions for Assessment. So, each question is worth 10
+                                    points.
+                                </li>
+                                <li>If he answers correctly on<span style="color:green;font-weight: bold;"> first
+                                        attempt,</span> he
+                                    will
+                                    score 10 points for that question. </li>
+                                <li>If he answers correctly on <span style="color:rgb(255, 174, 0);font-weight: bold;">
+                                        second
+                                        attempt,</span> he will score 7.5 points for that question. </li>
+                                <li>If he answers correctly on <span style="color:rgb(255, 174, 0);font-weight: bold;">
+                                        third
+                                        attempt,</span> he will score 6 points for that question. </li>
+                                <li>If he answers correctly on <span style="color:rgb(255, 174, 0);font-weight: bold;">
+                                        fourth
+                                        attempt,</span> he will score 4.5 points for that question. </li>
+                                <li>No points are awarded for <span style="color:red;font-weight: bold;"> 5rd or
+                                        subsequent
+                                        attempts.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nz-tab>
+
+    </nz-tabset>
+
+    <div class="rule-action">
+        <button *ngIf="isUserGuidelinesPage" (click)="goToCourseDetails()"
+            style="display: flex;justify-content: center;" nz-button nzType="primary">Start Course</button>
+    </div>
+</div>

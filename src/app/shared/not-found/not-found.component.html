@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+* OOPS - Perfect 404 pages Pack
+* Build Date: October 2016
+* Last Update: October 2016
+* Author: Madeon08 for ThemeHelite
+* Copyright (C) 2016 ThemeHelite
+* This is a premium product available exclusively here : http://themeforest.net/user/Madeon08/portfolio
+* -->
+<html lang="en-us" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>OOPS - Flat 404 Not found</title>
+    <meta name="description" content="The description should optimally be between 150-160 characters.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ThemeHelite">
+
+    <!-- ================= Favicons ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="img/favicon.png">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon-retina-ipad.png">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon-retina-iphone.png">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon-standard-ipad.png">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon-standard-iphone.png">
+
+    <!-- ============== Resources style ============== -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+</head>
+
+<body>
+
+    <a id="bgndVideo" class="player"
+        data-property="{videoURL:'http://youtu.be/RdGVz104b3E',containment:'body',autoPlay:true, mute:false, startAt:0, stopAt:0, opacity:1}"></a>
+
+    <!-- Your logo on the top left -->
+    <a href="#" class="logo-link" title="back home">
+
+        <img src="assets/images/ELEMENTREE.png" class="logo" alt="Company's logo" />
+
+    </a>
+
+    <div class="content">
+
+        <div class="content-box" style="text-align: center;">
+
+            <div class="big-content">
+
+                <!-- Main squares for the content logo in the background -->
+                <img style="height: 400px;width: 400px;" src="assets/images/errorship.png" alt="">
+
+                <!-- The animated searching tool -->
+                <img style="height: 100px;width: 100px;" class="fa fa-search" src="assets/icons/searchgreen.svg" alt="">
+                <!-- <i  aria-hidden="true"></i> -->
+
+                <!-- div clearing the float -->
+                <div class="clear"></div>
+
+            </div>
+
+            <!-- Your text -->
+            <h1>Oops! Error 404 not found.</h1>
+
+            <p>The page you were looking for doesn't exist.</p>
+
+            <div style="display: flex;justify-content: center;text-align: center;"> <button (click)="goBack()"
+                    class="gobackbtn">Go
+                    Back</button>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ///////////////////\\\\\\\\\\\\\\\\\\\ -->
+    <!-- ********** jQuery Resources ********** -->
+    <!-- \\\\\\\\\\\\\\\\\\\/////////////////// -->
+
+    <!-- * Libraries jQuery and Bootstrap - Be careful to not remove them * -->
+
+
+    <script>
+        (function () {
+            "use strict";
+
+            var myPlayer = jQuery("#bgndVideo").YTPlayer();
+
+            var onMobile = false;
+
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) { onMobile = true; }
+
+            if ((onMobile === false)) {
+
+                $(".player").mb_YTPlayer();
+
+            } else {
+
+                $("body").vegas({
+                    slides: [
+                        { src: "img/home-slide-1.jpg" },
+                        { src: "img/home-slide-2.jpg" },
+                        { src: "img/home-slide-3.jpg" }
+                    ],
+
+                    // Delay beetween slides in milliseconds.
+                    delay: 5000,
+
+                    // Chose your transition effect (See the documentation provided in your download pack)
+                    transition: 'fade'
+
+                });
+            }
+        })()
+
+    </script>
+
+</body>
+
+</html>

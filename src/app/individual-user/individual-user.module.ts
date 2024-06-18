@@ -50,6 +50,7 @@ import { VideoPlayerModule } from '../video-player/video-player.module';
 import { AssesmentsComponent } from './component/assesments/assesments.component';
 import { AssessmentHistoryComponent } from './component/assessment-history/assessment-history.component';
 import { UserHistoryComponent } from './component/user-history/user-history.component';
+import { DeviceInfoComponent } from './component/device-info/device-info.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { UserHistoryComponent } from './component/user-history/user-history.comp
     AssesmentsComponent,
     AssessmentHistoryComponent,
     UserHistoryComponent,
+    DeviceInfoComponent,
   ],
   imports: [
     CommonModule,

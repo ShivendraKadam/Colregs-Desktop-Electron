@@ -4,6 +4,7 @@ import { AuthService } from 'src/services/auth.service';
 import { ThemeService } from 'src/services/theme.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzTabSetComponent } from 'ng-zorro-antd/tabs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-privacy-policy',
@@ -30,7 +31,8 @@ export class PrivacyPolicyComponent {
   constructor(
     private themeService: ThemeService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -74,6 +76,10 @@ export class PrivacyPolicyComponent {
     this.isPrivacyPolicyVisible = true;
   }
 
+  goBack(): void {
+    this.location.back();
+  }
+
   handleCancel() {
     this.isPrivacyPolicyVisible = false;
   }
@@ -81,6 +87,7 @@ export class PrivacyPolicyComponent {
   handleOk() {
     this.isPrivacyPolicyVisible = false;
   }
+
   isTermsRead: boolean = false;
   async ngOnInit(): Promise<void> {
     this.onResize();

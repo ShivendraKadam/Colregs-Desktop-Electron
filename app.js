@@ -4,6 +4,7 @@ const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
 log.transports.file.resolvePath = () =>
   path.join("C:Onee drive datailearn android apk", "/logs/main.log");
+log.log("Application version:" + app.getVersion());
 log.info("Hello, log");
 log.warn("Some problems appears");
 
@@ -19,7 +20,7 @@ function createWindow() {
       webSecurity: false,
     },
   });
-  win.setMenuBarVisibility(false);
+  win.setMenuBarVisibility(true);
 
   win.loadFile(path.join(__dirname, "./dist/index.html"));
 
@@ -36,17 +37,27 @@ app.on("ready", () => {
   autoUpdater.checkForUpdatesAndNotify();
 });
 
-autoUpdater.on("update-available", () => {
-  log.info("update-available");
-});
 autoUpdater.on("checking-for-update", () => {
   log.info("checking-for-update");
+  console.log("checking-for-update");
+});
+autoUpdater.on("update-available", () => {
+  log.info("update-available");
+  console.log("update-available");
 });
 autoUpdater.on("download-progress", () => {
   log.info("download-progress");
+  console.log("download-progress");
+});
+
+autoUpdater.on("download-progress", (progressTrack) => {
+  log.info("\n\ndownload-progress");
+  log.info(progressTrack);
+  console.log("\n\ndownload-progress");
 });
 autoUpdater.on("update-downloaded", () => {
   log.info("update-downloaded");
+  console.log("update-downloaded");
 });
 
 app.on("window-all-closed", () => {

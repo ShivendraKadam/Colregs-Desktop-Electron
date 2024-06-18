@@ -1,5 +1,9 @@
 <div [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white'  }">
 
+    <div style="text-align: end;padding: 10px 25px;"><span (click)="goBack()" style="font-size: 28px;cursor: pointer;"
+            nz-icon nzType="close-circle" nzTheme="outline"></span>
+    </div>
+
     <div class="terms-container" [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white'  }">
 
 
@@ -7,7 +11,7 @@
             <nz-tab nzTitle="Terms and Conditions">
 
                 <div class="terms-content"
-                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': !isTermsRead ? 'calc(78vh - 50px)' : 'calc(90vh)' }">
 
 
                     <h1 class="termsh1">Terms and Conditions</h1>
@@ -595,7 +599,7 @@
             </nz-tab>
             <nz-tab nzTitle="End User license Agreement">
                 <div class="terms-content"
-                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': !isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
                     <h1 class="termsh1">End User License Agreement (EULA) for ET-Learn LMS</h1>
                     <p><strong>Effective Date: 10-March-2024</strong></p>
                     <p><strong>1. Introduction</strong></p>
@@ -697,7 +701,7 @@
 
             <nz-tab nzTitle="Privacy Policy">
                 <div class="terms-content"
-                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': !isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
                     <h1 class="termsh1">Privacy Policy</h1>
                     <p><strong>This Privacy Policy was last updated on March 10, 2024.</strong></p>
                     <p>Thank you for using ET-Learn, an LMS owned by Element Tree. At Element Tree (“ET-Learn,” “we,”
@@ -934,7 +938,7 @@
             <nz-tab nzTitle="Acceptable Use Policy">
 
                 <div class="terms-content"
-                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': !isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
                     <h1 class="termsh1">Acceptable Use Policy</h1>
                     <p><strong>Effective Date: 10-March-2024</strong>
 
@@ -984,7 +988,7 @@
             </nz-tab>
             <nz-tab nzTitle="Cookie Policy">
                 <div class="terms-content"
-                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': !isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
                     <h1 class="termsh1">Cookie Policy</h1>
                     <p><strong>Effective Date: 10-March-2024</strong></p>
 
@@ -1017,7 +1021,7 @@
 
             <nz-tab nzTitle="Data retention policy">
                 <div class="terms-content"
-                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': !isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
                     <h1 class="termsh1">Data Retention Policy</h1>
                     <p><strong>Effective Date: 10-March-2024</strong></p>
 
@@ -1048,7 +1052,7 @@
 
             <nz-tab nzTitle="Miscellaneous policies">
                 <div class="terms-content"
-                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': !isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
                     <h1 class="termsh1">Miscellaneous Policies</h1>
                     <p><strong>Last updated: March 10, 2024</strong></p>
 
@@ -1402,7 +1406,7 @@
             </nz-tab>
             <nz-tab nzTitle="Refund Policy">
                 <div class="terms-content"
-                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': !isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
                     <h1 class="termsh1">Refund Policy</h1>
                     <p><strong>Effective Date: 10-March-2024</strong></p>
 
@@ -1431,7 +1435,7 @@
             </nz-tab>
             <nz-tab nzTitle="Security Policy">
                 <div class="terms-content"
-                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': !isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
                     <h1 class="termsh1">Security Policy</h1>
                     <p><strong>Effective Date: 10-March-2024</strong></p>
 
@@ -1460,7 +1464,7 @@
             </nz-tab>
             <nz-tab nzTitle="User Conduct Policy">
                 <div class="terms-content"
-                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
+                    [ngStyle]="{ 'background-color': isDarkTheme ? '#161616' : 'white','color': isDarkTheme ? 'white' : 'black' ,'height': !isTermsRead ? 'calc(78vh - 50px)' : 'calc(94vh)' }">
                     <h1 class="termsh1">User Conduct Policy</h1>
                     <p><strong>Effective Date: 10-March-2024</strong></p>
 

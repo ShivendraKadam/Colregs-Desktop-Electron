@@ -12,6 +12,7 @@ import { AssessmentCanDeactivateGuard } from '../guards/assessment-can-deactivat
 import { AssesmentsComponent } from './component/assesments/assesments.component';
 import { AssessmentHistoryComponent } from './component/assessment-history/assessment-history.component';
 import { UserHistoryComponent } from './component/user-history/user-history.component';
+import { DeviceInfoComponent } from './component/device-info/device-info.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
       {
         path: 'user/assessment-history',
         component: AssessmentHistoryComponent,
+      },
+      {
+        path: 'user/device-info',
+        component: DeviceInfoComponent,
       },
       {
         path: 'user/user-history',

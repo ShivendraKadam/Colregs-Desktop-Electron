@@ -1,6 +1,6 @@
 {
   "name": "etlearn-frontend",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "main": "app.js",
   "scripts": {
     "ng": "ng",
@@ -9,22 +9,19 @@
     "build": "ng build --prod --base-href ./",
     "dev:electron": "ng build --base-href ./ && DEBUG=true electron app.js",
     "start:electron": "ng build --base-href ./ && electron app.js",
-    "dist": "electron-builder -p always",
-    "package": "electron-builder",
+    "package": "electron-builder -p always",
     "test": "ng test",
     "dev": "nodemon src/app.js"
   },
-  "build":{
+  "build": {
     "publish": [
       {
         "provider": "github",
-        "owner":"ShivendraKadam",
-        "repo":"Colregs-Desktop-Electron"
+        "owner": "ShivendraKadam",
+        "repo": "Colregs-Desktop-Electron"
       }
     ]
-
   },
-
   "private": true,
   "dependencies": {
     "@angular/animations": "^15.2.0",
@@ -40,6 +37,7 @@
     "@auth0/angular-jwt": "^5.1.2",
     "@capacitor/android": "^6.0.0",
     "@capacitor/core": "^6.0.0",
+    "@capacitor/device": "^6.0.0",
     "@ckeditor/ckeditor5-angular": "^7.0.1",
     "@ckeditor/ckeditor5-build-classic": "^40.2.0",
     "@videogular/ngx-videogular": "^6.0.0",
@@ -66,6 +64,7 @@
     "ng2-charts": "^4.1.1",
     "ng2-pdf-viewer": "^6.4.1",
     "ngx-cookie-service": "^15.0.0",
+    "ngx-device-detector": "^5.0.1",
     "ngx-editor": "^15.3.0",
     "ngx-extended-pdf-viewer": "^15.2.2",
     "ngx-image-compress": "^15.1.6",

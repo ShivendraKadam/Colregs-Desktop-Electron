@@ -1,0 +1,31 @@
+<h2>Enter OTP</h2>
+<h5 style="font-size: 16px; font-weight: 500; padding-bottom: 20px;">
+    We have sent a verification code to<br>
+    <b style="color: #3194a0;"><i>{{email}}</i></b>
+</h5>
+
+<form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+    <div class="inputContainer">
+        <input formControlName="otp1" required="required" maxlength="1" type="text" class="otp-input" id="otp-input1"
+            (keyup)="onKeyUp($event, otpInput2)" #otpInput1 [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }" />
+        <input formControlName="otp2" required="required" maxlength="1" type="text" class="otp-input" id="otp-input2"
+            (keyup)="onKeyUp($event, otpInput3, otpInput1)" #otpInput2
+            [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }" />
+        <input formControlName="otp3" required="required" maxlength="1" type="text" class="otp-input" id="otp-input3"
+            (keyup)="onKeyUp($event, otpInput4, otpInput2)" #otpInput3
+            [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }" />
+        <input formControlName="otp4" required="required" maxlength="1" type="text" class="otp-input" id="otp-input4"
+            (keyup)="onKeyUp($event, null, otpInput3, true)" #otpInput4
+            [ngStyle]="{ 'color': isDarkTheme ? 'white' : 'black' }" />
+    </div>
+
+    <div class="verifybtn">
+        <button [class.disabled]="!otpForm.valid">Verify</button>
+    </div>
+</form>
+
+<p class="resendNote">
+    Didn't receive the code? <button class="resendBtn" [class.disabled]="isResendDisabled"
+        (click)="onResendCode()">Resend Code</button>
+</p>
+<span *ngIf="resendCountdown > 0"> in <i>{{ resendCountdown }}</i> second(s)</span>

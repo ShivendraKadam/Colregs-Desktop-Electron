@@ -24,6 +24,9 @@ import {
   transition,
   animate,
 } from '@angular/animations';
+import { Device } from '@capacitor/device';
+import { v4 as uuidv4 } from 'uuid';
+
 export const flipAnimation = [
   trigger('flipState', [
     state(
@@ -118,19 +121,25 @@ export class LoginComponent {
     const emailControl = this.signupForm.get('email');
     return emailControl ? emailControl.valid : false;
   }
+  isVisibleVerifyotp: boolean = false;
+
+  closeverifyotp() {
+    this.isVisibleVerifyotp = false;
+  }
 
   submitsignup() {
     if (this.signupForm.valid) {
+      this.isVisibleVerifyotp = true;
+
       this.endService
         .createIndividualUser(this.signupForm.value)
         .subscribe((res: any) => {
           if (res.success === true) {
-            this.message.success(
-              'Your Account has been created successfully, Please Login !'
-            );
+            // this.message.success(
+            //   'Your Account has been created successfully, Please Login !'
+            // );
 
-            this.signupForm.reset();
-
+            // this.signupForm.reset();
             this.endService
               .mapAppUsersTOCOLREGS(res.data)
               .subscribe({ next: async (res: any) => {} });
@@ -184,7 +193,11 @@ export class LoginComponent {
   async login() {
     if (this.validateForm.valid) {
       this.loginDisabled = true;
-      await this.endService.login(this.validateForm.value).subscribe({
+      const data = {
+        ...this.validateForm.value,
+        deviceId: this.deviceId,
+      };
+      await this.endService.login(data).subscribe({
         next: async (res) => {
           console.log(res);
 
@@ -238,7 +251,11 @@ export class LoginComponent {
       this.validateForm.get('password')?.patchValue(parsedOBJ.password);
       this.validateForm.get('remember')?.patchValue(parsedOBJ.remember);
       if (isLoggedIn === 'true' && parsedOBJ.remember) {
-        await this.endService.login(this.validateForm.value).subscribe({
+        const data = {
+          ...this.validateForm.value,
+          deviceId: this.deviceId,
+        };
+        await this.endService.login(data).subscribe({
           next: async (res) => {
             console.log(res);
             if (res.success === true) {
@@ -274,10 +291,24 @@ export class LoginComponent {
   flipToLogin() {
     this.isFlipped = false;
   }
+  deviceinfo: any;
+  deviceId: any;
+  identifier: any;
+  async logDeviceInfo() {
+    this.deviceinfo = await Device.getInfo();
+    this.identifier = await Device.getId();
+    this.deviceId = this.identifier.identifier;
+    // this.deviceId = this.identifier.deviceId;
+    // Generate UUID if not available from capacitorandroidinfo2
+
+    console.log(this.deviceId);
+  }
 
   ngOnInit(): void {
-    this.autoLogin();
+    this.logDeviceInfo();
+    // this.isVisibleVerifyotp = true;
 
+    this.autoLogin();
     const currentTheme = this.themeService.getSavedTheme();
     const path = window.location.pathname;
     this.companyName = path.split('/')[1];

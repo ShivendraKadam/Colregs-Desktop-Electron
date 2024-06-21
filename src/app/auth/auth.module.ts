@@ -22,6 +22,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ScrollToBottomComponent } from './components/scroll-to-bottom/scroll-to-bottom.component';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { VerifyOtpComponent } from '../shared/verify-otp/verify-otp.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     ForgotPasswordComponent,
     PrivacyPolicyComponent,
     ScrollToBottomComponent,
+    VerifyOtpComponent,
   ],
   imports: [
     CommonModule,

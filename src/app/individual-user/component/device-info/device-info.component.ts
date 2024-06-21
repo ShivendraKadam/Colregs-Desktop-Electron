@@ -20,6 +20,18 @@ export class DeviceInfoComponent {
   systemInfo: any;
   browserData: any;
   systemInformation: any;
+  info: any;
+  async logDeviceInfo() {
+    this.info = await Device.getInfo();
+    this.capacitorandroidinfo2 = await Device.getId();
+
+    // Generate UUID if not available from capacitorandroidinfo2
+    if (!this.capacitorandroidinfo2.uuid) {
+      this.capacitorandroidinfo2.uuid = uuidv4();
+    }
+
+    console.log(this.capacitorandroidinfo2);
+  }
 
   constructor(
     private deviceService: DeviceDetectorService,
@@ -36,40 +48,38 @@ export class DeviceInfoComponent {
     this.systemInfo = await this.systemInfoService.getSystemInfo();
     // Optionally, you can log the system information to the console.
   }
-  fetchDeviceInfo() {
-    window.systeminformation
-      .getStaticData()
-      .then((info: any) => {
-        this.deviceInfo = info;
-      })
-      .catch((error: any) => {
-        console.error('Error fetching device information:', error);
-      });
-  }
+  // fetchDeviceInfo() {
+  //   window.systeminformation
+  //     .getStaticData()
+  //     .then((info: any) => {
+  //       this.deviceInfo = info;
+  //     })
+  //     .catch((error: any) => {
+  //       console.error('Error fetching device information:', error);
+  //     });
+  // }
   uuid: any;
   dummy: any;
   uuidmobile: any;
   deviceName: any;
-  async deviceinfo2() {
-    this.capacitorandroidinfo = await Device.getInfo();
-    this.capacitorandroidinfo2 = await Device.getId();
-    this.uuidmobile = this.capacitorandroidinfo2.uuid;
+  // async deviceinfo2() {
 
-    this.browserData = this.deviceService.getDeviceInfo();
-    this.dummy = 2;
-    this.deviceName = this.systemInfo.os.hostname;
-    if (this.capacitorandroidinfo.platform === 'web') {
-      this.uuid = localStorage.getItem('device_uuid') || uuidv4();
-      localStorage.setItem('device_uuid', this.uuid);
-    } else {
-      this.uuid = this.capacitorandroidinfo2.uuid;
-    }
-    alert('hie2');
-  }
+  //   this.uuidmobile = this.capacitorandroidinfo2.uuid;
+
+  //   this.browserData = this.deviceService.getDeviceInfo();
+  //   this.dummy = 2;
+  //   this.deviceName = this.systemInfo.os.hostname;
+  //   if (this.capacitorandroidinfo.platform === 'web') {
+  //     this.uuid = localStorage.getItem('device_uuid') || uuidv4();
+  //     localStorage.setItem('device_uuid', this.uuid);
+  //   } else {
+  //     this.uuid = this.capacitorandroidinfo2.uuid;
+  //   }
+  //   alert('hie2');
+  // }
 
   async ngOnInit(): Promise<void> {
-    this.deviceinfo2();
+    this.logDeviceInfo();
     this.fetchSystemInfo();
-    this.fetchDeviceInfo();
   }
 }

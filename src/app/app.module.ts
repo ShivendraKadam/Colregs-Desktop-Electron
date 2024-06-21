@@ -20,13 +20,10 @@ import { NgChartsModule } from 'ng2-charts';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
-
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,15 +41,17 @@ registerLocaleData(en);
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    })
-
-
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

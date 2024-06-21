@@ -77,6 +77,12 @@ export class EndUserService {
       data
     );
   }
+  createotpforforgotpass(data: any) {
+    return this.http.post(
+      BACKEND_URL + '/individual-user/create-otp-Forgotpass',
+      data
+    );
+  }
 
   getDashboardData() {
     return this.http.get(BACKEND_URL + `/individual-user/dashboard`);
@@ -110,18 +116,30 @@ export class EndUserService {
   }
 
   login(data: any) {
-    return this.http.post(BACKEND_URL + `/individual-user/login`, data).pipe(
-      tap(async (res: any) => {
-        if (data.remember) {
-          localStorage.setItem('_Remember_me', JSON.stringify(data));
-          console.log('hie', res);
-        } else {
-          localStorage.removeItem('_Remember_me');
-        }
-        console.log(res.token);
-        this.setSession(res);
-      })
+    return this.http
+      .post(BACKEND_URL + `/individual-user/app-login`, data)
+      .pipe(
+        tap(async (res: any) => {
+          if (data.remember) {
+            localStorage.setItem('_Remember_me', JSON.stringify(data));
+            console.log('hie', res);
+          } else {
+            localStorage.removeItem('_Remember_me');
+          }
+          console.log(res.token);
+          this.setSession(res);
+        })
+      );
+  }
+
+  verifyOtp(data: any) {
+    return this.http.post(
+      BACKEND_URL + '/individual-user/verifyOtp-Createindividualuser',
+      data
     );
+  }
+  resendOtp(data: any) {
+    return this.http.post(BACKEND_URL + '/individual-user/resend-otp', data);
   }
 
   private async setSession(authResult: any) {
